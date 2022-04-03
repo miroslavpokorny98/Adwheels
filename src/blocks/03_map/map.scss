@@ -1,0 +1,33 @@
+.map h2{
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: -2px;
+    color: #3A3A3A;
+
+    margin-top: 260px
+}
+
+.map h2 span{
+    font-family: 'Objectivity-Medium';
+    color: #33266B;
+}
+
+.map .container{
+
+    position: relative;
+}
+
+.highways {
+    /* position: relative; */
+    margin: 152px 0px 0px 169px;
+}
+.mapCz {
+    position: absolute;
+    top: -40px; 
+    left: 70px;
+    margin: 0;
+}

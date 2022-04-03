@@ -1,0 +1,35 @@
+.kontakt .container {
+    height: 376px;
+    background: #33266B;;
+    border-radius: 12px;
+    margin-top: 208px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.kontakt p {
+    letter-spacing: 2px;
+    color: #D99A27;
+}
+
+.kontakt h3 {
+    color: #FFFFFF;
+    text-align: left;
+    width: 520px;
+    margin: 16px 0 0 0px;
+}
+
+.rozjetBtn {
+    margin: 33px 0 0 0px;
+    width: 170px;
+    height: 54px;
+    background: rgba(217, 154, 39, 1);
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    display: inline;
+}

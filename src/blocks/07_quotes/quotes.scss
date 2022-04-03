@@ -1,0 +1,72 @@
+.quotes .container {
+    display: flex; 
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.dopadyFotoDiv {
+    width: 480px;
+    height: 490px;
+    border-radius: 12px;
+    position: absolute;
+    z-index: -1;
+}
+
+.dopadyFotoDiv img {
+    border-radius: 12px;
+}
+
+.quoteCards {
+    width: 808px;
+    height: 490px;
+    background: #33266B;
+    border-radius: 12px;
+    text-align: center;
+    margin-left: 416px;
+}
+
+.cardNums {
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+
+    margin-top: 94px;
+}
+
+.quote {
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: -2px;
+    color: #FFFFFF;
+
+    max-width: 657px;
+    text-align: center;
+
+    margin: 24px auto 24px auto;
+}
+
+.qouteAuthor {
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+.quoteCards span {
+    font-family: 'Objectivity-Medium';
+}
+
+.arrows button {
+    box-sizing: border-box;
+    padding: 15px 14px 16px 14px;
+    margin: 40px 2px 0px 2px;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    /* background-color: rgb(255, 255, 255, 1); */
+    background-color: #33266B;
+}

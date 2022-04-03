@@ -1,0 +1,36 @@
+.klienti h2 {
+    text-align: center;
+    margin: 200px 0 32px 0;
+}
+
+.klienti .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.klientLogo {
+    margin-right: 70px;
+}
+
+
+.companyPlaceholder {
+    width: 184px;
+    height: 64px;
+    background: #F3F1F6;
+    border-radius: 7px;
+
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: #423676;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

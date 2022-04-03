@@ -1,0 +1,41 @@
+.reklamaVPohybu .container:first-of-type {
+    height: 376px;
+    background: #D99A27;
+    border-radius: 12px;
+    margin-top: 230px;
+    overflow: auto;
+}
+
+.reklamaVPohybu p {
+    color: #FFFFFF;
+    margin: 90px 0 0 184px;
+}
+.reklamaVPohybu h3 {
+    color: #FFFFFF;
+    text-align: left;
+    margin: 16px 0 0 184px;
+}
+
+.rozjetBtn {
+    /* padding: 16px 48px; */
+    margin: 33px 0 0 184px;
+    width: 170px;
+    height: 54px;
+    background: #33266B;
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    display: inline;
+}
+
+.reklamaVPohybu .container:nth-last-of-type(1) {
+    height: 263px;
+}
+
+.reklamaVPohybu img {
+    position: relative;
+    left: 754px;
+    top: -314px; 
+    z-index: 100;
+}

@@ -1,0 +1,59 @@
+.vlastnosti .container{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vlastnosti h3 {
+    font-family: 'Objectivity-Medium';
+    margin-top: 341px;
+    margin-bottom: 62px;
+}
+
+.kamionBig {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -82px;
+}
+
+.card1 {
+    display: block;
+    width: 392px;
+    height: 480px;
+    background: #33266B;
+    border-radius: 12px;
+}
+
+.card1:nth-of-type(1) img {
+    margin: 56px 0px 98px 56px;
+}
+
+.card1:nth-of-type(2) img {
+    margin: 56px 0px 77px 56px;
+}
+
+.card1:nth-of-type(3) img {
+    margin: 52px 0px 86px 56px;
+} 
+
+.card1 h6 {
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -2px;
+    color: #FFFFFF;
+    margin-left: 56px;
+}
+
+.card1 p {
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin: 16px 56px 0px 56px;
+}
