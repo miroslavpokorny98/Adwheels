@@ -361,11 +361,12 @@ gulp.task(
   gulp.series(
     gulp.parallel(
       gulp.series(
-        css, cssPrint, cssVersions
+        // css, cssPrint, cssVersions
+		css
       ),
-      gulp.series(
-        scripts, jsVersions
-      ),
+    //   gulp.series(
+    //     scripts, jsVersions
+    //   ),
       gulp.series(
         njkIncludes, htmlBeauty
       )
