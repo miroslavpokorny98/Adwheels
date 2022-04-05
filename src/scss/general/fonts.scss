@@ -1,57 +1,60 @@
 @font-face {
-    font-family: 'Objectivity';
-    src: url('../../fonts/Objectivity-Regular.otf');
+    font-family: 'Objectivity-Regular';
+    src: url('fonts/Objectivity-Regular.otf');
   }
   
 @font-face {
     font-family: 'Objectivity-Medium';
-    src: url('../../fonts/Objectivity-Medium.otf');
+    src: url('fonts/Objectivity-Medium.otf');
   }
 
-@mixin headline1{
+@mixin h1Medium{
     font-family: 'Objectivity-Medium';
     font-style: normal;
     font-weight: 400;
     font-size: 80px;
     line-height: 86px;
-    /* identical to box height, or 108% */
     letter-spacing: -2px;
+    color: #000000;
 }
-
-@mixin headline2{
-    font-family: 'Objectivity';
+@mixin h2Light{
+    font-family: 'Objectivity-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
     line-height: 50px;
-    /* identical to box height, or 139% */
     letter-spacing: -2px;
+    color: #000000;
 }
-
+@mixin h2Medium{
+    font-family: 'Objectivity-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: -2px;
+    color: #000000;
+}
 @mixin h3Light{
-    font-family: 'Objectivity';
+    font-family: 'Objectivity-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
     line-height: 36px;
-    text-align: center;
     letter-spacing: -2px;
-    color: #3A3A3A;
+    color: #000000;
 }
-
 @mixin h3Medium{
-    font-family: 'Objectivity';
+    font-family: 'Objectivity-Medium';
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
     line-height: 36px;
-    text-align: center;
     letter-spacing: -2px;
-    color: #3A3A3A;
+    color: #000000;
 }
-
 @mixin h4Regular{
-    font-family: 'Objectivity';
+    font-family: 'Objectivity-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -59,7 +62,6 @@
     letter-spacing: -2px;
     color: #000000;
 }
-
 @mixin h4Medium{
     font-family: 'Objectivity-Medium';
     font-style: normal;
@@ -69,28 +71,80 @@
     letter-spacing: -2px;
     color: #000000;
 }
-
-@mixin bodytext16{
-    font-family: 'Objectivity';
+@mixin h5Medium{
+    font-family: 'Objectivity-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: -2px;
+    color: #000000;
+}
+@mixin bodyText18pxRegular{
+    font-family: 'Objectivity-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+}
+@mixin bodyText18pxMedium{
+    font-family: 'Objectivity-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+}
+@mixin bodyText16pxRegular{
+    font-family: 'Objectivity-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
+    color: #000000;
 }
-
-@mixin bodytext14{
-    font-family: 'Objectivity';
+@mixin bodyText16pxMedium{
+    font-family: 'Objectivity-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #000000;
+}
+@mixin bodyText14pxRegular{
+    font-family: 'Objectivity-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 24px;
+    color: #000000;
 }
-
-@mixin bodytext12{
-    font-family: 'Objectivity';
+@mixin bodyText14pxMedium{
+    font-family: 'Objectivity-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+}
+@mixin bodyText14pxBold{
+    font-family: 'Objectivity-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+    color: #000000;
+}
+@mixin bodyText12pxCAPS{
+    font-family: 'Objectivity-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 20px;
+    letter-spacing: 2px;
+    color: #000000;
 }
 
+// sdf

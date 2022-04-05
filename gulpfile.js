@@ -362,7 +362,7 @@ gulp.task(
     gulp.parallel(
       gulp.series(
         // css, cssPrint, cssVersions
-		css
+		css, cssVersions
       ),
     //   gulp.series(
     //     scripts, jsVersions

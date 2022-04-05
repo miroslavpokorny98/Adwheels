@@ -1,12 +1,10 @@
 .footer {
     background-color: #000000;
-    color: white;
     .logoMoto p {
         max-width: 256px;
         margin-top: 47px;
-        p {
-            @include bodytext14();
-        }
+        @include bodyText14pxRegular();
+        color: #FFFFFF;
     }
     .bulkInfo {
         display: flex; 
@@ -17,11 +15,12 @@
     }
     .linkColumn {
         p {
-            @include bodytext16();
+            @include bodyText14pxRegular();
             margin-bottom: 40px;
+            color: #FFFFFF;
         }
         a {
-            @include bodytext14();
+            @include bodyText14pxRegular();
             display: block;
             margin-bottom: 24px;
             color: #FFFFFF;
@@ -30,7 +29,8 @@
             text-decoration: none;
         }
         .adress {
-            @include bodytext16();
+            @include bodyText14pxRegular();
+            color: #FFFFFF;
             line-height: 24px;
             opacity: 0.6;
         }
@@ -41,11 +41,7 @@
         margin-top: 200px;
     }
     .legalInfo {
-        font-family: 'Objectivity';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
+        @include bodyText14pxRegular();
         color: #FFFFFF;
         opacity: 0.3;
         padding: 36px 0;
