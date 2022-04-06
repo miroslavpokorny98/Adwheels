@@ -119,6 +119,7 @@
     font-size: 14px;
     line-height: 24px;
     color: #000000;
+    letter-spacing: 0.05px;
 }
 @mixin bodyText14pxMedium{
     font-family: 'Objectivity-Medium';
@@ -147,4 +148,22 @@
     color: #000000;
 }
 
-// sdf
+
+/*
+@include h1Medium();
+@include h2Light();
+@include h2Medium();
+@include h3Light();
+@include h3Medium();
+@include h4Regular();
+@include h4Medium();
+@include h5Medium();
+@include bodyText18pxRegular();
+@include bodyText18pxMedium();
+@include bodyText16pxRegular();
+@include bodyText16pxMedium();
+@include bodyText14pxRegular();
+@include bodyText14pxMedium();
+@include bodyText14pxBold();
+@include bodyText12pxCAPS();
+*/

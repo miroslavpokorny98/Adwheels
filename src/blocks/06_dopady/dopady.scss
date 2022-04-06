@@ -1,34 +1,41 @@
-.dopady h2 {
+.dopady {
     margin-top: 280px;
-    text-align: center;
-}
+    h3 {
+        @include h3Medium();
+        text-align: center;
+        color: #3A3A3A;
+    }
 
-.dopady .container:first-of-type{
-    display: flex; 
-    justify-content: space-evenly;
-    align-items: center;
-}
+    .container{
+        display: flex; 
+        justify-content: space-evenly;
+        align-items: center;
+    }
 
-.card2 {
-    width: 246px;
-    height: 177px;
-    text-align: center;
-    margin-top: 64px;
-}
+    .card2 {
+        width: 248px;
+        height: 242px;
+        text-align: center;
+        margin-top: 64px;
+        
+        h2 {
+            margin-top: 32px;
+            @include h2Medium();
+            color: #3A3A3A;
+        }
 
-.card2 p {
-    margin-top: 24px;
-}
-
-.card2 span{
-    font-family: 'Objectivity-Medium';
-}
-
-.zdroj {
-    display: block;
-    text-align: center;
-    color: #3A3A3A;
-    opacity: 0.5;
-    margin-top: 56px;
-    margin-bottom: 80px;
+        p {
+            margin-top: 8px;
+            @include bodyText14pxMedium();
+            color: #3A3A3A;
+        }
+    }
+    .zdroj {
+        @include bodyText14pxRegular();
+        display: block;
+        text-align: center;
+        color: #3A3A3A;
+        opacity: 0.5;
+        margin-top: 64px;
+    }
 }
