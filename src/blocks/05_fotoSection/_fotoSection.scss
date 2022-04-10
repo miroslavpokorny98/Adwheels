@@ -1,0 +1,43 @@
+.fotoSection{
+    margin-top: 320px;
+    overflow: hidden;
+    h2{
+        @include h2Light();
+        color: #3A3A3A;
+        // overflow: hidden;
+        white-space: nowrap;
+        span {
+            @include h2Medium();
+            color: #33266B;
+        }
+    }
+
+    .fotoSectionImgDiv1 {
+        margin-top: 80px;
+        position: relative;
+        overflow: hidden;
+        left: -308px;
+        // width: 1532px;
+        width: 0px;
+
+    }
+
+    .fotoSectionContainer2 {
+        margin-top: 108px;
+        display: flex;
+        flex-direction: row;
+        align-content: flex-start;
+        justify-content: space-between;
+    }
+
+    .fotoSectionImgDiv2 {
+        position: relative;
+        overflow: hidden;
+        left: 308px;
+        // width: 1116px;
+        width: 0px;
+
+        display: flex;
+        justify-content: end;
+    }
+}

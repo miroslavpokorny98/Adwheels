@@ -142,7 +142,8 @@ function scripts() {
 		.pipe(include())
 		.pipe(sourcemaps.write("."))
 		.pipe(gulp.dest('build/js'))
-		.on('end', gulp.series(scriptsUglify, scriptsJQuery))
+		// .on('end', gulp.series(scriptsUglify, scriptsJQuery))
+		.on('end', gulp.series(scriptsUglify))
 		.pipe(browsersync.stream());
 };
 function scriptsUglify() {
@@ -173,7 +174,6 @@ function cssVersions() {
 	return gulp
 		.src(["./src/blocks/header/header.njk"])
     .pipe(replace(/style.css\?([0-9]*)/g, 'style.css?' + cacheBursting))
-    .pipe(replace(/print.css\?([0-9]*)/g, 'print.css?' + cacheBursting))
     .pipe(gulp.dest('./src/blocks/header/'));
 };
 //JS versions
@@ -182,7 +182,6 @@ function jsVersions() {
 	return gulp
 		.src(["./src/blocks/footer/footer.njk"])
     .pipe(replace(/scripts.js\?([0-9]*)/g, 'scripts.js?' + cacheBursting))
-		.pipe(replace(/jquery.js\?([0-9]*)/g, 'jquery.js?' + cacheBursting))
     .pipe(gulp.dest('./src/blocks/footer/'));
 };
 //tinyPNG
@@ -364,9 +363,9 @@ gulp.task(
         // css, cssPrint, cssVersions
 		css, cssVersions
       ),
-    //   gulp.series(
-    //     scripts, jsVersions
-    //   ),
+      gulp.series(
+        scripts, jsVersions
+      ),
       gulp.series(
         njkIncludes, htmlBeauty
       )

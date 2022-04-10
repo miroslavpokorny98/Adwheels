@@ -1,0 +1,42 @@
+.kontakt {
+    margin-top: 208px;
+    .container {
+        height: 376px;
+        background: #33266B;;
+        border-radius: 12px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    p {
+        @include bodyText12pxCAPS();
+        color: #D99A27;
+    }
+
+    h3 {
+        @include h3Light();
+        color: #FFFFFF;
+        text-align: left;
+        width: 520px;
+        margin: 16px 0 0 0px;
+        span {
+            @include h3Medium();
+            color: #FFFFFF;
+        }
+    }
+
+    .rozjetBtn {
+        @include bodyText14pxMedium();
+        margin: 33px 0 0 0px;
+        width: 170px;
+        height: 54px;
+        background: rgba(217, 154, 39, 1);
+        border-radius: 8px;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        display: inline;
+    }
+}

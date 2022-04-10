@@ -1,0 +1,34 @@
+.klienti {
+    h2 {
+        @include h3Medium();
+        text-align: center;
+        margin: 200px 0 32px 0;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .klientLogo {
+        margin-right: 70px;
+    }
+
+
+    .companyPlaceholder {
+        @include bodyText14pxBold();
+        color: #423676;
+
+        width: 184px;
+        height: 64px;
+        background: #F3F1F6;
+        border-radius: 7px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}

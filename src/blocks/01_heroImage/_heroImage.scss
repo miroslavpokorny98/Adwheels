@@ -1,0 +1,114 @@
+/* #video1 { 
+    margin: auto; 
+    display: block;
+} */
+
+.heroImage {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    position: relative;
+
+    video {
+        width: 100%;
+        display: block;
+    }
+
+    .container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        animation: transitionIn 1s;
+        transition-timing-function: ease-out;
+
+        @keyframes transitionIn {
+            from {
+                opacity: 0;
+                transform: translateY(80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .heroImg {
+        width: 100%;
+        height: 100vh;
+        background-color: #3A3A3A;
+        object-fit: cover;
+        background-image: url(images/content/heroImage.png);
+    }
+
+    .transpAdwheels{
+        font-family: 'Objectivity-Medium';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 160px;
+        line-height: 160px;
+        letter-spacing: -2px;
+        color: #FFFFFF;
+        opacity: 0.04;
+        margin: calc(100vh*0.13+100px) 0px 0px 830px;
+        // margin: 226px 0px 0px 830px;
+        animation: transitionIn2 1s;
+        transition-timing-function: ease-out;
+
+        @keyframes transitionIn2 {
+            from {
+                opacity: 0.01;
+                transform: translateY(150px);
+            }
+            to {
+                opacity: 0.04;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .VPohybu {
+        @include bodyText12pxCAPS();
+        color: #D99A27;
+        margin: 20px 0px 0px 0; 
+    }
+
+    h1 {
+        @include h1Medium();
+        color: white;
+        margin: 20px 0px 0px 0; 
+    }
+
+    .heroDecsription {
+        @include bodyText16pxRegular();
+        color: white;
+        margin: 20px 0px 0px 0; 
+    }
+
+    button {
+        @include bodyText14pxRegular();
+        background: #D99A27;
+        color: #FFFFFF;
+        border-radius: 8px;
+        margin: 40px 0px 0px 0; 
+        padding: 20px 40px 20px 40px;
+        border: none;
+    }
+
+    svg{
+        vertical-align: middle;
+        margin-left: 40px; 
+    }
+
+    .videoPlay {
+        @include bodyText14pxRegular();
+        display: inline;
+        vertical-align: middle;
+        color: white;
+        margin-left: 16px;
+    }
+}

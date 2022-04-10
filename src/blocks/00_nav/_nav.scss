@@ -1,0 +1,117 @@
+nav {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 9999;
+    height: 99px;    
+    
+    /* opacity: 0.08; */
+    border-bottom: 0.75px solid rgba(58, 58, 58, 0.08);
+
+    animation: navTransitionIn 1s;
+    transition-timing-function: ease-out;
+
+    @keyframes navTransitionIn {
+        from {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .container {
+        height: 99px; 
+        display: flex; 
+        justify-content:space-between;
+        align-items: center;
+        overflow: hidden;
+    }
+    .navLogo {
+        margin-right: 116px;
+    }
+    ul {
+        width: 640px;
+    
+        display: flex; 
+        justify-content: space-around;
+        align-items: center;
+        justify-content: space-evenly; 
+    }
+    a {
+        @include bodyText14pxMedium();
+        font-family: 'Objectivity-Medium';
+        text-align: center;
+        /* margin: 48; */
+        text-decoration: none;
+        color: #3A3A3A;
+        opacity: 0.8;
+    }
+    .navButton {
+        margin: 0px 3px 0px 3px;    
+        background-color: rgba(58, 58, 58, 0.05);
+        border-radius: 8px;
+        border: 0px;
+        transition: 0.25s;
+    }
+    .navButton:hover {
+        background: #D99A27;
+        color: white;
+    }
+    .klienstkyPortal {
+        @include bodyText14pxMedium();
+        color: #3A3A3A;
+        margin-left: 21px;
+        width: 170px;
+        height: 54px;
+    }
+    .linkedIn, .facebook {
+        width: 54px;
+        height: 54px;
+    }
+
+}
+
+.transparentNav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0);
+
+    transition-property: background-color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    a {
+        color: #FFFFFF;
+        opacity: 0.8;
+    }
+    .klienstkyPortal {
+        color: white;
+    }
+    .navButton {
+        background: rgba(240, 240, 240, 0.05);
+    }
+
+}
+.whiteNav {
+    // border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    // background-color: white;
+    background-color: rgba(0, 0, 0, 0);
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+
+    .logo {
+        content: url("images/bg/adwheelsLogoBlack.svg");
+    }
+    .linkedIn img {
+        content: url("images/bg/linkedinDark.svg");
+    }
+    .facebook img {
+        content: url("images/bg/facebookDark.svg");
+    }
+    
+}
+
+
+
