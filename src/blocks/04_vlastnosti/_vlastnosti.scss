@@ -1,9 +1,11 @@
 .vlastnosti {
     margin-top: 341px;
+    // height: 100vh;
     .container{
         display: flex; 
         justify-content: space-between;
         align-items: center;
+        // @include standartUpTransition();
     }
 
     h3 {

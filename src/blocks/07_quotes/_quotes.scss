@@ -33,7 +33,7 @@
             span {
                 @include bodyText16pxRegular();
                 color: #FFFFFF;
-                opacity: 0.5;
+                opacity: 0.25;
             }
         }
 
@@ -41,8 +41,10 @@
             @include h5Medium();
             color: #FFFFFF;
             max-width: 615px;
+            height: 170px;
             text-align: center;
             margin: 24px auto 0 auto;
+            transition: opacity 0.5s;
         }
 
         .qouteAuthor {
@@ -50,17 +52,37 @@
             @include bodyText14pxRegular();
             color: #FFFFFF;
             opacity: 0.5;
+            transition: opacity 0.5s;
         }
 
-        .arrows button {
-            box-sizing: border-box;
-            padding: 15px 14px 16px 14px;
-            margin: 32px 2px 0px 2px;
-            border-radius: 50%;
-            text-align: center;
-            border: 1px solid #FFFFFF;
-            /* background-color: rgb(255, 255, 255, 1); */
-            background-color: #33266B;
+        .arrows {
+            button {
+                box-sizing: border-box;
+                // padding: 15px 14px 16px 14px;
+                width: 48px;
+                height: 48px;
+                margin: 32px 2px 0px 2px;
+                border-radius: 50%;
+                text-align: center;
+                border: 1px solid #FFFFFF;
+                /* background-color: rgb(255, 255, 255, 1); */
+                background-color: #33266B;
+                // transform: rotate(45deg);
+                
+                .darkArrow {
+                    display: none;
+                }
+                
+                &:hover {
+                    background-color: #FFFFFF;
+                    .initArrow {
+                        display: none;
+                    }
+                    .darkArrow {
+                        display: inline-block;
+                    }
+                }
+            }
         }
     }
 }

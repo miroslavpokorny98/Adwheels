@@ -22,19 +22,7 @@
         bottom: 0;
         left: 0;
 
-        animation: transitionIn 1s;
-        transition-timing-function: ease-out;
-
-        @keyframes transitionIn {
-            from {
-                opacity: 0;
-                transform: translateY(80px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @include heroTextTransition();
     }
 
     .heroImg {
@@ -56,19 +44,7 @@
         opacity: 0.04;
         margin: calc(100vh*0.13+100px) 0px 0px 830px;
         // margin: 226px 0px 0px 830px;
-        animation: transitionIn2 1s;
-        transition-timing-function: ease-out;
-
-        @keyframes transitionIn2 {
-            from {
-                opacity: 0.01;
-                transform: translateY(150px);
-            }
-            to {
-                opacity: 0.04;
-                transform: translateY(0);
-            }
-        }
+        @include transpAdwheelsTransition();
     }
 
     .VPohybu {

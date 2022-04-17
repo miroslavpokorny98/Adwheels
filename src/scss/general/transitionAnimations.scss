@@ -1,0 +1,60 @@
+@mixin navTransitionDown {
+    animation: navKF 1s;
+    animation-timing-function: ease-out;
+
+    @keyframes navKF {
+        from {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+@mixin heroTextTransition{
+    animation: heroKF 1s;
+    transition-timing-function: ease-out;
+
+    @keyframes heroKF {
+        from {
+            opacity: 0;
+            transform: translateY(80px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+@mixin transpAdwheelsTransition {
+    animation: AdwheelsKF 1s;
+    transition-timing-function: ease-out;
+
+    @keyframes AdwheelsKF {
+        from {
+            opacity: 0.01;
+            transform: translateY(150px);
+        }
+        to {
+            opacity: 0.04;
+            transform: translateY(0);
+        }
+    }
+}
+// .intoViewUp {
+//     animation: stdKF 3s;
+//     transition-timing-function: ease-out;
+
+//     @keyframes stdKF {
+//         from {
+//             opacity: 0;
+//             transform: translateY(200px);
+//         }
+//         to {
+//             opacity: 1;
+//             transform: translateY(0);
+//         }
+//     }
+// }

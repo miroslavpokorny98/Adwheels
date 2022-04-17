@@ -1,26 +1,25 @@
-card3Container = document.getElementsByClassName('.card3Container');
-
 gsap.from(".card3Container", {
-    x: 1200,
+    x: 2500,
     scrollTrigger: {
-        trigger: ".horizontalScroll",
-        start: "-600 top",
+        trigger: ".horizontalScroll .background",
+        // start: "center bottom",
+        start: "top bottom",
         end: "top top",
         // pin: true,
         scrub: true,
-        markers: true,
+        // markers: true,
     }
 });
 
-gsap.to(".card3Container", {
+gsap.fromTo(".card3Container",{x:0}, {
     x: -1300,
     scrollTrigger: {
-        trigger: ".horizontalScroll",
+        trigger: ".horizontalScroll .background",
         start: "top top",
-        end: "+=" + 2000,
+        end: "bottom top",
         pin: true,
         scrub: true,
-        markers: true,
+        // markers: true,
     }
 });
 
