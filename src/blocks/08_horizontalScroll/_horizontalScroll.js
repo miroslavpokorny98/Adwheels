@@ -1,5 +1,6 @@
 gsap.from(".card3Container", {
     x: 2500,
+    ease: "none",
     scrollTrigger: {
         trigger: ".horizontalScroll .background",
         // start: "center bottom",
@@ -13,6 +14,7 @@ gsap.from(".card3Container", {
 
 gsap.fromTo(".card3Container",{x:0}, {
     x: -1300,
+    ease: "none",
     scrollTrigger: {
         trigger: ".horizontalScroll .background",
         start: "top top",
@@ -22,6 +24,3 @@ gsap.fromTo(".card3Container",{x:0}, {
         // markers: true,
     }
 });
-
-
-

@@ -5482,7 +5482,7 @@ return PhotoSwipeUI_Default;
 gsap.registerPlugin(ScrollTrigger);
 
 
-const targets = [".vlastnosti", ".dopady", ".quotes", ".realizace", ".klienti", ".kontakt", ".viceInfo"];
+const targets = [".vlastnosti", ".dopady", ".quotes", ".reklamaVPohybu", ".realizace", ".klienti", ".kontakt", ".viceInfo"];
 
 
 
@@ -5602,7 +5602,7 @@ gsap.to(".fotoSectionImgDiv1", {
 
         once: true,
 
-        markers: true,
+        // markers: true,
 
         // toggleClass: "black"
 
@@ -5782,6 +5782,8 @@ gsap.from(".card3Container", {
 
     x: 2500,
 
+    ease: "none",
+
     scrollTrigger: {
 
         trigger: ".horizontalScroll .background",
@@ -5808,6 +5810,8 @@ gsap.fromTo(".card3Container",{x:0}, {
 
     x: -1300,
 
+    ease: "none",
+
     scrollTrigger: {
 
         trigger: ".horizontalScroll .background",
@@ -5829,19 +5833,13 @@ gsap.fromTo(".card3Container",{x:0}, {
 
 
 
-
-
-
-
-
-
 gsap.from(".card4Left", { 
 
     x: "500",
 
     // opacity: 0,
 
-    duration: 1.5,
+    duration: 1,
 
     
 
@@ -5853,9 +5851,9 @@ gsap.from(".card4Left", {
 
         ease: "power3.inOut",
 
-        // once: true,
+        once: true,
 
-        toggleActions: "restart none none none",
+        // toggleActions: "restart none none none",
 
         // onEnter onLeave onEnterBack onLeaveBack
 
@@ -5873,7 +5871,7 @@ gsap.from(".card4Right", {
 
     // opacity: 0,
 
-    duration: 1.5,
+    duration: 1,
 
     
 
@@ -5885,9 +5883,9 @@ gsap.from(".card4Right", {
 
         ease: "power3.inOut",
 
-        // once: true,
+        once: true,
 
-        toggleActions: "restart none none none",
+        // toggleActions: "restart none none none",
 
         // onEnter onLeave onEnterBack onLeaveBack
 
@@ -5896,6 +5894,32 @@ gsap.from(".card4Right", {
     }
 
 })
+
+
+
+gsap.to(".pricing", {
+
+    y: "-40%",
+
+    scrollTrigger: {
+
+        trigger: ".pricing",
+
+        // start: "center bottom",
+
+        start: "top bottom",
+
+        end: "top top",
+
+        // pin: true,
+
+        scrub: true,
+
+        // markers: true,
+
+    }
+
+});
 /*breaky.at("mobile-portrait", function() {
 	console.log("AT 1. mobile-portrait");
 });

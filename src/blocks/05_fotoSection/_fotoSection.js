@@ -7,7 +7,7 @@ gsap.to(".fotoSectionImgDiv1", {
         end: "bottom 90%",
         scrub: 2,
         once: true,
-        markers: true,
+        // markers: true,
         // toggleClass: "black"
         toggleActions: "play none none none"
                   // onEnter onLeave onEnterBack onLeaveBack

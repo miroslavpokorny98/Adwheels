@@ -1,4 +1,4 @@
-const targets = [".vlastnosti", ".dopady", ".quotes", ".realizace", ".klienti", ".kontakt", ".viceInfo"];
+const targets = [".vlastnosti", ".dopady", ".quotes", ".reklamaVPohybu", ".realizace", ".klienti", ".kontakt", ".viceInfo"];
 
 targets.forEach(el => {
     gsap.from(el, { 
