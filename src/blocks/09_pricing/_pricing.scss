@@ -12,10 +12,15 @@
         justify-content: space-between;
         align-items: center;
     }
+    .card4MiddleContainer{
+        justify-content: center;
+        position: relative;
+        bottom: 598px;
+    }
 
     h2 {
         padding: 220px 0 0 0;        
-        margin-bottom: 55px;
+        margin-bottom: 97px;
         @include h3Medium();
         color: #3A3A3A;
         text-align: center;
@@ -38,7 +43,7 @@
 
         > img {margin: 18px 0 26px 0; }
 
-        ul {
+        ul:first-of-type {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -65,30 +70,106 @@
         }
        
         &.card4Middle {
-            height: 639px;
+            position: relative;
+            height: 638px;
             width: 440px;
+            min-width: 440px;
+            // width: 100%;
             z-index: 120;
     
             background: #33266B;
             border-radius: 12px;
+            // transition: width 1s;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
             
-            h4 {
-                @include h3Medium();
-                color: #FFFFFF;
-                margin: 80px 0 0 0;
+            .expand {
+                position: absolute;
+                // top: 0px;
+                right: 0px;
+                margin: 24px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.2);
+                border: none;
+                transform: rotate(0.5turn);
+                &:hover {
+                    background-color: #D99A27;
+                }
             }
-            > img {margin: 24px 0 56px 0; }
-            .unchecked {
-                color: #FFFFFF;
-                opacity: 0.5;
+            
+            .card4MiddleChecks {
+                width: 440px;
+                height: 638px;
+            
+                h4 {
+                    @include h3Medium();
+                    color: #FFFFFF;
+                    margin: 80px 0 0 0;
+                }
+                > img {
+                    margin: 24px 0 56px 0; 
+                }
+                .unchecked {
+                    color: #FFFFFF;
+                    opacity: 0.5;
+                }
+                .checked {
+                    color: #FFFFFF;
+                }
+                ul li {
+                    margin-bottom: 24px;
+                }
             }
-            .checked {
-                color: #FFFFFF;
-            }
-            ul li {
-                margin-bottom: 24px;
-            }
-        }
-    }
+            
+            .pricingNumbers {
+                width: 50%;
+                height: 520px;
+                display: none;
+                border-left: 0.75px solid rgba(255, 255, 255, 0.15);
+                // background-color: #D99A27;
+                h4 {
+                    @include h3Medium();
+                    color: #FFFFFF;
+                    margin-top: 20px;
+                }
     
+                ul {
+                    margin-top: 50px;
+                    width: 392px;
+    
+                    display: flex;
+                    flex-direction: row;
+                    // align-items: center;
+                    align-content: space-between;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    li{
+                        display: inline;
+                        width: 140px;
+                        white-space: nowrap;
+                        @include bodyText12pxRegular();
+                        color: #FFFFFF;
+                        margin-bottom: 46px;
+                        text-align: left;
+        
+                        h5 {
+                            @include h6Medium();
+                            color: #FFFFFF;
+                            margin-bottom: 10px;
+                            sup {
+                                font-size: 60%;
+                                vertical-align: super;   
+                            }
+                        }
+                    }
+                }
+            }
+        }        
+    }    
 }

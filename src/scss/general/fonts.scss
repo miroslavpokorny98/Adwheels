@@ -80,6 +80,14 @@
     letter-spacing: -1.5px;
     color: #000000;
 }
+@mixin h6Medium{
+    font-family: 'Objectivity-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+}
 @mixin bodyText18pxRegular{
     font-family: 'Objectivity-Regular';
     font-style: normal;
@@ -147,6 +155,14 @@
     letter-spacing: 2px;
     color: #000000;
 }
+@mixin bodyText12pxRegular{
+    font-family: 'Objectivity-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+}
 
 
 /*
@@ -158,6 +174,7 @@
 @include h4Regular();
 @include h4Medium();
 @include h5Medium();
+@include h6Medium();
 @include bodyText18pxRegular();
 @include bodyText18pxMedium();
 @include bodyText16pxRegular();
@@ -166,4 +183,5 @@
 @include bodyText14pxMedium();
 @include bodyText14pxBold();
 @include bodyText12pxCAPS();
+@include bodyText12pxRegular();
 */
