@@ -1,0 +1,29 @@
+@mixin windowMax2048p{
+    @media (max-width: 2048px){
+        @content;
+    }
+}
+
+@mixin windowMax1920p{
+    @media (max-width: 1440px){
+        @content;
+    }
+}
+
+@mixin windowMax1440p{
+    @media (max-width: 1440px){
+        @content;
+    }
+}
+
+@mixin windowMax1366p{
+    @media (max-width: 1440px){
+        @content;
+    }
+}
+
+@mixin windowMax1280p{
+    @media (max-width: 1440px){
+        @content;
+    }
+}

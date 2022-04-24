@@ -1,43 +1,60 @@
 .fotoSection{
-    margin-top: 320px;
+    margin-top: 220px;
+    @include windowMax1440p(){
+        margin-top: 200px;
+    };
     overflow: hidden;
     h2{
         @include h2Light();
+        @include windowMax1440p(){
+            @include h3Light();
+        };
         color: #3A3A3A;
         // overflow: hidden;
         white-space: nowrap;
         span {
             @include h2Medium();
+            @include windowMax1440p(){
+                @include h3Medium();
+                color: #33266B;
+            };
             color: #33266B;
         }
     }
 
     .fotoSectionImgDiv1 {
-        margin-top: 80px;
-        position: relative;
+        // position: relative;
         overflow: hidden;
-        left: -308px;
-        // width: 1532px;
+        margin: 64px auto 108px 40px;
+        // width: 80%;
+        height: 65vh;
         width: 0px;
+        // background-color: red;
+        img {
+            height: 100%;
+        }
 
-    }
+        @include windowMax1440p(){
+            margin: 40px auto 80px 40px;
+        };
 
-    .fotoSectionContainer2 {
-        margin-top: 108px;
-        display: flex;
-        flex-direction: row;
-        align-content: flex-start;
-        justify-content: space-between;
     }
 
     .fotoSectionImgDiv2 {
         position: relative;
         overflow: hidden;
-        left: 308px;
+        top: -50px;
         // width: 1116px;
+        height: 65vh;
         width: 0px;
+        margin: 0 40px 0 auto;
+        img {
+            height: 100%;
+        }
 
         display: flex;
         justify-content: end;
+        // background-color: red;
+
     }
 }

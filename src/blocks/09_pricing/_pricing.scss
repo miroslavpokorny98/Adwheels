@@ -1,30 +1,38 @@
 .pricing {
     position: relative;
-    // bottom: -30vh;
     overflow: visible;
     z-index: 99;
-    background-color: white;
-    height: 60vh;         // heigth + margin-bottom = 100vh
-    margin-bottom: 40vh;
+    // background-color: blue;
+    max-height: 700px;         // heigth + margin-bottom = 100vh
+    // margin-bottom: 40vh;
+
+    .PricingParalax{
+        background-color: white;
+        // height: 100vh;
+    }
 
     .container {
         display: flex; 
         justify-content: space-between;
         align-items: center;
-    }
-    .card4MiddleContainer{
-        justify-content: center;
         position: relative;
-        bottom: 598px;
+        @include windowMax1440p(){
+            max-width: 1046px;
+        }
     }
 
     h2 {
-        padding: 220px 0 0 0;        
+        padding: 220px 0 0 0;   
+             
         margin-bottom: 97px;
         @include h3Medium();
         color: #3A3A3A;
         text-align: center;
         // background-color: red;
+        @include windowMax1440p(){
+            padding: 180px 0 0 0;  
+            margin-bottom: 76px;
+        }
     }
 
     .card4{
@@ -32,6 +40,10 @@
         text-align: center;
         height: 558px;
         width: 360px;
+        @include windowMax1440p(){
+            height: 550/638*558px;
+            width: 550/638*360px;
+        }
         background: #F3F1F6;
         border-radius: 12px;
 
@@ -39,9 +51,19 @@
             @include h4Medium();
             color: #33266B;
             margin: 72px 0 0 0;
+            @include windowMax1440p(){
+                margin: 64px 0 0 0;
+            }
+            
         }
 
-        > img {margin: 18px 0 26px 0; }
+        > img {
+            margin: 18px 0 26px 0; 
+            @include windowMax1440p(){
+                transform: scale(0.8);
+                margin: 0px 0px 0px 0px; 
+            }
+        }
 
         ul:first-of-type {
             display: flex;
@@ -69,11 +91,31 @@
             }
         }
        
-        &.card4Middle {
+        .card4MiddleContainer{
+            display: flex; 
+            align-items: center;
+            justify-content: center;
             position: relative;
             height: 638px;
             width: 440px;
-            min-width: 440px;
+            @include windowMax1440p(){
+                height: 550px;
+                width: 550/638*440px;
+            }
+            
+            // overflow: visible;
+        }
+
+        &.card4Middle {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            height: 638px;
+            width: 440px;
+            @include windowMax1440p(){
+                height: 550px;
+                width: 550/638*440px;
+            }
+            
             // width: 100%;
             z-index: 120;
     
@@ -99,21 +141,37 @@
                 border: none;
                 transform: rotate(0.5turn);
                 &:hover {
+                    transition: background-color 0.25s;
                     background-color: #D99A27;
+                    cursor: pointer;
                 }
             }
             
             .card4MiddleChecks {
-                width: 440px;
+                width: 612px;
+                min-width: 440px;
                 height: 638px;
+                @include windowMax1440p(){
+                    height: 550px;
+                    min-width: 550/638*440px;
+                }
+                display: relative;
             
                 h4 {
                     @include h3Medium();
                     color: #FFFFFF;
                     margin: 80px 0 0 0;
+                    @include windowMax1440p(){
+                        margin: 72px 0 0 0;
+                    }
                 }
                 > img {
                     margin: 24px 0 56px 0; 
+                    // transform: translate(-50%, -50%);
+                    @include windowMax1440p(){
+                        transform: scale(0.8);
+                        margin: 8px 0 8px 0; 
+                    }
                 }
                 .unchecked {
                     color: #FFFFFF;
@@ -128,20 +186,30 @@
             }
             
             .pricingNumbers {
-                width: 50%;
+                min-width: 50%;
                 height: 520px;
+                @include windowMax1440p(){
+                    height: 550/638*520px;
+                }
                 display: none;
                 border-left: 0.75px solid rgba(255, 255, 255, 0.15);
                 // background-color: #D99A27;
+                // opacity: 0.5;
                 h4 {
                     @include h3Medium();
                     color: #FFFFFF;
                     margin-top: 20px;
+                    // @include windowMax1440p(){
+                    //     margin-top: 18px;
+                    // }
                 }
     
                 ul {
                     margin-top: 50px;
-                    width: 392px;
+                    @include windowMax1440p(){
+                        margin-top: 32px;
+                    }
+                    max-width: 392px;
     
                     display: flex;
                     flex-direction: row;
@@ -156,6 +224,9 @@
                         @include bodyText12pxRegular();
                         color: #FFFFFF;
                         margin-bottom: 46px;
+                        @include windowMax1440p(){
+                            margin-bottom: 32px;
+                        }
                         text-align: left;
         
                         h5 {
@@ -171,5 +242,7 @@
                 }
             }
         }        
+    
+    
     }    
 }

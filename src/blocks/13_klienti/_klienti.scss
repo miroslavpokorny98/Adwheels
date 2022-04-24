@@ -1,8 +1,12 @@
 .klienti {
+    margin-top: 210px;
+    @include windowMax1440p(){
+        margin-top: 190px;
+    }
     h2 {
         @include h3Medium();
         text-align: center;
-        margin: 200px 0 32px 0;
+        margin: 0 0 32px 0;
     }
 
     .container {
@@ -19,12 +23,10 @@
 
     .companyPlaceholder {
         @include bodyText14pxBold();
-        color: #423676;
+        background-image: url("images/bg/klientiPlaceholder.svg");
 
         width: 184px;
         height: 64px;
-        background: #F3F1F6;
-        border-radius: 7px;
 
         display: flex;
         justify-content: center;

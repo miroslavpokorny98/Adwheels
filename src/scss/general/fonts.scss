@@ -17,6 +17,15 @@
     letter-spacing: -1.5px;
     color: #000000;
 }
+@mixin h1MediumSmaller{
+    font-family: 'Objectivity-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 68px;
+    letter-spacing: -1.5px;
+    color: #000000;
+}
 @mixin h2Light{
     font-family: 'Objectivity-Regular';
     font-style: normal;

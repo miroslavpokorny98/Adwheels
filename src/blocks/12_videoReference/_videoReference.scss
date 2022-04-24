@@ -1,33 +1,54 @@
 .videoReference {
-    margin-top: 210px;
+    margin-top: 180px;
+    @include windowMax1440p(){
+        margin-top: 104px;
+    }
+    // height: 100vh;
+    // background-color: blue;
+
     h2 {
         @include h3Medium();
         text-align: center;
         color: #3A3A3A;
+        margin-bottom: 40px;
     }
-
-    .container{
-        border-radius: 12px;
-        border: none;
-        height: 646px;
-        margin-top: 56px;
-    }
-
-    img {
-        border-radius: 12px;
-    }
-
-    .btnContainer{
-        width: 100%;
-        max-width: 305px;
+    .videoContainer{
+        // border-radius: 12px;
         margin: 0 auto 0 auto;
-        height: 54px;
-    }
-    
-    button {
-        @include bodyText14pxMedium();
+        border: none;
+        display: flex; 
+        align-items:baseline;
+        justify-content: center;
         position: relative;
-        top: -50%;
+        overflow: visible;
+        height: calc(1100/16*9px);
+        width: 1100px;
+        @include windowMax1440p(){
+            height: 900/16*9px;
+            width: 900px;
+        }
+        // background-color: blue;
+    }
+
+    .video2 {
+        border-radius: 12px;
+        position: relative;
+        // transform: translate(-50%, -50%);
+        // background-color: red;
+        height: 1100/16*9px;
+        width: 1100;
+
+        @include windowMax1440p(){
+            height: 900/16*9px;
+            width: 900px;
+        }
+    }
+
+    .detailyKampane {
+        @include bodyText14pxMedium();
+        @include yellowHover();
+        position: absolute;
+        bottom: -27px;
         width: 305px;
         height: 54px;
         text-align: center;

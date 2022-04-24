@@ -28,6 +28,10 @@
             opacity: 0.6;
             font-style: normal;
             text-decoration: none;
+            &:hover{
+                color: #D99A27;
+                transition: color 0.25s;
+            }
         }
         .adress {
             @include bodyText14pxRegular();

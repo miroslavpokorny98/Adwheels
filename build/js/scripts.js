@@ -5502,13 +5502,13 @@ targets.forEach(el => {
 
             trigger: el,
 
-            start: "top 130%",
+            start: "top 110%",
 
             ease: "power3.inOut",
 
             once: true,
 
-            // toggleActions: "restart none none none",
+            toggleActions: "restart none none none",
 
             // onEnter onLeave onEnterBack onLeaveBack
 
@@ -5519,6 +5519,8 @@ targets.forEach(el => {
     })
 
 });
+
+
 
 
 
@@ -5581,6 +5583,330 @@ function myFunction() {
 // })
 
 
+// $(document).ready(function() {
+
+//     $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+
+//         disableOn: 700,
+
+//         type: 'iframe',
+
+//         mainClass: 'mfp-fade',
+
+//         removalDelay: 160,
+
+//         preloader: false,
+
+
+
+//         fixedContentPos: false
+
+//     });
+
+// });
+
+
+
+
+let informations = document.querySelectorAll(".information")
+
+// let infoImgWidth = document.querySelector(".infoImgDiv").style.width
+
+
+
+let lastInfo = 0;
+
+
+
+informations.forEach((info, index) => {
+
+    let infoSelector = gsap.utils.selector(info)
+
+    // infoSelector("h4")[0].addEventListener("click", function(){rotateInfo(informations, index)})
+
+    info.addEventListener("click", function(){rotateInfo(informations, index)})
+
+})
+
+
+
+function rotateInfo(informations, clickedIndex){
+
+    if (clickedIndex == lastInfo){
+
+        return;
+
+    }
+
+
+
+    let revealTimeline = revealTimelineConstructor(informations, clickedIndex, lastInfo)
+
+    let hideTimeline = hideTimelineConstructor(informations, clickedIndex, lastInfo)
+
+
+
+    if (clickedIndex != lastInfo){
+
+        hideTimeline.play()
+
+        revealTimeline.play()
+
+    }
+
+    
+
+    console.log("hidden " + lastInfo)
+
+    console.log("revealed " + clickedIndex)
+
+    lastInfo = clickedIndex
+
+}
+
+
+
+function revealTimelineConstructor(informations, clickedIndex, lastInfo){
+
+    let revealInfoSelector = gsap.utils.selector(informations[clickedIndex])
+
+    // let hideInfoSelector = gsap.utils.selector(informations[lastInfo])
+
+    let infoImgDivReveal = ".infoImgDiv:nth-child(" + (clickedIndex+1) + ")"
+
+    let infoImgDivHide = ".infoImgDiv:nth-child(" + (lastInfo+1) + ")"
+
+
+
+    let revealTimeline = gsap.timeline();
+
+    revealTimeline.fromTo(revealInfoSelector("span"), {opacity: 0}, {opacity: 0.04, ease: "out", duration: 0.5})
+
+    revealTimeline.to(revealInfoSelector("h4"), {color: "#33266B", ease: "out", duration: 0.5}, "<")
+
+    revealTimeline.fromTo(revealInfoSelector(".infoText"), 
+
+        {opacity: 0, y: 50, height: 0}, 
+
+        {opacity: 0.8, y: 0, height: 152, ease: "out", duration: 0.5},
+
+        "<"
+
+    )
+
+    revealTimeline.to(".infoScroll", {
+
+        height: 25*(clickedIndex+1) + "%", 
+
+        ease: "out", 
+
+        duration: 0.5
+
+    }, "<")
+
+    revealTimeline.fromTo(".purpleTransition", {x: 457}, {x: 0, ease: "Out", duration: 0.75}, "<")
+
+    revealTimeline.fromTo(infoImgDivHide, 
+
+        {width: 457}, 
+
+        {width: 0, ease: "Out", duration: 0.75, onStart: function(){document.querySelector(infoImgDivHide + " img").style.float = "left"}}, 
+
+        "<",
+
+    )
+
+    revealTimeline.fromTo(".purpleTransition", 
+
+        {width: 457}, 
+
+        {width: 0, ease: "inOut", duration: 0.75}, 
+
+        "-=0.5"
+
+    )
+
+    revealTimeline.fromTo(infoImgDivReveal, 
+
+        {width: 0, x: 457}, 
+
+        {width: 457, x: 0, ease: "inOut", duration: 0.75, onStart: function(){document.querySelector(infoImgDivReveal + " img").style.float = "right"}}, 
+
+        "<"
+
+    )
+
+    revealTimeline.pause()
+
+
+
+    return revealTimeline;
+
+}
+
+
+
+function hideTimelineConstructor(informations, clickedIndex, lastInfo){
+
+    // let revealInfoSelector = gsap.utils.selector(informations[clickedIndex])
+
+    let hideInfoSelector = gsap.utils.selector(informations[lastInfo])
+
+    let hideTimeline = gsap.timeline();
+
+    hideTimeline.fromTo(hideInfoSelector("span"), {opacity: 0.04}, {opacity: 0, ease: "out", duration: 0.5})
+
+    hideTimeline.to(hideInfoSelector("h4"), {color: "#3A3A3A", ease: "out", duration: 0.5}, "<")
+
+    hideTimeline.fromTo(hideInfoSelector(".infoText"), 
+
+        {opacity: 0.8, y: 0, height: 152}, 
+
+        {opacity: 0, y: -50, height: 0, ease: "out", duration: 0.5},
+
+        "<"
+
+    )
+
+    hideTimeline.pause()
+
+
+
+    return hideTimeline
+
+}
+
+
+
+
+
+let infoInitTL = gsap.timeline({
+
+    scrollTrigger: {
+
+        trigger: ".infoImages",
+
+        start: "top 80%",
+
+        ease: "power3.inOut",
+
+        once: true,
+
+        // toggleActions: "restart none none none",
+
+        // onEnter onLeave onEnterBack onLeaveBack
+
+        // markers: true,
+
+    }
+
+});
+
+
+
+infoInitTL.fromTo(".purpleTransition", {x: 457}, {x: 0, ease: "Out", duration: 0.75}, "<")
+
+infoInitTL.fromTo(".purpleTransition", 
+
+    {width: 457}, 
+
+    {width: 0, ease: "inOut", duration: 0.75}, 
+
+    "-=0.5"
+
+)
+
+infoInitTL.fromTo(".infoImgDiv:nth-child(1)", 
+
+    {width: 0, x: 457}, 
+
+    {width: 457, x: 0, ease: "inOut", duration: 0.75, onStart: function(){document.querySelector(".infoImgDiv:nth-child(1) img").style.float = "right"}}, 
+
+    "<"
+
+)
+
+infoInitTL.from(".infoList", {y: "20vh", opacity: 0, duration: 0.7}, "<")
+
+infoInitTL.from(".infoScrollBar", {y: "20vh", opacity: 0, duration: 0.7}, "<")
+
+
+
+
+gsap.from(".highwaysContainer", {
+
+    with: 0,
+
+    height: 0,
+
+    scrollTrigger: {
+
+        trigger: ".mapContainer",
+
+        // start: "center bottom",
+
+        start: "top 40%",
+
+        end: "top top",
+
+        // pin: true,
+
+        scrub: true,
+
+        // markers: true,
+
+    }
+
+});
+
+
+
+// var card3Arr = document.querySelectorAll(".card3")
+
+// // var card3 = document.querySelector(".card3")
+
+// var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
+
+// var horizontalScrollDistance = 
+
+//     card3Arr.length*card3Arr[0].offsetWidth 
+
+//     + (card3Arr.length-1)*32 
+
+//     - horizontalScrollContainer.offsetWidth
+
+
+
+gsap.fromTo(".mapContainer img",{
+
+    scale: 1,
+
+    }, {
+
+    scale: 0.7,
+
+    ease: "none",
+
+
+
+    scrollTrigger: {
+
+        trigger: ".mapContainer",
+
+        start: "top top",
+
+        end: "bottom top", // need to scroll 100vh to complete
+
+        pin: true,
+
+        scrub: true,
+
+        markers: true,
+
+    }
+
+});
+
 
 
 
@@ -5588,27 +5914,27 @@ gsap.to(".fotoSectionImgDiv1", {
 
     // duration: 1,
 
-    width: 1532,
+    width: "80%",
 
     scrollTrigger: {
 
         trigger: ".fotoSectionImgDiv1",
 
-        // start: "top 80%",
+        start: "top 90%",
 
         end: "bottom 90%",
 
-        scrub: 2,
+        scrub: 1,
 
-        once: true,
+        // once: true,
+
+
+
+        toggleActions: "restart none none none",
+
+        // onEnter onLeave onEnterBack onLeaveBack
 
         // markers: true,
-
-        // toggleClass: "black"
-
-        toggleActions: "play none none none"
-
-                  // onEnter onLeave onEnterBack onLeaveBack
 
     }
 
@@ -5618,19 +5944,25 @@ gsap.to(".fotoSectionImgDiv1", {
 
 gsap.to(".fotoSectionImgDiv2", {
 
-    width: 1116,
+    width: "58%",
 
     scrollTrigger: {
 
         trigger: ".fotoSectionImgDiv2",
 
-        // start: "top 80%",
+        start: "top 90%",
 
         end: "bottom 90%",
 
         scrub: 1,
 
-        once: true,
+        // once: true,
+
+
+
+        toggleActions: "restart none none none",
+
+        // onEnter onLeave onEnterBack onLeaveBack
 
         // markers: true,
 
@@ -5650,6 +5982,8 @@ const arrowLeft = document.querySelector(".arrowLeft");
 const arrowRight = document.querySelector(".arrowRight");
 
 
+
+// TODO: add all quotes to html instead of js 
 
 const rotation = [
 
@@ -5763,7 +6097,7 @@ function updateQuote (quoteNum) {
 
         quote.style.opacity = "1";
 
-        qouteAuthor.style.opacity = "1";
+        qouteAuthor.style.opacity = "0.5";
 
     }, 250);  // must also change transition in css x2
 
@@ -5806,9 +6140,25 @@ gsap.from(".card3Container", {
 
 
 
+var card3Arr = document.querySelectorAll(".card3")
+
+// var card3 = document.querySelector(".card3")
+
+var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
+
+var horizontalScrollDistance = 
+
+    card3Arr.length*card3Arr[0].offsetWidth 
+
+    + (card3Arr.length-1)*32 
+
+    - horizontalScrollContainer.offsetWidth
+
+
+
 gsap.fromTo(".card3Container",{x:0}, {
 
-    x: -1300,
+    x: -horizontalScrollDistance,
 
     ease: "none",
 
@@ -5818,7 +6168,7 @@ gsap.fromTo(".card3Container",{x:0}, {
 
         start: "top top",
 
-        end: "bottom top",
+        end: "bottom top", // need to scroll 100vh to complete
 
         pin: true,
 
@@ -5897,13 +6247,15 @@ gsap.from(".card4Right", {
 
 
 
-gsap.to(".pricing", {
+// paralax
 
-    y: "-40%",
+gsap.to(".PricingParalax", {
+
+    y: "-40vh",
 
     scrollTrigger: {
 
-        trigger: ".pricing",
+        trigger: ".PricingParalax",
 
         // start: "center bottom",
 
@@ -5947,29 +6299,25 @@ expandBtn.onclick = expandPricing
 
 
 
+var expandPricingTl = gsap.timeline();
+
+expandPricingTl.to(".card4Middle", {width: "100%", duration: 0.75, ease: "inOut",})
+
+expandPricingTl.to(".card4 .expand img", {rotation: 45, duration: 0.5, onStart: () => { pricingNumbers.style.display = "block"}}, "<")
+
+expandPricingTl.fromTo(".pricingNumbers", {opacity: "0"}, {opacity:"1", duration: 0.5}, "-=0.35");
+
+expandPricingTl.pause();
+
+
+
 
 
 function expandPricing () {
 
-    // card4Middle.classList.add("mystyle");
-
-    // card4Middle.style.width = "100%"
+    expandPricingTl.restart();
 
     expandBtn.onclick = retractPricing
-
-    // expandBtnCross.style.transform = rotate(0.5turn)
-
-    gsap.to(".card4 .expand img", {rotation: 45})
-
-    gsap.to(".card4Middle", {width: "100%", duration: 1, ease: "inOut"})
-
-    pricingNumbers.style.display = "block"
-
-    gsap.from(".pricingNumbers", {opacity: 0, duration: 1})
-
-    card4MiddleChecks.style.width = "50%"
-
-    
 
 }
 
@@ -5977,25 +6325,175 @@ function expandPricing () {
 
 function retractPricing () {
 
-    // card4Middle.classList.add("mystyle");
-
-    // card4Middle.style.width = "440px"
+    expandPricingTl.reverse();
 
     expandBtn.onclick = expandPricing
 
-    gsap.to(".card4 .expand img", {rotation: 0})
+}
 
-    gsap.to(".card4Middle", {width: startWidth, duration: 1})
 
-    pricingNumbers.style.display = "none"
 
-    card4MiddleChecks.style.width = "100%"
+gsap.to(".expand", {
+
+    scaleX: 1.2,
+
+    scaleY: 1.2,
+
+
+
+    duration: 0.5,
+
+
+
+    repeat: 5,
+
+    yoyo: true,
+
+
+
+    scrollTrigger: {
+
+        trigger: ".pricing",
+
+        start: "top 40%",
+
+        end: "top top",
+
+        // once: true,
+
+        toggleActions: "restart none none none",
+
+        // onEnter onLeave onEnterBack onLeaveBack
+
+        // markers: true,
+
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+const vw = (coef) => window.innerWidth * (coef/100)
+
+const vh = (coef) => window.innerHeight * (coef/100)
+
+
+
+gsap.from(".video2", {
+
+    width: vw(95),
+
+    height: vw(95)/16*9,
+
+
+
+    scrollTrigger: {
+
+        trigger: ".videoContainer",
+
+        start: "top bottom",
+
+        end: "+=" + 700,
+
+        ease: "power3.out",
+
+        scrub: true,
+
+        // once: true,
+
+        toggleActions: "restart none none none",
+
+        // onEnter onLeave onEnterBack onLeaveBack
+
+        // markers: true,
+
+    }
+
+})
+
+
+
+gsap.from(".detailyKampane", {
+
+    y: 50,
+
+    opacity: 0,
+
+    duration: 1,
+
+
+
+    scrollTrigger: {
+
+        trigger: ".videoContainer",
+
+        start: "top center",
+
+        ease: "power3.out",
+
+        // once: true,
+
+        toggleActions: "restart none none none",
+
+        // onEnter onLeave onEnterBack onLeaveBack
+
+        // markers: true,
+
+    }
+
+})
+
+
+
+document.querySelector('.textContainer button').onmouseover = function() {
+
+    document.querySelector(".kontaktImgHover").style.opacity = 1
+
+    document.querySelector(".kontaktImg").style.opacity = 0
+
+}
+
+
+
+document.querySelector('.textContainer button').onmouseout = function() {
+
+    document.querySelector(".kontaktImgHover").style.opacity = 0
+
+    document.querySelector(".kontaktImg").style.opacity = 1
 
 }
 
 
 
 
+
+
+var precistArr = document.querySelectorAll(".precist")
+
+
+
+precistArr.forEach(element => {
+
+    element.onmouseover = function() {
+
+        gsap.to(element.lastElementChild, {x: 20, duration: 0.25})
+
+    }
+
+    element.onmouseout = function() {
+
+        gsap.to(element.lastElementChild, {x: 0, duration: 0.25, ease: "out"})
+
+    }
+
+});
 
 
 

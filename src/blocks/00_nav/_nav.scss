@@ -3,32 +3,39 @@ nav {
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     z-index: 9999;
-    height: 99px;    
+    // height: 89px;    
+    
     
     /* opacity: 0.08; */
     border-bottom: 0.75px solid rgba(58, 58, 58, 0.08);
 
     @include navTransitionDown();
 
-    
-
     .container {
-        height: 99px; 
+        height: 89px; 
+        @include windowMax1440p(){
+            height: 79px;    
+        }
         display: flex; 
         justify-content:space-between;
         align-items: center;
         overflow: hidden;
+        @include windowMax1440p(){
+            // max-width: 1224+2*42px;
+            max-width: 1046px;
+        }
+        
     }
-    .navLogo {
-        margin-right: 116px;
-    }
+
     ul {
-        width: 640px;
-    
+        width: 590px;
+        @include windowMax1440p(){
+            width: 480px;
+        }
+        margin-right: 44px;
         display: flex; 
-        justify-content: space-around;
-        align-items: center;
-        justify-content: space-evenly; 
+        justify-content: space-between;
+        align-items: baseline;
     }
     a {
         @include bodyText14pxMedium();
@@ -38,22 +45,32 @@ nav {
         text-decoration: none;
         color: #3A3A3A;
         opacity: 0.8;
+
+        &:hover{
+            color: #D99A27;
+            transition: color 0.25s;
+        }
     }
+
+    .navButtons{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+        margin-left: 8px;
+    }
+
     .navButton {
-        margin: 0px 3px 0px 3px;    
+        @include navHover();
+        // margin: 0px 3px 0px 3px;    
         background-color: rgba(58, 58, 58, 0.05);
         border-radius: 8px;
-        border: 0px;
-        transition: 0.25s;
-    }
-    .navButton:hover {
-        background: #D99A27;
-        color: white;
+        border: none;
     }
     .klienstkyPortal {
         @include bodyText14pxMedium();
         color: #3A3A3A;
-        margin-left: 21px;
+        
         width: 170px;
         height: 54px;
     }

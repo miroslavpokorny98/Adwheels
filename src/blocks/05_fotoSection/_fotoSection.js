@@ -1,27 +1,30 @@
 gsap.to(".fotoSectionImgDiv1", {
     // duration: 1,
-    width: 1532,
+    width: "80%",
     scrollTrigger: {
         trigger: ".fotoSectionImgDiv1",
-        // start: "top 80%",
+        start: "top 90%",
         end: "bottom 90%",
-        scrub: 2,
-        once: true,
+        scrub: 1,
+        // once: true,
+
+        toggleActions: "restart none none none",
+        // onEnter onLeave onEnterBack onLeaveBack
         // markers: true,
-        // toggleClass: "black"
-        toggleActions: "play none none none"
-                  // onEnter onLeave onEnterBack onLeaveBack
     }
 })
 
 gsap.to(".fotoSectionImgDiv2", {
-    width: 1116,
+    width: "58%",
     scrollTrigger: {
         trigger: ".fotoSectionImgDiv2",
-        // start: "top 80%",
+        start: "top 90%",
         end: "bottom 90%",
         scrub: 1,
-        once: true,
+        // once: true,
+
+        toggleActions: "restart none none none",
+        // onEnter onLeave onEnterBack onLeaveBack
         // markers: true,
     }
 })

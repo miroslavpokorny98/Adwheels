@@ -1,9 +1,15 @@
 .quotes {
     margin-top: 88px;
     .container {
-        display: flex; 
-        justify-content: space-between;
-        align-items: flex-end;
+        // display: flex; 
+        // justify-content: space-between;
+        // align-items: flex-end;
+        position: relative;
+        height: 490px;
+        @include windowMax1440p(){
+            max-width: 1046px;
+            height: 720/808*490px;
+        }
     }
 
     .dopadyFotoDiv {
@@ -12,10 +18,17 @@
         border-radius: 12px;
         position: absolute;
         z-index: -1;
-    }
-
-    .dopadyFotoDiv img {
-        border-radius: 12px;
+        @include windowMax1440p(){
+            width: 720/808*480px;
+            height: 720/808*490px;
+        }
+        img {
+            border-radius: 12px;
+            @include windowMax1440p(){
+                width: 720/808*480px;
+                height: 720/808*490px;
+            }
+        }
     }
 
     .quoteCards {
@@ -24,10 +37,22 @@
         background: #33266B;
         border-radius: 12px;
         text-align: center;
-        margin-left: 416px;
+        // margin-left: 416px;
+        // position: relative;
+        right: 0;
+        position: absolute;
+        // left:100px;
+
+        @include windowMax1440p(){
+            width: 720px;
+            height: 720/808*490px;
+        }
 
         .cardNums {
             margin-top: 77px;
+            @include windowMax1440p(){
+                margin-top: 50px;
+            }
             @include bodyText16pxMedium();
             color: #FFFFFF;
             span {
@@ -45,6 +70,11 @@
             text-align: center;
             margin: 24px auto 0 auto;
             transition: opacity 0.5s;
+            @include windowMax1440p(){
+                font-size: 18px;
+                line-height: 32px;
+                max-width: 520px;
+            }
         }
 
         .qouteAuthor {
@@ -62,6 +92,9 @@
                 width: 48px;
                 height: 48px;
                 margin: 32px 2px 0px 2px;
+                @include windowMax1440p(){
+                    margin: 24px 2px 0px 2px;
+                }
                 border-radius: 50%;
                 text-align: center;
                 border: 1px solid #FFFFFF;
@@ -74,7 +107,9 @@
                 }
                 
                 &:hover {
+                    transition: background-color 0.25s;
                     background-color: #FFFFFF;
+                    cursor: pointer;
                     .initArrow {
                         display: none;
                     }
@@ -84,5 +119,7 @@
                 }
             }
         }
+
+        
     }
 }

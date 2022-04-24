@@ -8,12 +8,13 @@ targets.forEach(el => {
         
         scrollTrigger: {
             trigger: el,
-            start: "top 130%",
+            start: "top 110%",
             ease: "power3.inOut",
             once: true,
-            // toggleActions: "restart none none none",
+            toggleActions: "restart none none none",
             // onEnter onLeave onEnterBack onLeaveBack
             // markers: true,
         }
     })
 });
+

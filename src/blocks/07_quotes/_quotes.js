@@ -4,6 +4,7 @@ const qouteAuthor = document.querySelector(".qouteAuthor");
 const arrowLeft = document.querySelector(".arrowLeft");
 const arrowRight = document.querySelector(".arrowRight");
 
+// TODO: add all quotes to html instead of js 
 const rotation = [
     [
         "Nekonvenční reklamní plochy kreativně reinterpretují použití tradičních médií způsoby, které napřímo aktivují zákazníky. Kombinace tradičních a nekonvenčních forem marketingové komunikace je jeden  z nejúčinnějších způsobů jak vybudovat znalost o značce a přimět zákazníky ke komunikaci s ní.",
@@ -60,7 +61,7 @@ function updateQuote (quoteNum) {
         quote.innerHTML = rotation[quoteNum][0];
         qouteAuthor.textContent = rotation[quoteNum][1];
         quote.style.opacity = "1";
-        qouteAuthor.style.opacity = "1";
+        qouteAuthor.style.opacity = "0.5";
     }, 250);  // must also change transition in css x2
 
     

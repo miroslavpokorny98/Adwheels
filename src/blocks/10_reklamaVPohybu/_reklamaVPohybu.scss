@@ -1,16 +1,25 @@
 .reklamaVPohybu {
-    margin-top: 230px;
+    margin-top: 80px;
+    @include windowMax1440p(){
+        margin-top: 0px;
+    }
     .container:first-of-type {
         height: 376px;
         background: #D99A27;
         border-radius: 12px;
         overflow: auto;
+        @include windowMax1440p(){
+            max-width: 1046px;
+        }
     }
 
     p {
         @include bodyText12pxCAPS();
         color: #FFFFFF;
         margin: 90px 0 0 184px;
+        @include windowMax1440p(){
+            margin-left: 120px;
+        }
     }
     
     h3 {
@@ -18,12 +27,19 @@
         color: #FFFFFF;
         text-align: left;
         margin: 16px 0 0 184px;
+        @include windowMax1440p(){
+            margin-left: 120px;
+        }
     }
 
     .rozjetBtn {
         @include bodyText14pxMedium();
+        @include purpleHover();
         /* padding: 16px 48px; */
         margin: 33px 0 0 184px;
+        @include windowMax1440p(){
+            margin-left: 120px;
+        }
         width: 170px;
         height: 54px;
         background: #33266B;

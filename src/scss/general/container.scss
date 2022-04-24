@@ -1,6 +1,8 @@
+$container-width: 1224px;
+
 .container {
     width: 100%;
-    max-width: 1224px;
+    max-width: $container-width;
     margin: 0 auto 0 auto;
     /* background-color: yellowgreen; */
 }

@@ -1,7 +1,15 @@
 .horizontalScroll{
     // position: relative;
     margin-top: 260px;
+    @include windowMax1440p(){
+        margin-top: 220px;
+    }
     height: 200vh; // must be same as distance scrolled
+    .container {
+        @include windowMax1440p(){
+            max-width: 1046px;
+        }
+    }
     .background {
         z-index: 5;
         width: 100%;
@@ -10,14 +18,14 @@
         background-color: #cccccc; /* Used if the image is unavailable */
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
-        background-size:auto; /* Resize the background image to cover the entire container */
+        background-size:cover; /* Resize the background image to cover the entire container */
         display: block;
         overflow: hidden;
     }
 
     h2 {
         @include h3Medium();
-        margin: 25% 0 48px 0;
+        margin: 30vh 0 48px 0;
         color: #FFFFFF;
         width: 100%;
     }
@@ -31,7 +39,10 @@
         align-items: flex-start;
         overflow: hidden;
         width: 300%;
-        margin-left: 348px;
+        margin-left: calc((100%-1224px)/2);
+        @include windowMax1440p(){
+            margin-left: calc((100%-1046px)/2);
+        }
     }
 
     .card3 {
@@ -48,10 +59,20 @@
         align-items: center;
         text-align: center;
 
+        @include windowMax1440p(){
+            width: 340px;
+            height: 340px;
+        }
+
         p {
             @include h4Regular();
             color: #FFFFFF;
             max-width: 280px;
+            @include windowMax1440p(){
+                // @include h5Medium();
+                // color: #FFFFFF;
+                font-size: 20px;
+            }
         }
     }
 }

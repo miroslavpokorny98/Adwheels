@@ -9,20 +9,35 @@
     align-items: center;
     align-content: center;
     position: relative;
+    height: 100vh;
 
     video {
         width: 100%;
         display: block;
+        margin: 0px;
+        padding: 0px;
     }
-
-    .container {
+    .video1Filter {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
 
+        background-color: rgba(0,0,0,0.65);
+    }
+
+    .container {
+        position: absolute;
+        top: 35vh;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
         @include heroTextTransition();
+        @include windowMax1440p(){
+            max-width: 1046px;
+        }
     }
 
     .heroImg {
@@ -34,6 +49,11 @@
     }
 
     .transpAdwheels{
+        position: absolute;
+        top: 0;
+        right: -40px;
+        // bottom: 0;
+        // left: 0;
         font-family: 'Objectivity-Medium';
         font-style: normal;
         font-weight: 700;
@@ -42,9 +62,12 @@
         letter-spacing: -2px;
         color: #FFFFFF;
         opacity: 0.04;
-        margin: calc(100vh*0.13+100px) 0px 0px 830px;
+        margin: calc(10vh+100px) 0px 0px 0px;
         // margin: 226px 0px 0px 830px;
         @include transpAdwheelsTransition();
+        @include windowMax1440p(){
+            font-size: 140px;
+        }
     }
 
     .VPohybu {
@@ -55,18 +78,27 @@
 
     h1 {
         @include h1Medium();
+        @include windowMax1440p(){
+            @include h1MediumSmaller();
+            color: white;
+        }
         color: white;
         margin: 20px 0px 0px 0; 
     }
 
     .heroDecsription {
         @include bodyText16pxRegular();
+        @include windowMax1440p(){
+            @include bodyText14pxRegular();
+            color: white;
+        }
         color: white;
         margin: 20px 0px 0px 0; 
     }
 
-    button {
+    .rozjet {
         @include bodyText14pxRegular();
+        @include yellowHover();
         background: #D99A27;
         color: #FFFFFF;
         border-radius: 8px;
@@ -78,13 +110,59 @@
     svg{
         vertical-align: middle;
         margin-left: 40px; 
+
+        .videoLoad {
+            transform-origin: 50% 50%;
+            transform: rotate(-90deg);
+  
+            stroke-dasharray: 125;
+            stroke-dashoffset: 125;
+            animation: dash 4s linear forwards;
+          }
+          
+          @keyframes dash {
+            to {
+              stroke-dashoffset: 0;
+            }
+          }
     }
 
-    .videoPlay {
+    .popup-youtube {
         @include bodyText14pxRegular();
+        background: none;
+        border: none;
         display: inline;
         vertical-align: middle;
         color: white;
+        text-decoration: none;
         margin-left: 16px;
+        &:hover{
+            cursor: pointer;
+        }
     }
+    // .mfp-fade.mfp-bg {
+    //     opacity: 0;
+    //     -webkit-transition: all 0.15s ease-out; 
+    //     -moz-transition: all 0.15s ease-out; 
+    //     transition: all 0.15s ease-out;
+    // }
+    // .mfp-fade.mfp-bg.mfp-ready {
+    //     opacity: 0.8;
+    // }
+    // .mfp-fade.mfp-bg.mfp-removing {
+    //     opacity: 0;
+    // }
+    
+    // .mfp-fade.mfp-wrap .mfp-content {
+    //     opacity: 0;
+    //     -webkit-transition: all 0.15s ease-out; 
+    //     -moz-transition: all 0.15s ease-out; 
+    //     transition: all 0.15s ease-out;
+    // }
+    // .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+    //     opacity: 1;
+    // }
+    // .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+    //     opacity: 0;
+    // }
 }
