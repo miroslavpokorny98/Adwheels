@@ -48,6 +48,13 @@ mapScrollOut.fromTo(".hScrollOut path",{
     "<"
 );
 
+mapScrollOut.to(".mapCz",{
+    opacity: 0,
+    duration: 1,
+    },
+    "<"
+);
+
 mapScrollOut.fromTo(".mapEurope",{
     opacity: 0,
     }, {
