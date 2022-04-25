@@ -1,0 +1,59 @@
+.videoPopup {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    // background-color: blue;
+
+
+    .container{
+        height: 100vh;
+        display: flex;
+        align-items: flex-end;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        // background-color: blue;
+        // opacity: 0.2;
+        @include windowMax1440p(){
+            max-width: 1046px;
+        }
+    }
+
+    .videoClose {
+        // position: absolute;
+        // top: 0px;
+        // right: 0px;
+        margin-bottom: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        transform: rotate(45deg);
+
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        
+        &:hover {
+            transition: background-color 0.25s;
+            background-color: #D99A27;
+            cursor: pointer;
+        }
+
+        @include windowMax1440p(){
+            position: relative;
+            left: 52px;
+            top: 52px;
+        }
+    }
+}

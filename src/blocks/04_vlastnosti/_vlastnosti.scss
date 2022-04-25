@@ -1,6 +1,15 @@
 .vlastnosti {
-    margin-top: 341px;
+    margin-top: 120px;
     // height: 100vh;
+    @include windowMax2048p(){
+        margin-top: 120px;
+    }
+    @include windowMax1920p(){
+        margin-top: 180px;
+    }
+    @include windowMax1440p(){
+        margin-top: 180px;
+    }
     .container{
         display: flex; 
         justify-content: space-between;

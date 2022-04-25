@@ -1,10 +1,14 @@
 .map {
-    margin-top: 260px;
+    margin-top: 210px;
     @include windowMax1440p(){
-        margin-top: 220px;
+        margin-top: 200px;
+    }
+    @include windowMax2048p(){
+        margin-top: 72px;
     }
     // background-color: blue;
     height: 200vh;
+    
     position: relative;
 
     h2{
@@ -15,12 +19,31 @@
         position: absolute;
         z-index: 99;
         left: 50%;
-        transform: translate(-50%, 50%);
+        transform: translate(-50%);
+        margin-top: 15vh;
+        @include windowMax1440p(){
+            margin-top: 13vh;
+            font-size: 28px;
+            line-height: 42px;
+        }
+        @include windowMax1920p(){
+            margin-top: 15vh;
+        }
+        @include windowMax2048p(){
+            margin-top: 15vh;
+        }
+        
+        
+        
     }
 
     h2 span{
         @include h2Medium();
         color: #33266B;
+        @include windowMax1440p(){
+            font-size: 28px;
+            line-height: 42px;
+        }
     }
 
     .mapContainer{
@@ -31,38 +54,50 @@
         overflow: hidden;
     }
 
-    .highwaysContainer {
-        width: 500px;
-        height: 375px;
+    // .highwaysContainer {
+    //     width: 500px;
+    //     height: 375px;
+    //     position: absolute;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     top: 50%;
+    //     transform-origin: 50% 50%; 
+
+    //     overflow: hidden;
+    //     // background-color: blue;
+    //     // -moz-border-radius: 700px / 375px;
+    //     // -webkit-border-radius: 700px / 375px;
+    //     // border-radius: 700px / 375px;
+    // }
+
+    img, .highWays{
         position: absolute;
         left: 50%;
-        transform: translate(-50%, -50%);
         top: 50%;
-        transform-origin: 50% 50%; 
-
-        overflow: hidden;
-        // background-color: blue;
-        // -moz-border-radius: 700px / 375px;
-        // -webkit-border-radius: 700px / 375px;
-        // border-radius: 700px / 375px;
+        
+        // transform: translate(-50%, -45%) scale(1.2);
+        
+        @include windowMax1440p(){
+            transform-origin: 50% 33%; 
+            transform: translate(-50%, -43%) scale(1);
+        }
+        @include windowMax1920p(){
+            transform-origin: 50% 33%; 
+            transform: translate(-50%, -45%) scale(1.2);
+        }
+        @include windowMax2048p(){
+            transform-origin: 50% 27%; 
+            transform: translate(-50%, -48%) scale(1.4);
+        }
     }
 
-    img {
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, -47%);
-        top: 50%;
-        transform-origin: 50% 42%; 
+    .hScrollIn path{
+        stroke-width: 1.75px;
+        stroke: #33266B;    
     }
 
-    .highWays {
-        /* position: relative; */
-        margin: 152px 0px 0px 169px;
-    }
-    .mapCz {
-        position: absolute;
-        top: -40px; 
-        left: 70px;
-        margin: 0;
+    .hScrollOut path{
+        stroke-width: 1.75px;
+        stroke: #33266B;    
     }
 }

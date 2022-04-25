@@ -1,6 +1,3 @@
-
-
-
 var myNav = document.querySelector('nav')
 // myNav.classList.add("transparentNav")
 
@@ -13,17 +10,3 @@ function myFunction() {
     myNav.setAttribute("class", "transparentNav");
   }
 }
-
-// gsap.to("nav", {
-//     className:"transparentNav",
-//     // duration: 1,
-//     scrollTrigger: {
-//         trigger: ".map",
-//         start: 0,
-//         markers: true,
-//         // toggleClass: "black"
-//         // toggleActions: "play none none none"
-//                         onEnter onLeave onEnterBack onLeaveBack
-//     }
-    
-// })

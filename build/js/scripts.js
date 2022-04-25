@@ -5479,9 +5479,6 @@ return PhotoSwipeUI_Default;
 });
 
 
-gsap.registerPlugin(ScrollTrigger);
-
-
 const targets = [".vlastnosti", ".dopady", ".quotes", ".reklamaVPohybu", ".realizace", ".klienti", ".kontakt", ".viceInfo"];
 
 
@@ -5508,7 +5505,7 @@ targets.forEach(el => {
 
             once: true,
 
-            toggleActions: "restart none none none",
+            // toggleActions: "restart none none none",
 
             // onEnter onLeave onEnterBack onLeaveBack
 
@@ -5523,1079 +5520,782 @@ targets.forEach(el => {
 
 
 
-
-
-
-
-
-
-
 var myNav = document.querySelector('nav')
-
 // myNav.classList.add("transparentNav")
 
-
-
 window.onscroll = function() {myFunction()};
-
 myNav.setAttribute("class", "transparentNav");
-
 function myFunction() {
-
   if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
-
     myNav.setAttribute("class", "whiteNav");
-
   } else {
-
     myNav.setAttribute("class", "transparentNav");
-
   }
-
 }
 
+document.querySelector(".popup-youtube").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    player.playVideo();
+}
 
+document.querySelector(".videoLoad").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    player.playVideo();
+}
 
-// gsap.to("nav", {
-
-//     className:"transparentNav",
-
-//     // duration: 1,
-
-//     scrollTrigger: {
-
-//         trigger: ".map",
-
-//         start: 0,
-
-//         markers: true,
-
-//         // toggleClass: "black"
-
-//         // toggleActions: "play none none none"
-
-//                         onEnter onLeave onEnterBack onLeaveBack
-
-//     }
-
-    
-
-// })
-
-
-// $(document).ready(function() {
-
-//     $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-
-//         disableOn: 700,
-
-//         type: 'iframe',
-
-//         mainClass: 'mfp-fade',
-
-//         removalDelay: 160,
-
-//         preloader: false,
-
-
-
-//         fixedContentPos: false
-
-//     });
-
-// });
-
-
-
-
+// video play taky spusti video
 let informations = document.querySelectorAll(".information")
-
 // let infoImgWidth = document.querySelector(".infoImgDiv").style.width
-
-
 
 let lastInfo = 0;
 
-
-
 informations.forEach((info, index) => {
-
     let infoSelector = gsap.utils.selector(info)
-
     // infoSelector("h4")[0].addEventListener("click", function(){rotateInfo(informations, index)})
-
     info.addEventListener("click", function(){rotateInfo(informations, index)})
-
 })
 
-
-
 function rotateInfo(informations, clickedIndex){
-
     if (clickedIndex == lastInfo){
-
         return;
-
     }
-
-
 
     let revealTimeline = revealTimelineConstructor(informations, clickedIndex, lastInfo)
-
     let hideTimeline = hideTimelineConstructor(informations, clickedIndex, lastInfo)
 
-
-
     if (clickedIndex != lastInfo){
-
         hideTimeline.play()
-
         revealTimeline.play()
-
     }
-
     
-
     console.log("hidden " + lastInfo)
-
     console.log("revealed " + clickedIndex)
-
     lastInfo = clickedIndex
-
 }
-
-
 
 function revealTimelineConstructor(informations, clickedIndex, lastInfo){
-
     let revealInfoSelector = gsap.utils.selector(informations[clickedIndex])
-
     // let hideInfoSelector = gsap.utils.selector(informations[lastInfo])
-
     let infoImgDivReveal = ".infoImgDiv:nth-child(" + (clickedIndex+1) + ")"
-
     let infoImgDivHide = ".infoImgDiv:nth-child(" + (lastInfo+1) + ")"
 
-
-
     let revealTimeline = gsap.timeline();
-
     revealTimeline.fromTo(revealInfoSelector("span"), {opacity: 0}, {opacity: 0.04, ease: "out", duration: 0.5})
-
     revealTimeline.to(revealInfoSelector("h4"), {color: "#33266B", ease: "out", duration: 0.5}, "<")
-
     revealTimeline.fromTo(revealInfoSelector(".infoText"), 
-
         {opacity: 0, y: 50, height: 0}, 
-
         {opacity: 0.8, y: 0, height: 152, ease: "out", duration: 0.5},
-
         "<"
-
     )
-
     revealTimeline.to(".infoScroll", {
-
         height: 25*(clickedIndex+1) + "%", 
-
         ease: "out", 
-
         duration: 0.5
-
     }, "<")
-
     revealTimeline.fromTo(".purpleTransition", {x: 457}, {x: 0, ease: "Out", duration: 0.75}, "<")
-
     revealTimeline.fromTo(infoImgDivHide, 
-
         {width: 457}, 
-
         {width: 0, ease: "Out", duration: 0.75, onStart: function(){document.querySelector(infoImgDivHide + " img").style.float = "left"}}, 
-
         "<",
-
     )
-
     revealTimeline.fromTo(".purpleTransition", 
-
         {width: 457}, 
-
         {width: 0, ease: "inOut", duration: 0.75}, 
-
         "-=0.5"
-
     )
-
     revealTimeline.fromTo(infoImgDivReveal, 
-
         {width: 0, x: 457}, 
-
         {width: 457, x: 0, ease: "inOut", duration: 0.75, onStart: function(){document.querySelector(infoImgDivReveal + " img").style.float = "right"}}, 
-
         "<"
-
     )
-
     revealTimeline.pause()
 
-
-
     return revealTimeline;
-
 }
-
-
 
 function hideTimelineConstructor(informations, clickedIndex, lastInfo){
-
     // let revealInfoSelector = gsap.utils.selector(informations[clickedIndex])
-
     let hideInfoSelector = gsap.utils.selector(informations[lastInfo])
-
     let hideTimeline = gsap.timeline();
-
     hideTimeline.fromTo(hideInfoSelector("span"), {opacity: 0.04}, {opacity: 0, ease: "out", duration: 0.5})
-
     hideTimeline.to(hideInfoSelector("h4"), {color: "#3A3A3A", ease: "out", duration: 0.5}, "<")
-
     hideTimeline.fromTo(hideInfoSelector(".infoText"), 
-
         {opacity: 0.8, y: 0, height: 152}, 
-
         {opacity: 0, y: -50, height: 0, ease: "out", duration: 0.5},
-
         "<"
-
     )
-
     hideTimeline.pause()
 
-
-
     return hideTimeline
-
 }
-
-
-
 
 
 let infoInitTL = gsap.timeline({
-
     scrollTrigger: {
-
         trigger: ".infoImages",
-
         start: "top 80%",
-
         ease: "power3.inOut",
-
         once: true,
-
         // toggleActions: "restart none none none",
-
         // onEnter onLeave onEnterBack onLeaveBack
-
         // markers: true,
-
     }
-
 });
-
-
 
 infoInitTL.fromTo(".purpleTransition", {x: 457}, {x: 0, ease: "Out", duration: 0.75}, "<")
-
 infoInitTL.fromTo(".purpleTransition", 
-
     {width: 457}, 
-
     {width: 0, ease: "inOut", duration: 0.75}, 
-
     "-=0.5"
-
 )
-
 infoInitTL.fromTo(".infoImgDiv:nth-child(1)", 
-
     {width: 0, x: 457}, 
-
     {width: 457, x: 0, ease: "inOut", duration: 0.75, onStart: function(){document.querySelector(".infoImgDiv:nth-child(1) img").style.float = "right"}}, 
-
     "<"
-
 )
-
 infoInitTL.from(".infoList", {y: "20vh", opacity: 0, duration: 0.7}, "<")
-
 infoInitTL.from(".infoScrollBar", {y: "20vh", opacity: 0, duration: 0.7}, "<")
 
-
-
-
-gsap.from(".highwaysContainer", {
-
-    with: 0,
-
-    height: 0,
-
+var mapScrollIn = gsap.timeline({
     scrollTrigger: {
-
         trigger: ".mapContainer",
-
-        // start: "center bottom",
-
-        start: "top 40%",
-
+        start: "center 80%",
         end: "top top",
-
-        // pin: true,
-
         scrub: true,
-
         // markers: true,
-
     }
+})
 
-});
-
-
-
-// var card3Arr = document.querySelectorAll(".card3")
-
-// // var card3 = document.querySelector(".card3")
-
-// var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
-
-// var horizontalScrollDistance = 
-
-//     card3Arr.length*card3Arr[0].offsetWidth 
-
-//     + (card3Arr.length-1)*32 
-
-//     - horizontalScrollContainer.offsetWidth
-
-
-
-gsap.fromTo(".mapContainer img",{
-
-    scale: 1,
-
+mapScrollIn.fromTo(".hScrollIn path",{
+    drawSVG: "0%",
     }, {
-
-    scale: 0.7,
-
-    ease: "none",
-
-
-
-    scrollTrigger: {
-
-        trigger: ".mapContainer",
-
-        start: "top top",
-
-        end: "bottom top", // need to scroll 100vh to complete
-
-        pin: true,
-
-        scrub: true,
-
-        markers: true,
-
-    }
-
+    drawSVG: "100%",
 });
 
 
 
-
-gsap.to(".fotoSectionImgDiv1", {
-
-    // duration: 1,
-
-    width: "80%",
-
+var mapScrollOut = gsap.timeline({
     scrollTrigger: {
-
-        trigger: ".fotoSectionImgDiv1",
-
-        start: "top 90%",
-
-        end: "bottom 90%",
-
-        scrub: 1,
-
-        // once: true,
-
-
-
-        toggleActions: "restart none none none",
-
-        // onEnter onLeave onEnterBack onLeaveBack
-
+        trigger: ".mapContainer",
+        start: "top top",
+        end: "bottom top", // need to scroll 100vh to complete
+        pin: true,
+        scrub: true,
         // markers: true,
-
     }
-
 })
 
 
+var initMapScale = 1.2
+var endMapScale = 0.8
+
+mapScrollOut.to([".mapContainer img", ".mapContainer svg"],{
+    // scale: initMapScale,
+    // }, {
+    scale: endMapScale,
+    ease: "none",
+    duration: 4,
+});
+
+mapScrollOut.fromTo(".hScrollOut path",{
+    drawSVG: "0%",
+    }, {
+    drawSVG: "100%",
+    duration: 4,
+    },
+    "<"
+);
+
+mapScrollOut.fromTo(".mapEurope",{
+    opacity: 0,
+    }, {
+    opacity: 1,
+    duration: 2,
+    },
+    "<"
+);
+
+mapScrollOut.to(".map h2",{
+    opacity: 0,
+    duration: 0.5,
+    },
+    "<"
+);
+gsap.to(".fotoSectionImgDiv1", {
+    // duration: 1,
+    width: "80%",
+    scrollTrigger: {
+        trigger: ".fotoSectionImgDiv1",
+        start: "top 90%",
+        end: "bottom 90%",
+        scrub: 1,
+        // once: true,
+
+        toggleActions: "restart none none none",
+        // onEnter onLeave onEnterBack onLeaveBack
+        // markers: true,
+    }
+})
 
 gsap.to(".fotoSectionImgDiv2", {
-
     width: "58%",
-
     scrollTrigger: {
-
         trigger: ".fotoSectionImgDiv2",
-
         start: "top 90%",
-
         end: "bottom 90%",
-
         scrub: 1,
-
         // once: true,
 
-
-
         toggleActions: "restart none none none",
-
         // onEnter onLeave onEnterBack onLeaveBack
-
         // markers: true,
-
     }
-
 })
-
-
 const cardNums = document.querySelector(".cardNums");
-
 const quote = document.querySelector(".quote");
-
 const qouteAuthor = document.querySelector(".qouteAuthor");
-
 const arrowLeft = document.querySelector(".arrowLeft");
-
 const arrowRight = document.querySelector(".arrowRight");
 
-
-
 // TODO: add all quotes to html instead of js 
-
 const rotation = [
-
     [
-
         "Nekonvenční reklamní plochy kreativně reinterpretují použití tradičních médií způsoby, které napřímo aktivují zákazníky. Kombinace tradičních a nekonvenčních forem marketingové komunikace je jeden  z nejúčinnějších způsobů jak vybudovat znalost o značce a přimět zákazníky ke komunikaci s ní.",
-
         "(BIRAGHI, GAMBETTI A GRAFFIGNA, 2014)"
-
     ],[
-
         "Za celý život strávíme v autě více než 4 roky života. Za tu dobu průměrně 142x nouzově zabrzdíme, 3312x se napijeme, 2432x někoho políbíme, ale především se nudíme.",
-
         "(COMMON SENSE ADVISORY, 2018)"
-
     ],[
-
         "Průměrný konzument je vystaven několika tisícům marketingových komunikačních sdělení za den, jen zlomku si však vědomě všimne. Pro inzerenty je tak stále obtížnější dosáhnout na své cílové skupiny.",
-
         "(SHAPIRO A NIELSEN, 2013 ; LOPEZ-PUMAREJO, BASSELL, 2009:33)"
-
     ],[
-
         "Navzdory rostoucí popularitě venkovní reklamy přistupují některé státy, včetně České republiky, k regulaci nebo dokonce k plošnému zákazu billboardů. Jedinou efektivní obranou marketingových profesionálu proti takovýmto tendencím je využití nekonvenčních forem marketingové komunikace.",
-
         "(MAHDAWI, 2015)"
-
     ],[
-
         "Tradičním inzertním plochám zasazuje velkou ránu jejich nadužívanost způsobující tzv. „billboardovou slepotu”. To de facto znamená, že „konvenční média ztrácí sílu přitáhnout zákazníkovu pozornost”.",
-
         "(VAN DEN PUTTE, 2009 ; BASS ET AL., 2007 ; DARKE A RITCHIE, 2007)"
-
     ],[
-
         "Pokud je člověk ve známém prostředí překvapen neznámým reklamním formátem, zaměří na něj svou pozornost a lépe si jej zapamatuje. Užití nekonvenčních venkovních ploch tak vede díky vyvolání překvapení k dramatickému nárůstu znalosti značky.",
-
         "(HUTTER A HOFFMANN, 2011)"
-
     ],[
-
         "Překvapený zákazník je náchylnější své pocity sdílet. Překvapení tedy pozitivně ovlivňuje frekvenci ústního doporučení, které je považováno za jeden z nejspolehlivějších zdrojů informací.",
-
         "(DERBAIX A VANHAMME, 2003 ; HONG-YOUL, 2004)"
-
     ],[
-
         "Znalost značky a ústní doporučení hrají významnou roli během rozhodovacího procesu, a to zejména v kontextu prodejů inzerovaných produktů nebo služeb.",
-
         "(DAHLÉN, FRIBERG A NILSSON, 2009 ; DUAN, GU A WHINSTON, 2008)"
-
     ]
-
 ]
-
-
 
 console.log(quote);
 
-
-
 currentQuote = 0;
 
-
-
 arrowRight.onclick = function () {
-
     currentQuote = (currentQuote + 1) % 8
-
     updateQuote(currentQuote)
-
 }
-
-
 
 arrowLeft.onclick = function () {
-
     if (currentQuote == 0){
-
         currentQuote = rotation.length - 1
-
     } else {
-
         currentQuote = (currentQuote - 1) % 8
-
     }
-
     updateQuote(currentQuote)
-
 }
-
-
 
 function updateQuote (quoteNum) {
-
     cardNums.innerHTML = "0" + (currentQuote+1) + "<span>/0" + rotation.length + "</span>"
-
     
-
     quote.style.opacity = "0";
-
     qouteAuthor.style.opacity = "0";
-
     
-
     setTimeout(function () {
-
         quote.innerHTML = rotation[quoteNum][0];
-
         qouteAuthor.textContent = rotation[quoteNum][1];
-
         quote.style.opacity = "1";
-
         qouteAuthor.style.opacity = "0.5";
-
     }, 250);  // must also change transition in css x2
 
-
-
     
-
 }
-
-
-
-
 
 
 gsap.from(".card3Container", {
-
     x: 2500,
-
     ease: "none",
-
     scrollTrigger: {
-
         trigger: ".horizontalScroll .background",
-
         // start: "center bottom",
-
         start: "top bottom",
-
         end: "top top",
-
         // pin: true,
-
         scrub: true,
-
         // markers: true,
-
     }
-
 });
-
-
 
 var card3Arr = document.querySelectorAll(".card3")
-
 // var card3 = document.querySelector(".card3")
-
 var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
-
 var horizontalScrollDistance = 
-
     card3Arr.length*card3Arr[0].offsetWidth 
-
     + (card3Arr.length-1)*32 
-
     - horizontalScrollContainer.offsetWidth
 
-
-
 gsap.fromTo(".card3Container",{x:0}, {
-
     x: -horizontalScrollDistance,
-
     ease: "none",
-
     scrollTrigger: {
-
         trigger: ".horizontalScroll .background",
-
         start: "top top",
-
         end: "bottom top", // need to scroll 100vh to complete
-
         pin: true,
-
         scrub: true,
-
         // markers: true,
-
     }
-
 });
-
-
-
 
 gsap.from(".card4Left", { 
-
     x: "500",
-
     // opacity: 0,
-
     duration: 1,
-
     
-
     scrollTrigger: {
-
         trigger: ".card4Left",
-
         start: "top bottom",
-
         ease: "power3.inOut",
-
         once: true,
-
         // toggleActions: "restart none none none",
-
         // onEnter onLeave onEnterBack onLeaveBack
-
         // markers: true,
-
     }
-
 })
-
-
 
 gsap.from(".card4Right", { 
-
     x: "-500",
-
     // opacity: 0,
-
     duration: 1,
-
     
-
     scrollTrigger: {
-
         trigger: ".card4Right",
-
         start: "top bottom",
-
         ease: "power3.inOut",
-
         once: true,
-
         // toggleActions: "restart none none none",
-
         // onEnter onLeave onEnterBack onLeaveBack
-
         // markers: true,
-
     }
-
 })
 
-
-
 // paralax
-
 gsap.to(".PricingParalax", {
-
     y: "-40vh",
-
     scrollTrigger: {
-
         trigger: ".PricingParalax",
-
         // start: "center bottom",
-
         start: "top bottom",
-
         end: "top top",
-
         // pin: true,
-
         scrub: true,
-
         // markers: true,
-
     }
-
 });
 
-
-
 const expandBtn = document.querySelector(".card4 .expand")
-
 const expandBtnCross = document.querySelector(".card4 .expand img")
-
 const card4Middle = document.querySelector(".card4Middle")
-
 const pricingNumbers = document.querySelector(".pricingNumbers")
-
 const card4MiddleChecks = document.querySelector(".card4MiddleChecks")
 
 
-
-
-
 const startWidth = card4Middle.style.width
-
 // const startWidth = 440
-
-
 
 expandBtn.onclick = expandPricing
 
-
-
 var expandPricingTl = gsap.timeline();
-
 expandPricingTl.to(".card4Middle", {width: "100%", duration: 0.75, ease: "inOut",})
-
 expandPricingTl.to(".card4 .expand img", {rotation: 45, duration: 0.5, onStart: () => { pricingNumbers.style.display = "block"}}, "<")
-
 expandPricingTl.fromTo(".pricingNumbers", {opacity: "0"}, {opacity:"1", duration: 0.5}, "-=0.35");
-
 expandPricingTl.pause();
 
 
-
-
-
 function expandPricing () {
-
     expandPricingTl.restart();
-
     expandBtn.onclick = retractPricing
-
 }
-
-
 
 function retractPricing () {
-
     expandPricingTl.reverse();
-
     expandBtn.onclick = expandPricing
-
 }
 
-
-
 gsap.to(".expand", {
-
     scaleX: 1.2,
-
     scaleY: 1.2,
-
-
 
     duration: 0.5,
 
-
-
     repeat: 5,
-
     yoyo: true,
 
-
-
     scrollTrigger: {
-
         trigger: ".pricing",
-
         start: "top 40%",
-
         end: "top top",
-
         // once: true,
-
         toggleActions: "restart none none none",
-
         // onEnter onLeave onEnterBack onLeaveBack
-
         // markers: true,
-
     }
-
 })
-
-
-
-
-
-
 
 
 
 
 const vw = (coef) => window.innerWidth * (coef/100)
-
 const vh = (coef) => window.innerHeight * (coef/100)
 
-
-
 gsap.from(".video2", {
-
     width: vw(95),
-
     height: vw(95)/16*9,
 
-
-
     scrollTrigger: {
-
         trigger: ".videoContainer",
-
         start: "top bottom",
-
         end: "+=" + 700,
-
         ease: "power3.out",
-
         scrub: true,
-
         // once: true,
-
         toggleActions: "restart none none none",
-
         // onEnter onLeave onEnterBack onLeaveBack
-
         // markers: true,
-
     }
-
 })
-
-
 
 gsap.from(".detailyKampane", {
-
     y: 50,
-
     opacity: 0,
-
     duration: 1,
 
-
-
     scrollTrigger: {
-
         trigger: ".videoContainer",
-
         start: "top center",
-
         ease: "power3.out",
-
         // once: true,
-
         toggleActions: "restart none none none",
-
         // onEnter onLeave onEnterBack onLeaveBack
-
         // markers: true,
-
     }
-
 })
 
-
-
 document.querySelector('.textContainer button').onmouseover = function() {
-
     document.querySelector(".kontaktImgHover").style.opacity = 1
-
     document.querySelector(".kontaktImg").style.opacity = 0
-
 }
-
-
 
 document.querySelector('.textContainer button').onmouseout = function() {
-
     document.querySelector(".kontaktImgHover").style.opacity = 0
-
     document.querySelector(".kontaktImg").style.opacity = 1
-
 }
-
-
-
-
 
 
 var precistArr = document.querySelectorAll(".precist")
 
-
-
 precistArr.forEach(element => {
-
     element.onmouseover = function() {
-
-        gsap.to(element.lastElementChild, {x: 20, duration: 0.25})
-
+        gsap.to(element.lastElementChild, {x: 12, duration: 0.25})
     }
-
     element.onmouseout = function() {
-
         gsap.to(element.lastElementChild, {x: 0, duration: 0.25, ease: "out"})
-
     }
+});
 
+
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+
+var ytVideoContainer = document.querySelector(".heroImage .container")
+
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '' + ytVideoContainer.offsetWidth/16*9,
+        width: '' + ytVideoContainer.offsetWidth,
+        videoId: 'PDFxZSny9tA',
+        events: {
+        'onReady': onPlayerReady,
+        // 'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+    // event.target.playVideo();   
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+    }
+}
+function stopVideo() {
+    player.stopVideo();
+}
+// alert() 
+document.querySelector(".videoClose").onclick = function(){
+    closeYtVideo()
+}
+
+document.querySelector(".videoPopup").onclick = function(){
+    closeYtVideo()
+}
+
+document.addEventListener('keydown', function(event){
+	if(event.key === "Escape"){
+		closeYtVideo()
+	}
 });
 
 
 
+function closeYtVideo(){
+    // alert()
+    player.stopVideo();
+    document.querySelector(".videoPopup").style.display = "none"
+}
+
+document.querySelector(".videoPopup").style.display = "none"
 
 /*breaky.at("mobile-portrait", function() {
+
 	console.log("AT 1. mobile-portrait");
+
 });
+
 breaky.above("mobile-portrait", function() {
+
 	console.log("ABOVE 2. mobile-portrait");
+
 });
+
 breaky.below("desktop", function() {
+
   console.log("BELOW 3. desktop");
+
 });
+
 breaky.between("mobile-portrait", "tablet-portrait", function() {
+
 	console.log("BETWEEN 4. mobile-portrait and tablet-portrait");
+
 });*/
 
+
+
+
 $(window).scroll(function() {
+
   
+
     // selectors
+
     var $window = $(window),
+
         $body = $('body'),
+
         $panel = $('.section');
+
     
+
     // Change 33% earlier than scroll position so colour is there when you arrive.
+
     var scroll = $window.scrollTop() + ($window.height() / 2);
+
    
+
     $panel.each(function () {
+
       var $this = $(this);
+
       
+
       // if position is within range of this panel.
+
       // So position of (position of top of div <= scroll position) && (position of bottom of div > scroll position).
+
       // Remember we set the scroll to 33% earlier in scroll var.
+
       if ($this.position().top <= scroll && $this.position().top + $this.height() > scroll) {
+
             
+
         // Remove all classes on body with color-
+
         $body.removeClass(function (index, css) {
+
           return (css.match (/(^|\s)color-\S+/g) || []).join(' ');
+
         });
+
          
+
         // Add class of currently active div
+
         $body.addClass('color-' + $(this).data('color'));
+
       }
+
     });    
+
     
+
   }).scroll();
+
+
 tablesWrap();
+
 iframesWrap();
 
+
+
 // TABLE (wysiwyg editor) responsive
+
 function tablesWrap() {
+
 	var contentTables = document.querySelectorAll(".entry-content table"),
+
       i;
 
+
+
 	for (i = 0; i < contentTables.length; ++i) {
+
 		contentTables[i].classList.add("table");
+
+
 
     var contentTableWrap = document.createElement("div");
 
+
+
     contentTableWrap.classList.add("u-table-responsive");
+
+
 
 		contentTables[i].parentNode.insertBefore(contentTableWrap, contentTables[i]);
 
+
+
 		contentTableWrap.appendChild(contentTables[i]);
+
 	}
+
 }
 
+
+
 // IFRAME youtube/google (wysiwyg editor) responsive
+
 function iframesWrap() {
+
 	var contentIframes = document.querySelectorAll(".entry-content iframe"),
+
       i;
 
+
+
 	for (i = 0; i < contentIframes.length; ++i) {
+
 		contentIframes[i].removeAttribute("height");
+
 		contentIframes[i].removeAttribute("width");
 
+
+
     var iframeWrap = document.createElement("div");
+
     iframeWrap.classList.add("u-embed-responsive");
+
 		iframeWrap.classList.add("u-embed-responsive-16by9");
+
+
 
 		contentIframes[i].parentNode.insertBefore(iframeWrap, contentIframes[i]);
 
+
+
 		iframeWrap.appendChild(contentIframes[i]);
+
 	}
+
 }
 
+
+
+
+// import { gsap } from "gsap";
+
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+
+
+
+// gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+
+
 // LazyLoading IMG
+
 var myLazyLoad = new LazyLoad({
+
 	elements_selector: "[data-src], [data-srcset], [data-bg], [data-sizes]",
+
 	load_delay: 100,
+
 	callback_set: function(el) {
+
 		objectFitImages(el);
+
 	}
+
 });
+
+
+
 
 $(document).on('click', 'a[href^="#"]', function (event) {
+
     event.preventDefault();
 
+
+
     $('html, body').animate({
+
         scrollTop: $($.attr(this, 'href')).offset().top - 140
+
     }, 500);
+
 });
+
 
 svg4everybody();
 //# sourceMappingURL=scripts.js.map

@@ -6,8 +6,9 @@
 //=include ../../node_modules/photoswipe/dist/photoswipe-ui-default.js
 
 //=include vendor/*.js
-
 //=include ../blocks/**/*.js
+
 //=include custom/*.js
+
 
 svg4everybody();

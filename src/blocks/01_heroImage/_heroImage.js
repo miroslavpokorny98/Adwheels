@@ -1,11 +1,13 @@
-// $(document).ready(function() {
-//     $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-//         disableOn: 700,
-//         type: 'iframe',
-//         mainClass: 'mfp-fade',
-//         removalDelay: 160,
-//         preloader: false,
+document.querySelector(".popup-youtube").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    player.playVideo();
+}
 
-//         fixedContentPos: false
-//     });
-// });
+document.querySelector(".videoLoad").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    player.playVideo();
+}
+
+// video play taky spusti video

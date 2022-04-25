@@ -1,37 +1,65 @@
-gsap.from(".highwaysContainer", {
-    with: 0,
-    height: 0,
+var mapScrollIn = gsap.timeline({
     scrollTrigger: {
         trigger: ".mapContainer",
-        // start: "center bottom",
-        start: "top 40%",
+        start: "center 80%",
         end: "top top",
-        // pin: true,
         scrub: true,
         // markers: true,
     }
+})
+
+mapScrollIn.fromTo(".hScrollIn path",{
+    drawSVG: "0%",
+    }, {
+    drawSVG: "100%",
 });
 
-// var card3Arr = document.querySelectorAll(".card3")
-// // var card3 = document.querySelector(".card3")
-// var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
-// var horizontalScrollDistance = 
-//     card3Arr.length*card3Arr[0].offsetWidth 
-//     + (card3Arr.length-1)*32 
-//     - horizontalScrollContainer.offsetWidth
 
-gsap.fromTo(".mapContainer img",{
-    scale: 1,
-    }, {
-    scale: 0.7,
-    ease: "none",
 
+var mapScrollOut = gsap.timeline({
     scrollTrigger: {
         trigger: ".mapContainer",
         start: "top top",
         end: "bottom top", // need to scroll 100vh to complete
         pin: true,
         scrub: true,
-        markers: true,
+        // markers: true,
     }
+})
+
+
+var initMapScale = 1.2
+var endMapScale = 0.8
+
+mapScrollOut.to([".mapContainer img", ".mapContainer svg"],{
+    // scale: initMapScale,
+    // }, {
+    scale: endMapScale,
+    ease: "none",
+    duration: 4,
 });
+
+mapScrollOut.fromTo(".hScrollOut path",{
+    drawSVG: "0%",
+    }, {
+    drawSVG: "100%",
+    duration: 4,
+    },
+    "<"
+);
+
+mapScrollOut.fromTo(".mapEurope",{
+    opacity: 0,
+    }, {
+    opacity: 1,
+    duration: 2,
+    },
+    "<"
+);
+
+mapScrollOut.to(".map h2",{
+    opacity: 0,
+    duration: 0.5,
+    },
+    "<"
+);

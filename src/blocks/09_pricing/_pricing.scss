@@ -139,7 +139,12 @@
                 border-radius: 50%;
                 background-color: rgba(255, 255, 255, 0.2);
                 border: none;
-                transform: rotate(0.5turn);
+
+                display: flex;
+                align-items: center;
+                align-content: center;
+                justify-content: center;
+                
                 &:hover {
                     transition: background-color 0.25s;
                     background-color: #D99A27;
