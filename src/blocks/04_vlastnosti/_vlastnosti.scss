@@ -16,18 +16,17 @@
         align-items: center;
         column-gap: 24px;
         // @include standartUpTransition();
+        margin-top: 62px;
         @include windowMax1440p(){
             max-width: 1046px;
+            margin-top: 48px;
         }
     }
 
     h3 {
         @include h3Medium();
         text-align: center;
-        margin-bottom: 62px;
-        @include windowMax1440p(){
-            margin-bottom: 48px;
-        }
+        
     }
 
     .card1 {
@@ -77,4 +76,24 @@
             }
         }
     }
+    @include mobileMax768p(){
+        .container{
+            margin-top: 38px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        h3{
+            @include h4Medium();
+            color: #3a3a3a;
+            padding: 0 28px 0 28px;
+            margin: 0 auto 0 auto;
+        }
+        .card1 {
+            p {
+                max-width: 271px;
+            }
+        }
+    }
+
 }

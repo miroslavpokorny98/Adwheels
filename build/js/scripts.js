@@ -5570,10 +5570,12 @@ function rotateInfo(informations, clickedIndex){
         revealTimeline.play()
     }
     
-    console.log("hidden " + lastInfo)
-    console.log("revealed " + clickedIndex)
+    // console.log("hidden " + lastInfo)
+    // console.log("revealed " + clickedIndex)
     lastInfo = clickedIndex
 }
+
+const infoTextHeight = document.querySelector(".infoText").offsetHeight
 
 function revealTimelineConstructor(informations, clickedIndex, lastInfo){
     let revealInfoSelector = gsap.utils.selector(informations[clickedIndex])
@@ -5586,7 +5588,7 @@ function revealTimelineConstructor(informations, clickedIndex, lastInfo){
     revealTimeline.to(revealInfoSelector("h4"), {color: "#33266B", ease: "out", duration: 0.5}, "<")
     revealTimeline.fromTo(revealInfoSelector(".infoText"), 
         {opacity: 0, y: 50, height: 0}, 
-        {opacity: 0.8, y: 0, height: 152, ease: "out", duration: 0.5},
+        {opacity: 0.8, y: 0, height: infoTextHeight, ease: "out", duration: 0.5},
         "<"
     )
     revealTimeline.to(".infoScroll", {
@@ -5622,7 +5624,7 @@ function hideTimelineConstructor(informations, clickedIndex, lastInfo){
     hideTimeline.fromTo(hideInfoSelector("span"), {opacity: 0.04}, {opacity: 0, ease: "out", duration: 0.5})
     hideTimeline.to(hideInfoSelector("h4"), {color: "#3A3A3A", ease: "out", duration: 0.5}, "<")
     hideTimeline.fromTo(hideInfoSelector(".infoText"), 
-        {opacity: 0.8, y: 0, height: 152}, 
+        {opacity: 0.8, y: 0, height: infoTextHeight}, 
         {opacity: 0, y: -50, height: 0, ease: "out", duration: 0.5},
         "<"
     )
@@ -5663,7 +5665,7 @@ var mapScrollIn = gsap.timeline({
         trigger: ".mapContainer",
         start: "center 80%",
         end: "top top",
-        scrub: true,
+        scrub: 0.5,
         // markers: true,
     }
 })
@@ -5682,18 +5684,29 @@ var mapScrollOut = gsap.timeline({
         start: "top top",
         end: "bottom top", // need to scroll 100vh to complete
         pin: true,
-        scrub: true,
+        scrub: 0.5,
+        // anticipatePin: 3,
         // markers: true,
     }
 })
 
-
 var initMapScale = 1.2
 var endMapScale = 0.8
+var windowWidth = window.innerWidth
+if (windowWidth <= 2048){
+    initMapScale = 1.4
+}
+if (windowWidth <= 1920){
+    initMapScale = 1.2
+}
+if (windowWidth <= 1440){
+    initMapScale = 0.9
+}
 
-mapScrollOut.to([".mapContainer img", ".mapContainer svg"],{
-    // scale: initMapScale,
-    // }, {
+
+mapScrollOut.fromTo([".mapContainer img", ".mapContainer svg"],{
+    scale: initMapScale,
+    }, {
     scale: endMapScale,
     ease: "none",
     duration: 4,
@@ -5730,13 +5743,27 @@ mapScrollOut.to(".map h2",{
     },
     "<"
 );
+// PC
+var foto1MaxWidth = "80%"
+var foto2MaxWidth = "58%"
+var fotoSectionAnimationEnd = "bottom 90%"
+
+// Mobile
+if (window.innerWidth <= 768){
+    foto1MaxWidth = 100*(window.innerWidth-48)/window.innerWidth + "%"
+    foto2MaxWidth = 100*(window.innerWidth-48)/window.innerWidth + "%"
+    // foto1MaxWidth = "100%"
+    // foto2MaxWidth = "100%"
+    fotoSectionAnimationEnd = "top 50%"
+}
+
 gsap.to(".fotoSectionImgDiv1", {
     // duration: 1,
-    width: "80%",
+    width: foto1MaxWidth,
     scrollTrigger: {
         trigger: ".fotoSectionImgDiv1",
         start: "top 90%",
-        end: "bottom 90%",
+        end: fotoSectionAnimationEnd,
         scrub: 1,
         // once: true,
 
@@ -5747,11 +5774,11 @@ gsap.to(".fotoSectionImgDiv1", {
 })
 
 gsap.to(".fotoSectionImgDiv2", {
-    width: "58%",
+    width: foto2MaxWidth,
     scrollTrigger: {
         trigger: ".fotoSectionImgDiv2",
         start: "top 90%",
-        end: "bottom 90%",
+        end: fotoSectionAnimationEnd,
         scrub: 1,
         // once: true,
 
@@ -5762,68 +5789,39 @@ gsap.to(".fotoSectionImgDiv2", {
 })
 const cardNums = document.querySelector(".cardNums");
 const quote = document.querySelector(".quote");
-const qouteAuthor = document.querySelector(".qouteAuthor");
+const quotes = document.querySelectorAll(".quote");
+const qouteAuthors = document.querySelectorAll(".qouteAuthor");
 const arrowLeft = document.querySelector(".arrowLeft");
 const arrowRight = document.querySelector(".arrowRight");
-
-// TODO: add all quotes to html instead of js 
-const rotation = [
-    [
-        "Nekonvenční reklamní plochy kreativně reinterpretují použití tradičních médií způsoby, které napřímo aktivují zákazníky. Kombinace tradičních a nekonvenčních forem marketingové komunikace je jeden  z nejúčinnějších způsobů jak vybudovat znalost o značce a přimět zákazníky ke komunikaci s ní.",
-        "(BIRAGHI, GAMBETTI A GRAFFIGNA, 2014)"
-    ],[
-        "Za celý život strávíme v autě více než 4 roky života. Za tu dobu průměrně 142x nouzově zabrzdíme, 3312x se napijeme, 2432x někoho políbíme, ale především se nudíme.",
-        "(COMMON SENSE ADVISORY, 2018)"
-    ],[
-        "Průměrný konzument je vystaven několika tisícům marketingových komunikačních sdělení za den, jen zlomku si však vědomě všimne. Pro inzerenty je tak stále obtížnější dosáhnout na své cílové skupiny.",
-        "(SHAPIRO A NIELSEN, 2013 ; LOPEZ-PUMAREJO, BASSELL, 2009:33)"
-    ],[
-        "Navzdory rostoucí popularitě venkovní reklamy přistupují některé státy, včetně České republiky, k regulaci nebo dokonce k plošnému zákazu billboardů. Jedinou efektivní obranou marketingových profesionálu proti takovýmto tendencím je využití nekonvenčních forem marketingové komunikace.",
-        "(MAHDAWI, 2015)"
-    ],[
-        "Tradičním inzertním plochám zasazuje velkou ránu jejich nadužívanost způsobující tzv. „billboardovou slepotu”. To de facto znamená, že „konvenční média ztrácí sílu přitáhnout zákazníkovu pozornost”.",
-        "(VAN DEN PUTTE, 2009 ; BASS ET AL., 2007 ; DARKE A RITCHIE, 2007)"
-    ],[
-        "Pokud je člověk ve známém prostředí překvapen neznámým reklamním formátem, zaměří na něj svou pozornost a lépe si jej zapamatuje. Užití nekonvenčních venkovních ploch tak vede díky vyvolání překvapení k dramatickému nárůstu znalosti značky.",
-        "(HUTTER A HOFFMANN, 2011)"
-    ],[
-        "Překvapený zákazník je náchylnější své pocity sdílet. Překvapení tedy pozitivně ovlivňuje frekvenci ústního doporučení, které je považováno za jeden z nejspolehlivějších zdrojů informací.",
-        "(DERBAIX A VANHAMME, 2003 ; HONG-YOUL, 2004)"
-    ],[
-        "Znalost značky a ústní doporučení hrají významnou roli během rozhodovacího procesu, a to zejména v kontextu prodejů inzerovaných produktů nebo služeb.",
-        "(DAHLÉN, FRIBERG A NILSSON, 2009 ; DUAN, GU A WHINSTON, 2008)"
-    ]
-]
-
-console.log(quote);
 
 currentQuote = 0;
 
 arrowRight.onclick = function () {
-    currentQuote = (currentQuote + 1) % 8
-    updateQuote(currentQuote)
+    var nextQuote = (currentQuote + 1) % quotes.length
+    updateQuote(currentQuote, nextQuote)
+    currentQuote = nextQuote
 }
 
 arrowLeft.onclick = function () {
+    var nextQuote = 0
     if (currentQuote == 0){
-        currentQuote = rotation.length - 1
+        nextQuote = rotation.length - 1
     } else {
-        currentQuote = (currentQuote - 1) % 8
+        nextQuote = (currentQuote - 1) % quotes.length
     }
-    updateQuote(currentQuote)
+    updateQuote(currentQuote, nextQuote)
+    currentQuote = nextQuote
 }
 
-function updateQuote (quoteNum) {
-    cardNums.innerHTML = "0" + (currentQuote+1) + "<span>/0" + rotation.length + "</span>"
+function updateQuote (quoteCurr, quoteNext) {
+    cardNums.innerHTML = "0" + (quoteNext+1) + "<span>/0" + quotes.length + "</span>"
     
-    quote.style.opacity = "0";
-    qouteAuthor.style.opacity = "0";
+    quotes[quoteCurr].style.opacity = "0";
+    qouteAuthors[quoteCurr].style.opacity = "0";
     
     setTimeout(function () {
-        quote.innerHTML = rotation[quoteNum][0];
-        qouteAuthor.textContent = rotation[quoteNum][1];
-        quote.style.opacity = "1";
-        qouteAuthor.style.opacity = "0.5";
+        quotes[quoteNext].style.opacity = "1";
+        qouteAuthors[quoteNext].style.opacity = "0.5";
     }, 250);  // must also change transition in css x2
 
     

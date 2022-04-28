@@ -22,10 +22,12 @@ function rotateInfo(informations, clickedIndex){
         revealTimeline.play()
     }
     
-    console.log("hidden " + lastInfo)
-    console.log("revealed " + clickedIndex)
+    // console.log("hidden " + lastInfo)
+    // console.log("revealed " + clickedIndex)
     lastInfo = clickedIndex
 }
+
+const infoTextHeight = document.querySelector(".infoText").offsetHeight
 
 function revealTimelineConstructor(informations, clickedIndex, lastInfo){
     let revealInfoSelector = gsap.utils.selector(informations[clickedIndex])
@@ -38,7 +40,7 @@ function revealTimelineConstructor(informations, clickedIndex, lastInfo){
     revealTimeline.to(revealInfoSelector("h4"), {color: "#33266B", ease: "out", duration: 0.5}, "<")
     revealTimeline.fromTo(revealInfoSelector(".infoText"), 
         {opacity: 0, y: 50, height: 0}, 
-        {opacity: 0.8, y: 0, height: 152, ease: "out", duration: 0.5},
+        {opacity: 0.8, y: 0, height: infoTextHeight, ease: "out", duration: 0.5},
         "<"
     )
     revealTimeline.to(".infoScroll", {
@@ -74,7 +76,7 @@ function hideTimelineConstructor(informations, clickedIndex, lastInfo){
     hideTimeline.fromTo(hideInfoSelector("span"), {opacity: 0.04}, {opacity: 0, ease: "out", duration: 0.5})
     hideTimeline.to(hideInfoSelector("h4"), {color: "#3A3A3A", ease: "out", duration: 0.5}, "<")
     hideTimeline.fromTo(hideInfoSelector(".infoText"), 
-        {opacity: 0.8, y: 0, height: 152}, 
+        {opacity: 0.8, y: 0, height: infoTextHeight}, 
         {opacity: 0, y: -50, height: 0, ease: "out", duration: 0.5},
         "<"
     )

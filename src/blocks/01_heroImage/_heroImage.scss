@@ -8,9 +8,13 @@
 
     video {
         position: absolute;
-        width: 100%;
+        height: 100%;
+        width: 177.77777778vh; /* 100 * 16 / 9 */
+        min-width: 100%;
+        min-height: 56.25vw; /* 100 * 9 / 16 */
         // height: 100vh;
         // object-fit: fill;
+        // width: 100%;
         display: block;
         margin: 0px;
         padding: 0px;
@@ -91,10 +95,12 @@
     }
 
     .heroDecsription {
+        max-width: 480px;
         @include bodyText16pxRegular();
         @include windowMax1440p(){
             @include bodyText14pxRegular();
             color: white;
+            max-width: 430px;
         }
         color: white;
         margin: 20px 0px 0px 0; 
@@ -110,46 +116,80 @@
         padding: 20px 40px 20px 40px;
         border: none;
     }
-
-    .videoLoad{
-        vertical-align: middle;
+    
+    .videoButtons {
+        display: inline;
         margin-left: 40px; 
+        .videoLoad{
+            vertical-align: middle;
+            
+            .videoLoadCircle {
+                transform-origin: 50% 50%;
+                transform: rotate(-90deg);
+    
+                stroke-dasharray: 125;
+                stroke-dashoffset: 125;
+                animation: dash 4s linear forwards;
+            }
+            
+            @keyframes dash {
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
 
-        .videoLoadCircle {
-            transform-origin: 50% 50%;
-            transform: rotate(-90deg);
-  
-            stroke-dasharray: 125;
-            stroke-dashoffset: 125;
-            animation: dash 4s linear forwards;
-          }
-          
-          @keyframes dash {
-            to {
-                stroke-dashoffset: 0;
+            &:hover {
+                cursor: pointer;
+                rect {
+                    fill: #D99A27;
+                    fill-opacity: 1;
+                }
             }
         }
 
-        &:hover {
-            cursor: pointer;
-            rect {
-                fill: #D99A27;
-                fill-opacity: 1;
+        .popup-youtube {
+            @include bodyText14pxRegular();
+            background: none;
+            border: none;
+            display: inline;
+            vertical-align: middle;
+            color: white;
+            text-decoration: none;
+            margin-left: 16px;
+            &:hover{
+                cursor: pointer;
             }
         }
     }
 
-    .popup-youtube {
-        @include bodyText14pxRegular();
-        background: none;
-        border: none;
-        display: inline;
-        vertical-align: middle;
-        color: white;
-        text-decoration: none;
-        margin-left: 16px;
-        &:hover{
-            cursor: pointer;
+    @include mobileMax768p{
+        .transpAdwheels {display: none;}
+        text-align: center;
+        .container{
+            top: auto;
+            bottom: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100vw-80px);
+        }
+        h1{
+            font-size: 40px;
+            line-height: 48px;  
+            margin-top: 16px
+        }
+        .heroDecsription{
+            @include bodyText16pxRegular();
+            color: white;
+            max-width: 295px;
+            margin-top: 12px;
+        }
+        .rozjet{
+            margin: 40px 0 0 0;
+        }
+        .videoButtons{
+            display: block;
+            margin: 40px 0 0 0;
         }
     }
 }

@@ -3,7 +3,7 @@ var mapScrollIn = gsap.timeline({
         trigger: ".mapContainer",
         start: "center 80%",
         end: "top top",
-        scrub: true,
+        scrub: 0.5,
         // markers: true,
     }
 })
@@ -22,18 +22,29 @@ var mapScrollOut = gsap.timeline({
         start: "top top",
         end: "bottom top", // need to scroll 100vh to complete
         pin: true,
-        scrub: true,
+        scrub: 0.5,
+        // anticipatePin: 3,
         // markers: true,
     }
 })
 
-
 var initMapScale = 1.2
 var endMapScale = 0.8
+var windowWidth = window.innerWidth
+if (windowWidth <= 2048){
+    initMapScale = 1.4
+}
+if (windowWidth <= 1920){
+    initMapScale = 1.2
+}
+if (windowWidth <= 1440){
+    initMapScale = 0.9
+}
 
-mapScrollOut.to([".mapContainer img", ".mapContainer svg"],{
-    // scale: initMapScale,
-    // }, {
+
+mapScrollOut.fromTo([".mapContainer img", ".mapContainer svg"],{
+    scale: initMapScale,
+    }, {
     scale: endMapScale,
     ease: "none",
     duration: 4,

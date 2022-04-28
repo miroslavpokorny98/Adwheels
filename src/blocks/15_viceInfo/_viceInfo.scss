@@ -10,19 +10,20 @@
     }
 
     .container {
+        // margin-top: 56px;
         display: flex; 
         justify-content: space-between;
         // justify-content: center;
         align-items: center;
-        gap: 24px;
-        @include windowMax1440p(){
-            max-width: 1046px;
-        }
+        // gap: 24px;
+        // @include windowMax1440p(){
+        //     max-width: 1046px;
+        // }
     }
 
     .card6 {
-        margin-top: 56px;
-        max-width: 380px;
+        // display: none;
+        width: 380px;
         height: 504px;
         @include windowMax1440p(){
             width: 340px;
@@ -30,7 +31,10 @@
 
         img {
             border-radius: 8px;
-
+            width: 380px;
+            @include windowMax1440p(){
+                width: 340px;
+            }
         }
 
         h4 {

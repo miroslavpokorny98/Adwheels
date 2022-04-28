@@ -1,8 +1,20 @@
-$container-width: 1224px;
 
 .container {
-    width: 100%;
-    max-width: $container-width;
+    @include windowMax2048p(){
+        max-width: 1224px;
+    }
+    @include windowMax1920p(){
+        max-width: 1224px;
+    }
+    @include windowMax1440p(){
+        max-width: 1046px;
+    }
+    @include mobileMax768p(){
+        // $container-width: calc(100VW-80px);
+        max-width: calc(100VW-48px);
+    
+    }
     margin: 0 auto 0 auto;
-    /* background-color: yellowgreen; */
+    // background-color: yellowgreen;
+    overflow: hidden;
 }

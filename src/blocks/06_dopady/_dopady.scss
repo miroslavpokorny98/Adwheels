@@ -10,6 +10,7 @@
     }
 
     .container{
+        margin-top: 64px;
         display: flex; 
         justify-content: space-evenly;
         align-items: center;
@@ -22,7 +23,7 @@
         width: 248px;
         height: 242px;
         text-align: center;
-        margin-top: 64px;
+        
         
         h2 {
             margin-top: 32px;
@@ -56,5 +57,30 @@
         opacity: 0.8;
         margin-top: 64px;
         text-decoration-line: underline;
+    }
+    @include mobileMax768p(){
+        margin-top: 140px;
+        .container{
+            margin-top: 48px;
+            // flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            gap: 72px;
+        }
+        h3{
+            @include h4Medium();
+            color: #3a3a3a;
+            max-width: 200px;
+            margin: 0 auto 0 auto;
+        }
+        .card2 {
+            margin-top: 0;
+            p {
+                max-width: 271px;
+            }
+        }
+        .zdroj{
+            margin: 56px 70px 0 70px;
+        }
     }
 }

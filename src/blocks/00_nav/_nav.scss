@@ -1,11 +1,18 @@
+// section{
+//     overflow-x: hidden;
+// }
+
 nav {
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     z-index: 9999;
     // height: 89px;    
-    
-    
+    @include mobileMax768p(){  
+        width: 375px;             //temporary
+        display: none;
+    }
+    // display: none;
     /* opacity: 0.08; */
     border-bottom: 0.75px solid rgba(58, 58, 58, 0.08);
 
@@ -20,10 +27,7 @@ nav {
         justify-content:space-between;
         align-items: center;
         overflow: hidden;
-        @include windowMax1440p(){
-            // max-width: 1224+2*42px;
-            max-width: 1046px;
-        }
+        // background-color: aquamarine;
     }
 
     ul {
@@ -71,6 +75,9 @@ nav {
         .sellected {
             img {opacity: 1;}
         }
+        @include mobileMax768p(){
+            display: none;
+        }
     }
 
     .navButtons{
@@ -99,7 +106,11 @@ nav {
         width: 54px;
         height: 54px;
     }
-
+    @include mobileMax768p(){
+        // .logo{display: none;}
+        .navButtons{display: none;}
+        
+    }
 }
 
 .transparentNav {
@@ -119,8 +130,8 @@ nav {
     .navButton {
         background: rgba(240, 240, 240, 0.05);
     }
-
 }
+
 .whiteNav {
     // border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background-color: white;
@@ -148,8 +159,7 @@ nav {
     .facebook img {
         content: url("images/bg/facebookDark.svg");
     }
-    
-}
 
+}
 
 
