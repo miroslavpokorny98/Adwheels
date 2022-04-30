@@ -5499,7 +5499,7 @@ targets.forEach(el => {
 
             trigger: el,
 
-            start: "top 110%",
+            start: "top 125%",
 
             ease: "power3.inOut",
 
@@ -5520,32 +5520,49 @@ targets.forEach(el => {
 
 
 
+
+
+// 2. This code loads the IFrame Player API code asynchronously.
+
+var tag = document.createElement('script');
+
+
+
+tag.src = "https://www.youtube.com/iframe_api";
+
+var firstScriptTag = document.getElementsByTagName('script')[0];
+
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var myNav = document.querySelector('nav')
-// myNav.classList.add("transparentNav")
 
-window.onscroll = function() {myFunction()};
-myNav.setAttribute("class", "transparentNav");
-function myFunction() {
-  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
-    myNav.setAttribute("class", "whiteNav");
-  } else {
-    myNav.setAttribute("class", "transparentNav");
+myNav.classList.add("transparentNav");
+
+gsap.to("nav",{
+  scrollTrigger: {
+    trigger: ".heroImage",
+    start: "1% top",
+    // once: true,
+    // toggleActions: "restart none none none",
+    // onEnter onLeave onEnterBack onLeaveBack
+    // markers: true,
+    onEnter: function(){
+      myNav.classList.toggle("whiteNav")
+      myNav.classList.toggle("transparentNav")
+    },
+    onLeaveBack: function(){
+      myNav.classList.toggle("whiteNav")
+      myNav.classList.toggle("transparentNav")
+    },
   }
-}
+})
 
-document.querySelector(".popup-youtube").onclick = function(){
-    // alert()
-    document.querySelector(".videoPopup").style.display = "block"
-    player.playVideo();
-}
 
-document.querySelector(".videoLoad").onclick = function(){
-    // alert()
-    document.querySelector(".videoPopup").style.display = "block"
-    player.playVideo();
+if (window.innerWidth <= 768){
+  burgerBtn = document.querySelector(".burgerMenuBtn")
+  burgerBtn.onclick = function(){
+    myNav.classList.toggle("expanded")
+  } 
 }
-
-// video play taky spusti video
 let informations = document.querySelectorAll(".information")
 // let infoImgWidth = document.querySelector(".infoImgDiv").style.width
 
@@ -5702,6 +5719,11 @@ if (windowWidth <= 1920){
 if (windowWidth <= 1440){
     initMapScale = 0.9
 }
+if (windowWidth <= 768){
+    initMapScale = (window.innerWidth-2*24)/768
+    endMapScale = initMapScale-0.1*initMapScale/0.4
+}
+
 
 
 mapScrollOut.fromTo([".mapContainer img", ".mapContainer svg"],{
@@ -5816,20 +5838,25 @@ arrowLeft.onclick = function () {
 function updateQuote (quoteCurr, quoteNext) {
     cardNums.innerHTML = "0" + (quoteNext+1) + "<span>/0" + quotes.length + "</span>"
     
-    quotes[quoteCurr].style.opacity = "0";
-    qouteAuthors[quoteCurr].style.opacity = "0";
-    
-    setTimeout(function () {
-        quotes[quoteNext].style.opacity = "1";
-        qouteAuthors[quoteNext].style.opacity = "0.5";
-    }, 250);  // must also change transition in css x2
+    quotes[quoteCurr].classList.remove("active");
+    qouteAuthors[quoteCurr].classList.remove("active");
 
-    
+    quotes[quoteNext].classList.add("active");
+    qouteAuthors[quoteNext].classList.add("active");
+}
+
+
+var windowWidth = window.innerWidth
+var card3Spacing = 32
+var HSScrollIn = 2500
+if (windowWidth <= 768){
+    card3Spacing = 16
+    HSScrollIn = 768
 }
 
 
 gsap.from(".card3Container", {
-    x: 2500,
+    x: HSScrollIn,
     ease: "none",
     scrollTrigger: {
         trigger: ".horizontalScroll .background",
@@ -5847,7 +5874,7 @@ var card3Arr = document.querySelectorAll(".card3")
 var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
 var horizontalScrollDistance = 
     card3Arr.length*card3Arr[0].offsetWidth 
-    + (card3Arr.length-1)*32 
+    + (card3Arr.length-1)*card3Spacing 
     - horizontalScrollContainer.offsetWidth
 
 gsap.fromTo(".card3Container",{x:0}, {
@@ -5858,52 +5885,7 @@ gsap.fromTo(".card3Container",{x:0}, {
         start: "top top",
         end: "bottom top", // need to scroll 100vh to complete
         pin: true,
-        scrub: true,
-        // markers: true,
-    }
-});
-
-gsap.from(".card4Left", { 
-    x: "500",
-    // opacity: 0,
-    duration: 1,
-    
-    scrollTrigger: {
-        trigger: ".card4Left",
-        start: "top bottom",
-        ease: "power3.inOut",
-        once: true,
-        // toggleActions: "restart none none none",
-        // onEnter onLeave onEnterBack onLeaveBack
-        // markers: true,
-    }
-})
-
-gsap.from(".card4Right", { 
-    x: "-500",
-    // opacity: 0,
-    duration: 1,
-    
-    scrollTrigger: {
-        trigger: ".card4Right",
-        start: "top bottom",
-        ease: "power3.inOut",
-        once: true,
-        // toggleActions: "restart none none none",
-        // onEnter onLeave onEnterBack onLeaveBack
-        // markers: true,
-    }
-})
-
-// paralax
-gsap.to(".PricingParalax", {
-    y: "-40vh",
-    scrollTrigger: {
-        trigger: ".PricingParalax",
-        // start: "center bottom",
-        start: "top bottom",
-        end: "top top",
-        // pin: true,
+        anticipatePin: 1,
         scrub: true,
         // markers: true,
     }
@@ -5914,49 +5896,158 @@ const expandBtnCross = document.querySelector(".card4 .expand img")
 const card4Middle = document.querySelector(".card4Middle")
 const pricingNumbers = document.querySelector(".pricingNumbers")
 const card4MiddleChecks = document.querySelector(".card4MiddleChecks")
+const showMoreBtns = document.querySelectorAll(".showMore")
+const showLessBtns = document.querySelectorAll(".showLess")
+
+ScrollTrigger.matchMedia({
+	// desktop
+	"(min-width: 769px)": function() {
+        gsap.from(".card4Left", { 
+            x: "500",
+            // opacity: 0,
+            duration: 1,
+            
+            scrollTrigger: {
+                trigger: ".card4Left",
+                start: "top bottom",
+                ease: "power3.inOut",
+                once: true,
+                // toggleActions: "restart none none none",
+                // onEnter onLeave onEnterBack onLeaveBack
+                // markers: true,
+            }
+        })
+        
+        gsap.from(".card4Right", { 
+            x: "-500",
+            // opacity: 0,
+            duration: 1,
+            
+            scrollTrigger: {
+                trigger: ".card4Right",
+                start: "top bottom",
+                ease: "power3.inOut",
+                once: true,
+                // toggleActions: "restart none none none",
+                // onEnter onLeave onEnterBack onLeaveBack
+                // markers: true,
+            }
+        })
+        var expandPricingTl = gsap.timeline();
+        expandPricingTl.to(".card4Middle", {width: "100%", duration: 0.75, ease: "inOut",})
+        expandPricingTl.to(".card4 .expand img", {rotation: 45, duration: 0.5, onStart: () => { pricingNumbers.style.display = "block"}}, "<")
+        expandPricingTl.fromTo(".pricingNumbers", {opacity: "0"}, {opacity:"1", duration: 0.5}, "-=0.35");
+        expandPricingTl.pause();
+        expandBtn.onclick = expandPricing
+
+        function expandPricing () {
+            expandPricingTl.restart();
+            expandBtn.onclick = retractPricing
+        }
+
+        function retractPricing () {
+            expandPricingTl.reverse();
+            expandBtn.onclick = expandPricing
+        }
+    }, 
+
+    "(max-width: 768px)": function() {
+        expandBtn.onclick = showPricingNumbers
+
+        function showPricingNumbers () {
+            expandCard4(showMoreBtns[1])
+            
+            expandBtn.style.transform = "rotate(45deg)"
+
+            card4MiddleChecks.classList.add("hidden")
+            pricingNumbers.classList.remove("hidden")
+
+            expandBtn.onclick = hidePricingNumbers
+        }
+
+        function hidePricingNumbers () {
+            expandBtn.style.transform = "rotate(0deg)"
+
+            card4MiddleChecks.classList.remove("hidden")
+            pricingNumbers.classList.add("hidden")
+
+            expandBtn.onclick = showPricingNumbers
+        }
+
+        showMoreBtns.forEach(btn => {
+            btn.onclick = function(){expandCard4(this)}
+        });
+        showLessBtns.forEach(btn => {
+            btn.onclick = function(){retractCard4(this)}
+        });
+
+        expandCard4(showMoreBtns[1])
+
+        function expandCard4(btn){
+            console.log("expand")
+            console.dir(btn)
+            btn.onclick = function(){retractCard4(this)}
+            
+            btn.previousElementSibling.style.opacity = 1
+            btn.closest('.card4').style.height = "508px"
+
+            btn.firstElementChild.innerText = "méně"
+            btn.lastElementChild.style.transform = "rotate(180deg)"
+        }
+
+        function retractCard4(btn){
+            console.log("retract")
+            console.dir(btn)
+            btn.onclick = function(){expandCard4(this)}
+            btn.previousElementSibling.style.opacity = 0
+
+            btn.closest('.card4').style.height = ""
+
+            btn.firstElementChild.innerText = "více"
+            btn.lastElementChild.style.transform = "rotate(0deg)"
+        }
+    },
+
+	"all": function() {
+        // paralax
+        gsap.to(".PricingParalax", {
+            y: "-40vh",
+            scrollTrigger: {
+                trigger: ".PricingParalax",
+                // start: "center bottom",
+                start: "top bottom",
+                end: "top top",
+                // pin: true,
+                scrub: true,
+                // markers: true,
+            }
+        });
+        gsap.to(".expand", {
+            scaleX: 1.2,
+            scaleY: 1.2,
+        
+            duration: 0.5,
+        
+            repeat: 5,
+            yoyo: true,
+        
+            scrollTrigger: {
+                trigger: ".pricing",
+                start: "top 40%",
+                end: "top top",
+                // once: true,
+                toggleActions: "restart none none none",
+                // onEnter onLeave onEnterBack onLeaveBack
+                // markers: true,
+            }
+        })
+	}
+});
 
 
-const startWidth = card4Middle.style.width
-// const startWidth = 440
-
-expandBtn.onclick = expandPricing
-
-var expandPricingTl = gsap.timeline();
-expandPricingTl.to(".card4Middle", {width: "100%", duration: 0.75, ease: "inOut",})
-expandPricingTl.to(".card4 .expand img", {rotation: 45, duration: 0.5, onStart: () => { pricingNumbers.style.display = "block"}}, "<")
-expandPricingTl.fromTo(".pricingNumbers", {opacity: "0"}, {opacity:"1", duration: 0.5}, "-=0.35");
-expandPricingTl.pause();
 
 
-function expandPricing () {
-    expandPricingTl.restart();
-    expandBtn.onclick = retractPricing
-}
 
-function retractPricing () {
-    expandPricingTl.reverse();
-    expandBtn.onclick = expandPricing
-}
-
-gsap.to(".expand", {
-    scaleX: 1.2,
-    scaleY: 1.2,
-
-    duration: 0.5,
-
-    repeat: 5,
-    yoyo: true,
-
-    scrollTrigger: {
-        trigger: ".pricing",
-        start: "top 40%",
-        end: "top top",
-        // once: true,
-        toggleActions: "restart none none none",
-        // onEnter onLeave onEnterBack onLeaveBack
-        // markers: true,
-    }
-})
 
 
 
@@ -5964,38 +6055,68 @@ gsap.to(".expand", {
 const vw = (coef) => window.innerWidth * (coef/100)
 const vh = (coef) => window.innerHeight * (coef/100)
 
-gsap.from(".video2", {
-    width: vw(95),
-    height: vw(95)/16*9,
+ScrollTrigger.matchMedia({
+	// desktop
+	"(min-width: 769px)": function() {
+		gsap.from(".video2", {
+            width: vw(95),
+            height: vw(95)/16*9,
+        
+            scrollTrigger: {
+                trigger: ".videoContainer",
+                start: "top bottom",
+                end: "+=" + 700,
+                ease: "power3.out",
+                scrub: true,
+                // once: true,
+                toggleActions: "restart none none none",
+                // onEnter onLeave onEnterBack onLeaveBack
+                // markers: true,
+            }
+        })
+    }, 
+	"all": function() {
+		gsap.from(".detailyKampane", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+        
+            scrollTrigger: {
+                trigger: ".videoContainer",
+                start: "top center",
+                ease: "power3.out",
+                once: true,
+                // toggleActions: "restart none none none",
+                // onEnter onLeave onEnterBack onLeaveBack
+                // markers: true,
+            }
+        })
+	}
+});
 
-    scrollTrigger: {
-        trigger: ".videoContainer",
-        start: "top bottom",
-        end: "+=" + 700,
-        ease: "power3.out",
-        scrub: true,
-        // once: true,
-        toggleActions: "restart none none none",
-        // onEnter onLeave onEnterBack onLeaveBack
-        // markers: true,
-    }
-})
 
-gsap.from(".detailyKampane", {
-    y: 50,
-    opacity: 0,
-    duration: 1,
+var videoReferenceHeight = 457
+var videoReferenceWidth = window.innerWidth-48
 
-    scrollTrigger: {
-        trigger: ".videoContainer",
-        start: "top center",
-        ease: "power3.out",
-        // once: true,
-        toggleActions: "restart none none none",
-        // onEnter onLeave onEnterBack onLeaveBack
-        // markers: true,
-    }
-})
+var videoReference;
+document.querySelector(".player2Play").onclick = function() {
+    videoReference = new YT.Player('player2', {
+        height: '' + videoReferenceHeight,
+        width: '' + videoReferenceWidth,
+        videoId: 'PDFxZSny9tA',
+        events: {
+        'onReady': onVideoReferenceReady,
+        // 'onStateChange': onPlayerStateChange
+        }
+    });
+    document.querySelector(".player2Play").style.display = "none"
+}
+
+function onVideoReferenceReady(event) {
+    event.target.playVideo();   
+}
+
+
 
 document.querySelector('.textContainer button').onmouseover = function() {
     document.querySelector(".kontaktImgHover").style.opacity = 1
@@ -6006,21 +6127,19 @@ document.querySelector('.textContainer button').onmouseout = function() {
     document.querySelector(".kontaktImgHover").style.opacity = 0
     document.querySelector(".kontaktImg").style.opacity = 1
 }
+// var precistArr = document.querySelectorAll(".precist")
+
+// precistArr.forEach(element => {
+//     element.onmouseover = function() {
+//         gsap.to(element.lastElementChild, {x: 12, duration: 0.25})
+//     }
+//     element.onmouseout = function() {
+//         gsap.to(element.lastElementChild, {x: 0, duration: 0.25, ease: "out"})
+//     }
+// });
 
 
-var precistArr = document.querySelectorAll(".precist")
-
-precistArr.forEach(element => {
-    element.onmouseover = function() {
-        gsap.to(element.lastElementChild, {x: 12, duration: 0.25})
-    }
-    element.onmouseout = function() {
-        gsap.to(element.lastElementChild, {x: 0, duration: 0.25, ease: "out"})
-    }
-});
-
-
-// 2. This code loads the IFrame Player API code asynchronously.
+// // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -6032,17 +6151,38 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var ytVideoContainer = document.querySelector(".heroImage .container")
 
-var player;
+var windowWidth = window.innerWidth
+var videoPopupHeight = ytVideoContainer.offsetWidth/16*9
+var videoPopupWidth = ytVideoContainer.offsetWidth
+if (windowWidth <= 768){
+    videoPopupHeight = 457 //(windowWidth-48)/16*9 + 150
+    videoPopupWidth = windowWidth-48
+}
+
+// var videoReferenceHeight = 457
+// var videoReferenceWidth = 366
+
+var videoPopup;
+var videoReference;
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '' + ytVideoContainer.offsetWidth/16*9,
-        width: '' + ytVideoContainer.offsetWidth,
+    videoPopup = new YT.Player('player1', {
+        height: '' + videoPopupHeight,
+        width: '' + videoPopupWidth,
         videoId: 'PDFxZSny9tA',
         events: {
         'onReady': onPlayerReady,
         // 'onStateChange': onPlayerStateChange
         }
     });
+    // videoReference = new YT.Player('player2', {
+    //     height: '' + videoReferenceHeight,
+    //     width: '' + videoReferenceWidth,
+    //     videoId: 'PDFxZSny9tA',
+    //     events: {
+    //     'onReady': onPlayerReady,
+    //     // 'onStateChange': onPlayerStateChange
+    //     }
+    // });
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -6061,7 +6201,7 @@ function onPlayerStateChange(event) {
     }
 }
 function stopVideo() {
-    player.stopVideo();
+    videoPopup.stopVideo();
 }
 // alert() 
 document.querySelector(".videoClose").onclick = function(){
@@ -6078,12 +6218,22 @@ document.addEventListener('keydown', function(event){
 	}
 });
 
-
-
 function closeYtVideo(){
     // alert()
-    player.stopVideo();
+    videoPopup.stopVideo();
     document.querySelector(".videoPopup").style.display = "none"
+}
+
+document.querySelector(".popup-youtube").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    videoPopup.playVideo();
+}
+
+document.querySelector(".videoLoad").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    videoPopup.playVideo();
 }
 
 document.querySelector(".videoPopup").style.display = "none"

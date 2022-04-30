@@ -56,7 +56,12 @@
             top: 52px;
         }
     }
-}
-.videoPopup{
-    display: none;
+    @include mobileMax768p(){
+        .container{
+            width: 100%;
+        }
+        .videoClose{
+            display:none;
+        }
+    }
 }

@@ -1,12 +1,30 @@
 var myNav = document.querySelector('nav')
-// myNav.classList.add("transparentNav")
 
-window.onscroll = function() {myFunction()};
-myNav.setAttribute("class", "transparentNav");
-function myFunction() {
-  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
-    myNav.setAttribute("class", "whiteNav");
-  } else {
-    myNav.setAttribute("class", "transparentNav");
+myNav.classList.add("transparentNav");
+
+gsap.to("nav",{
+  scrollTrigger: {
+    trigger: ".heroImage",
+    start: "1% top",
+    // once: true,
+    // toggleActions: "restart none none none",
+    // onEnter onLeave onEnterBack onLeaveBack
+    // markers: true,
+    onEnter: function(){
+      myNav.classList.toggle("whiteNav")
+      myNav.classList.toggle("transparentNav")
+    },
+    onLeaveBack: function(){
+      myNav.classList.toggle("whiteNav")
+      myNav.classList.toggle("transparentNav")
+    },
   }
+})
+
+
+if (window.innerWidth <= 768){
+  burgerBtn = document.querySelector(".burgerMenuBtn")
+  burgerBtn.onclick = function(){
+    myNav.classList.toggle("expanded")
+  } 
 }

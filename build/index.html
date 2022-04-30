@@ -13,6 +13,10 @@
 		<div class="container">
 			<div class="navLogo">
 				<img class="logo" src="images\bg\adwheelsLogoWhite.svg" alt="">
+				<button class="burgerMenuBtn"><svg width="24" height="10" viewBox="0 0 24 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect width="24" height="2" fill="white" />
+						<rect y="8" width="24" height="2" fill="white" />
+					</svg></button>
 			</div>
 
 			<div class="navButtons">
@@ -43,12 +47,14 @@
 					</li>
 				</ul>
 				<button class="klienstkyPortal navButton">Klientský portál</button>
-				<button class="linkedIn navButton">
-					<img src="images\bg\linkedinLight.svg" alt="">
-				</button>
-				<button class="facebook navButton">
-					<img src="images\bg\facebookLight.svg" alt="">
-				</button>
+				<div class="socials">
+					<button class="linkedIn navButton">
+						<img src="images\bg\linkedinLight.svg" alt="">
+					</button>
+					<button class="facebook navButton">
+						<img src="images\bg\facebookLight.svg" alt="">
+					</button>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -125,7 +131,7 @@
 
 	<section class="map">
 		<div class="container">
-			<h2>Pomůžeme vám dostat se před oči<br><span>až 2 000 000 potenciálních zákazníků.</span><br>Ať už v ČR, nebo za hranicemi.</h2>
+			<h2>Pomůžeme vám dostat se před oči <span>až 2 000 000 potenciálních zákazníků.</span> Ať už v ČR, nebo za hranicemi.</h2>
 		</div>
 		<div class="mapContainer">
 			<img class="mapEurope" src="images/bg/europe.png">
@@ -240,14 +246,14 @@
 
 	<section class="quotes">
 		<div class="container">
-			<div class="dopadyFotoDiv">
+			<div class="quotesFotoDiv">
 				<img src="images/bg/dopadyFoto.png" alt="">
 			</div>
 			<div class="quoteCards">
 
 				<p class="cardNums">01<span>/08</span></p>
 				<div class="quoteContainer">
-					<p class="quote">Nekonvenční reklamní plochy kreativně reinterpretují použití tradičních médií způsoby, které napřímo aktivují zákazníky. Kombinace tradičních a nekonvenčních forem marketingové komunikace je jeden z nejúčinnějších způsobů jak vybudovat znalost o značce a přimět zákazníky ke komunikaci s ní.</p>
+					<p class="quote active">Nekonvenční reklamní plochy kreativně reinterpretují použití tradičních médií způsoby, které napřímo aktivují zákazníky. Kombinace tradičních a nekonvenčních forem marketingové komunikace je jeden z nejúčinnějších způsobů jak vybudovat znalost o značce a přimět zákazníky ke komunikaci s ní.</p>
 					<p class="quote">Za celý život strávíme v autě více než 4 roky života. Za tu dobu průměrně 142x nouzově zabrzdíme, 3312x se napijeme, 2432x někoho políbíme, ale především se nudíme.</p>
 					<p class="quote">Průměrný konzument je vystaven několika tisícům marketingových komunikačních sdělení za den, jen zlomku si však vědomě všimne. Pro inzerenty je tak stále obtížnější dosáhnout na své cílové skupiny.</p>
 					<p class="quote">Navzdory rostoucí popularitě venkovní reklamy přistupují některé státy, včetně České republiky, k regulaci nebo dokonce k plošnému zákazu billboardů. Jedinou efektivní obranou marketingových profesionálu proti takovýmto tendencím je využití nekonvenčních forem marketingové komunikace.</p>
@@ -257,7 +263,7 @@
 					<p class="quote">Znalost značky a ústní doporučení hrají významnou roli během rozhodovacího procesu, a to zejména v kontextu prodejů inzerovaných produktů nebo služeb.</p>
 				</div>
 				<div class="authorContainer">
-					<p class="qouteAuthor">(BIRAGHI, GAMBETTI A GRAFFIGNA, 2014)</p>
+					<p class="qouteAuthor active">(BIRAGHI, GAMBETTI A GRAFFIGNA, 2014)</p>
 					<p class="qouteAuthor">(COMMON SENSE ADVISORY, 2018)</p>
 					<p class="qouteAuthor">(SHAPIRO A NIELSEN, 2013 ; LOPEZ-PUMAREJO, BASSELL, 2009:33)</p>
 					<p class="qouteAuthor">(MAHDAWI, 2015)</p>
@@ -299,10 +305,10 @@
 					<p>Efektivní investici - jeden z nejlevnějších způsobů k získání 1000 impresí napříč mediatypy</p>
 				</div>
 				<div class="card3">
-					<p>Efektivní investici - jeden z nejlevnějších způsobů k získání 1000 impresí napříč mediatypy</p>
+					<p>Pravidelné kontroly čistoty a stavu Vaší reklamy</p>
 				</div>
 				<div class="card3">
-					<p>Efektivní investici - jeden z nejlevnějších způsobů k získání 1000 impresí napříč mediatypy</p>
+					<p>Reklamní formát, který nelze zahodit, přeladit nebo vypnout</p>
 				</div>
 			</div>
 
@@ -327,11 +333,15 @@
 								<p>Polep tahače</p>
 							</li>
 						</ul>
+						<button class="showMore">Zobrazit <span>více</span> <svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0.106513 1.4389L3.74297 5.07527C3.81114 5.14346 3.90365 5.18176 4.00009 5.18176C4.09655 5.18176 4.18903 5.14344 4.25723 5.07524L7.89349 1.43888C8.0355 1.29686 8.0355 1.06663 7.89349 0.92462C7.7515 0.782632 7.52125 0.782608 7.37924 0.92462L4.00009 4.30385L0.620767 0.92462C0.549761 0.853614 0.456695 0.818123 0.363628 0.818123C0.270562 0.818123 0.177495 0.853613 0.106489 0.924644C-0.0354992 1.06666 -0.0354992 1.29689 0.106513 1.4389Z" fill="#33266B" />
+							</svg></button>
 				</div>
 				<div class="card4MiddleContainer">
 					<div class="card4 card4Middle">
+						<button class="expand"><img src="images/bg/pricingExpandPlus.svg" alt=""></button>
 						<div class="card4MiddleChecks">
-							<button class="expand"><img src="images/bg/pricingExpandPlus.svg" alt=""></button>
+
 							<h4>Adwheels Full</h3>
 								<img src="images/bg/adwheelsFull.png" alt="">
 								<ul>
@@ -345,8 +355,11 @@
 										<p>Polep tahače</p>
 									</li>
 								</ul>
+								<button class="showMore">Zobrazit <span>více</span> <svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.106513 1.43902L3.74297 5.07539C3.81114 5.14358 3.90365 5.18188 4.00009 5.18188C4.09655 5.18188 4.18903 5.14356 4.25723 5.07536L7.89349 1.439C8.0355 1.29699 8.0355 1.06675 7.89349 0.924742C7.7515 0.782754 7.52125 0.78273 7.37924 0.924742L4.00009 4.30397L0.620767 0.924742C0.549761 0.853736 0.456695 0.818245 0.363628 0.818245C0.270561 0.818245 0.177495 0.853735 0.106489 0.924766C-0.0354989 1.06678 -0.0354988 1.29701 0.106513 1.43902Z" fill="white" />
+									</svg></button>
 						</div>
-						<div class="pricingNumbers">
+						<div class="pricingNumbers hidden">
 							<h4>Vozidlo v číslech</h3>
 								<ul>
 									<li class="pricingStat">
@@ -389,21 +402,26 @@
 								<p>Polep tahače</p>
 							</li>
 						</ul>
+						<button class="showMore">Zobrazit <span>více</span> <svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0.106513 1.4389L3.74297 5.07527C3.81114 5.14346 3.90365 5.18176 4.00009 5.18176C4.09655 5.18176 4.18903 5.14344 4.25723 5.07524L7.89349 1.43888C8.0355 1.29686 8.0355 1.06663 7.89349 0.92462C7.7515 0.782632 7.52125 0.782608 7.37924 0.92462L4.00009 4.30385L0.620767 0.92462C0.549761 0.853614 0.456695 0.818123 0.363628 0.818123C0.270562 0.818123 0.177495 0.853613 0.106489 0.924644C-0.0354992 1.06666 -0.0354992 1.29689 0.106513 1.4389Z" fill="#33266B" />
+							</svg><svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M7.89349 4.5611L4.25703 0.924734C4.18886 0.85654 4.09635 0.818237 3.99991 0.818237C3.90345 0.818237 3.81097 0.856565 3.74277 0.924759L0.106509 4.56112C-0.035503 4.70314 -0.035503 4.93337 0.106509 5.07538C0.248497 5.21737 0.478751 5.21739 0.620763 5.07538L3.99991 1.69615L7.37923 5.07538C7.45024 5.14639 7.54331 5.18188 7.63637 5.18188C7.72944 5.18188 7.82251 5.14639 7.89351 5.07536C8.0355 4.93334 8.0355 4.70311 7.89349 4.5611Z" fill="white" />
+							</svg></button>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="reklamaVPohybu">
-		<div>
-			<div class="container">
+		<div class="container">
+			<div class="panel">
 				<p>REKLAMA V POHYBU</p>
 				<h3>Každou kampaň připravujeme na klíč.<br><span>Zajímá vás cena? Kontaktujte nás.</span></h3>
 				<button class="rozjetBtn">Chci to rozjet</button>
 			</div>
-			<div class="container">
-				<img src="images/bg/kamionFront.png" alt="">
-			</div>
+		</div>
+		<div class="container">
+			<img src="images/bg/kamionFront.png" alt="">
 		</div>
 	</section>
 
@@ -432,12 +450,14 @@
 	</section>
 
 	<section class="videoReference">
-		<h2>Podívejte se jak jsme uřídili kampaň<br>pro Nordic Telecom</h2>
+		<h2>Podívejte se jak jsme uřídili kampaň pro Nordic Telecom</h2>
 		<div class="videoContainer">
 			<video class="video2" preload="" autoplay="true" muted="" playsinline="" loop="">
 				<source src="images/content/videoReference.mp4" type="video/mp4">
 			</video>
+			<div id="player2"></div>
 			<button class="detailyKampane">Prozkoumat detaily kampaně</button>
+			<button class="player2Play"><img src="images/bg/videoReferencePlayBtn.svg"></button>
 		</div>
 	</section>
 
@@ -454,16 +474,18 @@
 
 	<section class="kontakt">
 		<div class="container">
-			<div class="textContainer">
-				<p>KONTAKT</p>
-				<h3>Připomeňte se zákazníkům i ve<br>skutečném světě. <span>Konktaktuje nás!</span></h3>
-				<button class="rozjetBtn">Chci to rozjet</button>
-			</div>
-			<div class="imgDiv">
-				<img class="kontaktImgHover" src="images/bg/kontaktImageHover.png" alt="">
-				<img class="kontaktImg" src="images/bg/kontaktImage.png" alt="">
-			</div>
-		</div>
+			<div class="panel">
+				<div class="textContainer">
+					<p>KONTAKT</p>
+					<h3>Připomeňte se zákazníkům i ve<br>skutečném světě. <span>Konktaktuje nás!</span></h3>
+					<button class="kontaktBtn">Chci to rozjet</button>
+				</div>
+				<div class="imgDiv">
+					<img class="kontaktImgHover" src="images/bg/kontaktImageHover.png" alt="">
+					<img class="kontaktImg" src="images/bg/kontaktImage.png" alt="">
+				</div>
+				<div>
+				</div>
 	</section>
 
 	<section class="viceInfo">
@@ -503,12 +525,12 @@
 		<div class="container">
 
 			<button class="videoClose"><img src="images/bg/pricingExpandPlus.svg" alt=""></button>
-			<div id="player">
-			</div>
+			<div id="player1"></div>
 		</div>
 	</section>
 
 	<section class="footer">
+		<div class="lineMobile"></div>
 		<div class="container bulkInfo">
 			<div class="logoMoto">
 				<img src="images/bg/adwheelsLogoWhite.svg" alt="">
@@ -530,6 +552,8 @@
 				<p>Další odkazy</p>
 				<a href="">Kontakt</a>
 				<a href="">Klientský portál</a>
+				<a href="" class="linkedIn"><img src="images/bg/linkedInLight.svg"></a>
+				<a href="" class="facebook"><img src="images/bg/facebookLight.svg"></a>
 			</div>
 			<div class="linkColumn">
 				<p>Kancelář</p>
@@ -545,7 +569,7 @@
 	<script src="js/gsap.min.js"></script>
 	<script src="js/DrawSVGPlugin.min.js"></script>
 	<script src="js/ScrollTrigger.min.js"></script>
-	<script src="js/scripts.js?202204285569"></script>
+	<script src="js/scripts.js?20220501034"></script>
 </body>
 
 </html>

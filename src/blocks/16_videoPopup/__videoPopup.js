@@ -1,4 +1,4 @@
-// 2. This code loads the IFrame Player API code asynchronously.
+// // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -10,17 +10,38 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var ytVideoContainer = document.querySelector(".heroImage .container")
 
-var player;
+var windowWidth = window.innerWidth
+var videoPopupHeight = ytVideoContainer.offsetWidth/16*9
+var videoPopupWidth = ytVideoContainer.offsetWidth
+if (windowWidth <= 768){
+    videoPopupHeight = 457 //(windowWidth-48)/16*9 + 150
+    videoPopupWidth = windowWidth-48
+}
+
+// var videoReferenceHeight = 457
+// var videoReferenceWidth = 366
+
+var videoPopup;
+var videoReference;
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '' + ytVideoContainer.offsetWidth/16*9,
-        width: '' + ytVideoContainer.offsetWidth,
+    videoPopup = new YT.Player('player1', {
+        height: '' + videoPopupHeight,
+        width: '' + videoPopupWidth,
         videoId: 'PDFxZSny9tA',
         events: {
         'onReady': onPlayerReady,
         // 'onStateChange': onPlayerStateChange
         }
     });
+    // videoReference = new YT.Player('player2', {
+    //     height: '' + videoReferenceHeight,
+    //     width: '' + videoReferenceWidth,
+    //     videoId: 'PDFxZSny9tA',
+    //     events: {
+    //     'onReady': onPlayerReady,
+    //     // 'onStateChange': onPlayerStateChange
+    //     }
+    // });
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -39,7 +60,7 @@ function onPlayerStateChange(event) {
     }
 }
 function stopVideo() {
-    player.stopVideo();
+    videoPopup.stopVideo();
 }
 // alert() 
 document.querySelector(".videoClose").onclick = function(){
@@ -56,12 +77,22 @@ document.addEventListener('keydown', function(event){
 	}
 });
 
-
-
 function closeYtVideo(){
     // alert()
-    player.stopVideo();
+    videoPopup.stopVideo();
     document.querySelector(".videoPopup").style.display = "none"
+}
+
+document.querySelector(".popup-youtube").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    videoPopup.playVideo();
+}
+
+document.querySelector(".videoLoad").onclick = function(){
+    // alert()
+    document.querySelector(".videoPopup").style.display = "block"
+    videoPopup.playVideo();
 }
 
 document.querySelector(".videoPopup").style.display = "none"

@@ -77,6 +77,7 @@
         }
     }
     @include mobileMax768p(){
+        margin-top: 0px;
         .container{
             margin-top: 38px;
             flex-wrap: wrap;

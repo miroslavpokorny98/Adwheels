@@ -163,11 +163,14 @@
     }
 
     @include mobileMax768p{
+        video {
+            transform: translateX(-300px);
+        }
         .transpAdwheels {display: none;}
         text-align: center;
         .container{
             top: auto;
-            bottom: 90px;
+            bottom: 120px;
             display: flex;
             flex-direction: column;
             align-items: center;

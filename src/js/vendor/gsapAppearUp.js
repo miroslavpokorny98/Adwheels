@@ -8,7 +8,7 @@ targets.forEach(el => {
         
         scrollTrigger: {
             trigger: el,
-            start: "top 110%",
+            start: "top 125%",
             ease: "power3.inOut",
             once: true,
             // toggleActions: "restart none none none",

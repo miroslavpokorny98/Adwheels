@@ -40,6 +40,11 @@ if (windowWidth <= 1920){
 if (windowWidth <= 1440){
     initMapScale = 0.9
 }
+if (windowWidth <= 768){
+    initMapScale = (window.innerWidth-2*24)/768
+    endMapScale = initMapScale-0.1*initMapScale/0.4
+}
+
 
 
 mapScrollOut.fromTo([".mapContainer img", ".mapContainer svg"],{

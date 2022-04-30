@@ -1,16 +1,17 @@
 .reklamaVPohybu {
     margin-top: 80px;
+    height: 376px;
     @include windowMax1440p(){
         margin-top: 0px;
     }
     .container:first-of-type {
+        overflow: auto;
+    }
+    .panel {
         height: 376px;
         background: #D99A27;
         border-radius: 12px;
         overflow: auto;
-        @include windowMax1440p(){
-            max-width: 1046px;
-        }
     }
 
     p {
@@ -52,11 +53,65 @@
 
     .container:nth-last-of-type(1) {
         height: 0px;
+        overflow: visible;
         img {
             position: relative;
             left: 754px;
             top: -314px; 
             z-index: 100;
+            @include windowMax1440p(){
+                left: 665px;
+            }
+        }
+    }
+
+    @include mobileMax768p(){
+        margin-top: calc(-40vh+150px);
+        overflow: visible;
+        height: auto;
+
+        .panel {
+            height: 492px;
+            background: #D99A27;
+            border-radius: 12px;
+            overflow: auto;
+            max-width: 366px;
+            margin: 0 auto 0 auto;
+        }
+    
+        p {
+            display: none;
+        }
+        
+        h3 {
+            @include h6Medium();
+            font-family: 'Objectivity-Regular';
+            color: #FFFFFF;
+            text-align: center;
+            max-width: 230px;
+            margin: 64px auto 0 auto;
+        }
+    
+        .rozjetBtn {
+            margin: 33px auto 0 auto;
+            display: block;
+        }
+
+        .container:nth-last-of-type(1) {
+            height: 0px;
+            overflow: visible;
+            text-align: center;
+            img {
+                // transform: scale(0.667);
+                height: 249px;
+                width: 229px;
+                object-fit: cover;
+                position: relative;
+                left: auto;
+                right: auto;
+                top: -200px; 
+                z-index: 100;
+            }
         }
     }
 }

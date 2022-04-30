@@ -5,11 +5,7 @@
         margin-top: 220px;
     }
     height: 200vh; // must be same as distance scrolled
-    .container {
-        @include windowMax1440p(){
-            max-width: 1046px;
-        }
-    }
+
     .background {
         z-index: 5;
         width: 100%;
@@ -31,11 +27,8 @@
     }
 
     .card3Container {
-        // position: relative;
-        // left: 0px;
         display: flex; 
         flex-direction: row;
-        /* justify-content: space-evenly; */
         align-items: flex-start;
         overflow: hidden;
         width: 300%;
@@ -72,6 +65,46 @@
                 // @include h5Medium();
                 // color: #FFFFFF;
                 font-size: 20px;
+            }
+        }
+    }
+    @include mobileMax768p(){
+        margin-top: 140px;
+        .container {
+            width: calc(100vw-80px);
+            h2 {
+                @include h4Medium();
+                margin: 40vh 0 24px 0px;
+                color: #FFFFFF;
+                width: 100%;
+            }
+        }
+        .card3Container {
+            // display: flex; 
+            // flex-direction: row;
+            // align-items: flex-start;
+            // overflow: hidden;
+            width: fit-content;
+            margin-left: 40px;
+        }
+        .card3 {
+            width: 250px;
+            height: 280px;
+            // background: rgba(242, 239, 245, 0.2);
+            // border-radius: 12px;
+            margin-right: 16px;
+    
+            // backdrop-filter: blur(10px);   
+                 
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            // text-align: center;
+    
+            p {
+                @include bodyText14pxRegular();
+                color: #FFFFFF;
+                max-width: 160px;
             }
         }
     }

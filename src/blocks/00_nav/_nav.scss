@@ -1,6 +1,11 @@
-// section{
-//     overflow-x: hidden;
-// }
+section{
+    // overflow-y: hidden;
+    // overflow-y: visible;
+    @include mobileMax768p(){
+        overflow: hidden;
+    } 
+    // overflow-y: auto;
+}
 
 nav {
     position: fixed; /* Set the navbar to fixed position */
@@ -8,16 +13,13 @@ nav {
     width: 100%; /* Full width */
     z-index: 9999;
     // height: 89px;    
-    @include mobileMax768p(){  
-        width: 375px;             //temporary
-        display: none;
-    }
+    overflow: hidden;
     // display: none;
     /* opacity: 0.08; */
     border-bottom: 0.75px solid rgba(58, 58, 58, 0.08);
 
     @include navTransitionDown();
-
+    transition: all 1s;
     .container {
         height: 89px; 
         @include windowMax1440p(){
@@ -75,9 +77,6 @@ nav {
         .sellected {
             img {opacity: 1;}
         }
-        @include mobileMax768p(){
-            display: none;
-        }
     }
 
     .navButtons{
@@ -106,29 +105,48 @@ nav {
         width: 54px;
         height: 54px;
     }
+
+    .burgerMenuBtn{
+        display: none;
+    }
+
     @include mobileMax768p(){
         // .logo{display: none;}
-        .navButtons{display: none;}
-        
-    }
-}
-
-.transparentNav {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background-color: rgba(0, 0, 0, 0);
-
-    transition-property: background-color;
-    transition-duration: 0.25s;
-    transition-timing-function: ease-in-out;
-    a {
-        color: #FFFFFF;
-        // opacity: 0.8;
-    }
-    .klienstkyPortal {
-        color: white;
-    }
-    .navButton {
-        background: rgba(240, 240, 240, 0.05);
+        overflow: visible;
+        height: 79px; 
+        transition: all 0.75s;
+        .container {
+            display: flex; 
+            height: 100%;
+            flex-direction: column;
+            justify-content:center;
+            align-items: center;
+            overflow: hidden;
+            // background-color: aquamarine;
+            // max-height: 100%;
+        }
+        .navLogo{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .logo{
+                width: 120px;
+            }
+            .burgerMenuBtn{
+                display: block;
+                svg rect{
+                    fill: black;
+                }
+                background: none;
+                border: none;
+            }
+        }
+        .navButtons{
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
     }
 }
 
@@ -162,4 +180,88 @@ nav {
 
 }
 
+.transparentNav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0);
+
+    transition-property: background-color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    a {
+        color: #FFFFFF;
+        // opacity: 0.8;
+    }
+    .klienstkyPortal {
+        color: white;
+    }
+    .navButton {
+        background: rgba(240, 240, 240, 0.05);
+    }
+    .navLogo .burgerMenuBtn{
+        svg rect{
+            fill: white;
+        }
+    }
+}
+
+.expanded{
+    height: 100vh;
+    background-color: white;
+    transition: all 1s;
+    .container {
+        // display: flex; 
+        // height: 100%;
+        // flex-direction: column;
+        justify-content:flex-start;
+    }
+    .navLogo{
+        min-height: 79px;
+        height: 79px;
+        .logo {
+            content: url("images/bg/adwheelsLogoBlack.svg");
+        }
+    }
+    .navButtons{
+        display: block;
+        display: flex; 
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 48px;
+        height: 100%;
+        margin: 0;
+        opacity: 1;
+        ul {
+            width: 100%;
+            margin: 30px auto 0 auto;
+            height: 350px;
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            a {
+                @include h4Medium();
+                color: #3A3A3A;
+            }
+        }
+        .klienstkyPortal {
+            display: block;
+            @include bodyText14pxMedium();
+            color: white;
+            background-color: #D99A27;
+            width: 180px;
+            height: 58px;
+            margin: 0 auto 0 auto;
+        }
+        
+        .socials{
+            justify-self: flex-end;
+            .linkedIn, .facebook {
+                width: 32px;
+                height: 32px;
+                background: none;
+            }
+        }
+    }
+}
 

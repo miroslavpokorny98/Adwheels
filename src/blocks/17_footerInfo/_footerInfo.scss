@@ -1,12 +1,8 @@
 .footer {
     background-color: #000000;
     margin-top: 215px;
-    .logoMoto p {
-        max-width: 256px;
-        margin-top: 47px;
-        @include bodyText14pxRegular();
-        color: #FFFFFF;
-    }
+    position: relative;
+
     .bulkInfo {
         display: flex; 
         flex-direction: row;
@@ -14,6 +10,14 @@
         align-items:flex-start;
         padding: 120px 0 0 0;
     }
+
+    .logoMoto p {
+        max-width: 256px;
+        margin-top: 47px;
+        @include bodyText14pxRegular();
+        color: #FFFFFF;
+    }
+    
     .linkColumn {
         p {
             @include bodyText14pxRegular();
@@ -31,6 +35,14 @@
             &:hover{
                 color: #D99A27;
                 transition: color 0.25s;
+                opacity: 0.6;
+            }
+            &.linkedIn,&.facebook {
+                display: inline-block;
+                opacity: 1;
+            }
+            &.facebook {
+                margin-left: 32px;
             }
         }
         .adress {
@@ -51,5 +63,60 @@
         opacity: 0.3;
         padding: 36px 0;
         text-align: center;
+    }
+
+    @include mobileMax768p(){
+        margin-top: 137px;
+        .lineMobile {
+            position: absolute;
+            top: 239px;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .bulkInfo {
+            flex-wrap: wrap;
+            padding: 72px 0 0 0;
+            margin: 0 55px 0 64px;
+            row-gap: 40px;
+            column-gap: 20px;
+        }
+        .logoMoto {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 48px;
+            margin-bottom: 8px;
+            p {
+                text-align: center;
+                margin: 24px 0 0px 0;
+            }
+        }
+        .linkColumn {
+            width: 110px;
+            height: fit-content;
+            margin: 0 0 0 0;
+            p {
+                margin-bottom: 24px;
+            }
+            a {
+                margin: 16px 0 0 0;
+            }
+            .adress {
+                margin-top: 16px;
+                margin-bottom: 0;
+            }
+        }
+        .line{
+            margin-top: 48px;
+        }
+        .legalInfo {
+            @include bodyText12pxRegular();
+            color: #FFFFFF;
+            padding: 32px 34px 56px 34px;
+            margin: 0 auto 0 auto;
+            max-width: 400px;
+        }
     }
 }

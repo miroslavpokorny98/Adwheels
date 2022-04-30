@@ -27,14 +27,10 @@ arrowLeft.onclick = function () {
 function updateQuote (quoteCurr, quoteNext) {
     cardNums.innerHTML = "0" + (quoteNext+1) + "<span>/0" + quotes.length + "</span>"
     
-    quotes[quoteCurr].style.opacity = "0";
-    qouteAuthors[quoteCurr].style.opacity = "0";
-    
-    setTimeout(function () {
-        quotes[quoteNext].style.opacity = "1";
-        qouteAuthors[quoteNext].style.opacity = "0.5";
-    }, 250);  // must also change transition in css x2
+    quotes[quoteCurr].classList.remove("active");
+    qouteAuthors[quoteCurr].classList.remove("active");
 
-    
+    quotes[quoteNext].classList.add("active");
+    qouteAuthors[quoteNext].classList.add("active");
 }
 
