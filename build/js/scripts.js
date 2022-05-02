@@ -5479,11 +5479,11 @@ return PhotoSwipeUI_Default;
 });
 
 
-const targets = [".vlastnosti", ".dopady", ".quotes", ".reklamaVPohybu", ".realizace", ".klienti", ".kontakt", ".viceInfo"];
+const targets1 = [".vlastnosti", ".dopady", ".quotes", ".reklamaVPohybu"];
 
 
 
-targets.forEach(el => {
+targets1.forEach(el => {
 
     gsap.from(el, { 
 
@@ -5519,7 +5519,43 @@ targets.forEach(el => {
 
 
 
+const targets2 = [".klienti", ".kontakt", ".viceInfo"];
 
+
+
+targets2.forEach(el => {
+
+    gsap.from(el, { 
+
+        y: "35vh",
+
+        opacity: 0,
+
+        duration: 0.75,
+
+        
+
+        scrollTrigger: {
+
+            trigger: el,
+
+            start: "top 150%",
+
+            ease: "power3.inOut",
+
+            once: true,
+
+            // toggleActions: "restart none none none",
+
+            // onEnter onLeave onEnterBack onLeaveBack
+
+            // markers: true,
+
+        }
+
+    })
+
+});
 
 
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -5537,32 +5573,219 @@ var myNav = document.querySelector('nav')
 
 myNav.classList.add("transparentNav");
 
-gsap.to("nav",{
-  scrollTrigger: {
-    trigger: ".heroImage",
-    start: "1% top",
-    // once: true,
-    // toggleActions: "restart none none none",
-    // onEnter onLeave onEnterBack onLeaveBack
-    // markers: true,
-    onEnter: function(){
-      myNav.classList.toggle("whiteNav")
-      myNav.classList.toggle("transparentNav")
-    },
-    onLeaveBack: function(){
-      myNav.classList.toggle("whiteNav")
-      myNav.classList.toggle("transparentNav")
-    },
-  }
+ScrollTrigger.matchMedia({
+	// desktop
+	"(max-width: 768px)": function() {
+		
+    // document.querySelector(".navButtons").style.display = "none"
+
+    var expandNav = gsap.timeline({
+      
+      ease: "power3.Out",
+      yoyoEase: true,
+      onStart: function(){myNav.classList.add("expanded"); disableScroll() },
+      onReverseComplete: function(){myNav.classList.remove("expanded"); enableScroll()}
+    })
+
+    expandNav.fromTo("nav", {height: 79}, {
+      height: "100vh", 
+      duration: 0.75,
+    })
+    expandNav.fromTo(".navButtons", {
+        opacity: 0
+      }, {
+        opacity: 1,
+        duration: 0.5
+      }, "<0.5")
+    expandNav.fromTo(".burger", {opacity: 1}, {opacity: 0, duration: 0.75}, "0")
+    expandNav.fromTo(".cross", {opacity: 0}, {opacity: 1, duration: 0.75}, "0.5")
+    expandNav.pause()
+
+    if (window.innerWidth <= 768){
+      burgerBtn = document.querySelector(".burgerMenuBtn")
+      burgerBtn.onclick = function(){burgerExpandNav(burgerBtn)}
+    }
+
+    function burgerExpandNav(btn){
+      expandNav.restart()
+      btn.onclick = function(){burgerRetractNav(btn)}
+    }
+    function burgerRetractNav(btn){
+      expandNav.reverse()
+      btn.onclick = function(){burgerExpandNav(btn)}
+    }
+    
+    function disableScroll() {
+      // Get the current page scroll position
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+
+          // if any scroll is attempted, set this to the previous value
+          window.onscroll = function() {
+              window.scrollTo(scrollLeft, scrollTop);
+          };
+    }
+
+    function enableScroll() {
+      window.onscroll = function() {};
+    }
+
+
+  },
+	"all": function() {
+		gsap.to("nav",{
+      scrollTrigger: {
+        trigger: ".heroImage",
+        start: "1% top",
+        // once: true,
+        // toggleActions: "restart none none none",
+        // onEnter onLeave onEnterBack onLeaveBack
+        // markers: true,
+        onEnter: function(){
+          myNav.classList.toggle("whiteNav")
+          myNav.classList.toggle("transparentNav")
+        },
+        onLeaveBack: function(){
+          myNav.classList.toggle("whiteNav")
+          myNav.classList.toggle("transparentNav")
+        },
+      }
+    })
+	}
+});
+// PC
+var foto1MaxWidth = "80%"
+var foto2MaxWidth = "58%"
+var fotoSectionAnimationEnd = "bottom 90%"
+
+// Mobile
+if (window.innerWidth <= 768){
+    foto1MaxWidth = 100*(window.innerWidth-48)/window.innerWidth + "%"
+    foto2MaxWidth = 100*(window.innerWidth-48)/window.innerWidth + "%"
+    // foto1MaxWidth = "100%"
+    // foto2MaxWidth = "100%"
+    fotoSectionAnimationEnd = "top 50%"
+}
+
+gsap.to(".fotoSectionImgDiv1", {
+    // duration: 1,
+    width: foto1MaxWidth,
+    scrollTrigger: {
+        trigger: ".fotoSectionImgDiv1",
+        start: "top 90%",
+        end: fotoSectionAnimationEnd,
+        scrub: 1,
+        // once: true,
+
+        toggleActions: "restart none none none",
+        // onEnter onLeave onEnterBack onLeaveBack
+        // markers: true,
+    }
 })
 
+gsap.to(".fotoSectionImgDiv2", {
+    width: foto2MaxWidth,
+    scrollTrigger: {
+        trigger: ".fotoSectionImgDiv2",
+        start: "top 90%",
+        end: fotoSectionAnimationEnd,
+        scrub: 1,
+        // once: true,
 
-if (window.innerWidth <= 768){
-  burgerBtn = document.querySelector(".burgerMenuBtn")
-  burgerBtn.onclick = function(){
-    myNav.classList.toggle("expanded")
-  } 
+        toggleActions: "restart none none none",
+        // onEnter onLeave onEnterBack onLeaveBack
+        // markers: true,
+    }
+})
+var mapScrollIn = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".mapContainer",
+        start: "center 80%",
+        end: "top top",
+        scrub: 0.5,
+        // markers: true,
+    }
+})
+
+mapScrollIn.fromTo(".hScrollIn path",{
+    drawSVG: "0%",
+    }, {
+    drawSVG: "100%",
+});
+
+
+
+var mapScrollOut = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".mapContainer",
+        start: "top top",
+        end: "bottom top", // need to scroll 100vh to complete
+        pin: true,
+        scrub: 0.5,
+        // anticipatePin: 3,
+        // markers: true,
+    }
+})
+
+var initMapScale = 1.2
+var endMapScale = 0.8
+var windowWidth = window.innerWidth
+if (windowWidth <= 2048){
+    initMapScale = 1.4
+    endMapScale = 0.7
 }
+if (windowWidth <= 1920){
+    initMapScale = 1.2
+}
+if (windowWidth <= 1440){
+    initMapScale = 0.9
+}
+if (windowWidth <= 768){
+    initMapScale = (window.innerWidth-2*24)/768
+    endMapScale = initMapScale-0.1*initMapScale/0.4
+}
+
+
+
+mapScrollOut.fromTo([".mapContainer img", ".mapContainer svg"],{
+    scale: initMapScale,
+    }, {
+    scale: endMapScale,
+    ease: "none",
+    duration: 4,
+});
+
+mapScrollOut.fromTo(".hScrollOut path",{
+    drawSVG: "0%",
+    }, {
+    drawSVG: "100%",
+    duration: 4,
+    },
+    "<"
+);
+
+mapScrollOut.to(".mapCz",{
+    opacity: 0,
+    duration: 1,
+    },
+    "<"
+);
+
+mapScrollOut.fromTo(".mapEurope",{
+    opacity: 0,
+    }, {
+    opacity: 1,
+    duration: 2,
+    },
+    "<"
+);
+
+mapScrollOut.to(".map h2",{
+    opacity: 0,
+    duration: 0.5,
+    },
+    "<"
+);
 let informations = document.querySelectorAll(".information")
 // let infoImgWidth = document.querySelector(".infoImgDiv").style.width
 
@@ -5676,220 +5899,6 @@ infoInitTL.fromTo(".infoImgDiv:nth-child(1)",
 )
 infoInitTL.from(".infoList", {y: "20vh", opacity: 0, duration: 0.7}, "<")
 infoInitTL.from(".infoScrollBar", {y: "20vh", opacity: 0, duration: 0.7}, "<")
-
-var mapScrollIn = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".mapContainer",
-        start: "center 80%",
-        end: "top top",
-        scrub: 0.5,
-        // markers: true,
-    }
-})
-
-mapScrollIn.fromTo(".hScrollIn path",{
-    drawSVG: "0%",
-    }, {
-    drawSVG: "100%",
-});
-
-
-
-var mapScrollOut = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".mapContainer",
-        start: "top top",
-        end: "bottom top", // need to scroll 100vh to complete
-        pin: true,
-        scrub: 0.5,
-        // anticipatePin: 3,
-        // markers: true,
-    }
-})
-
-var initMapScale = 1.2
-var endMapScale = 0.8
-var windowWidth = window.innerWidth
-if (windowWidth <= 2048){
-    initMapScale = 1.4
-}
-if (windowWidth <= 1920){
-    initMapScale = 1.2
-}
-if (windowWidth <= 1440){
-    initMapScale = 0.9
-}
-if (windowWidth <= 768){
-    initMapScale = (window.innerWidth-2*24)/768
-    endMapScale = initMapScale-0.1*initMapScale/0.4
-}
-
-
-
-mapScrollOut.fromTo([".mapContainer img", ".mapContainer svg"],{
-    scale: initMapScale,
-    }, {
-    scale: endMapScale,
-    ease: "none",
-    duration: 4,
-});
-
-mapScrollOut.fromTo(".hScrollOut path",{
-    drawSVG: "0%",
-    }, {
-    drawSVG: "100%",
-    duration: 4,
-    },
-    "<"
-);
-
-mapScrollOut.to(".mapCz",{
-    opacity: 0,
-    duration: 1,
-    },
-    "<"
-);
-
-mapScrollOut.fromTo(".mapEurope",{
-    opacity: 0,
-    }, {
-    opacity: 1,
-    duration: 2,
-    },
-    "<"
-);
-
-mapScrollOut.to(".map h2",{
-    opacity: 0,
-    duration: 0.5,
-    },
-    "<"
-);
-// PC
-var foto1MaxWidth = "80%"
-var foto2MaxWidth = "58%"
-var fotoSectionAnimationEnd = "bottom 90%"
-
-// Mobile
-if (window.innerWidth <= 768){
-    foto1MaxWidth = 100*(window.innerWidth-48)/window.innerWidth + "%"
-    foto2MaxWidth = 100*(window.innerWidth-48)/window.innerWidth + "%"
-    // foto1MaxWidth = "100%"
-    // foto2MaxWidth = "100%"
-    fotoSectionAnimationEnd = "top 50%"
-}
-
-gsap.to(".fotoSectionImgDiv1", {
-    // duration: 1,
-    width: foto1MaxWidth,
-    scrollTrigger: {
-        trigger: ".fotoSectionImgDiv1",
-        start: "top 90%",
-        end: fotoSectionAnimationEnd,
-        scrub: 1,
-        // once: true,
-
-        toggleActions: "restart none none none",
-        // onEnter onLeave onEnterBack onLeaveBack
-        // markers: true,
-    }
-})
-
-gsap.to(".fotoSectionImgDiv2", {
-    width: foto2MaxWidth,
-    scrollTrigger: {
-        trigger: ".fotoSectionImgDiv2",
-        start: "top 90%",
-        end: fotoSectionAnimationEnd,
-        scrub: 1,
-        // once: true,
-
-        toggleActions: "restart none none none",
-        // onEnter onLeave onEnterBack onLeaveBack
-        // markers: true,
-    }
-})
-const cardNums = document.querySelector(".cardNums");
-const quote = document.querySelector(".quote");
-const quotes = document.querySelectorAll(".quote");
-const qouteAuthors = document.querySelectorAll(".qouteAuthor");
-const arrowLeft = document.querySelector(".arrowLeft");
-const arrowRight = document.querySelector(".arrowRight");
-
-currentQuote = 0;
-
-arrowRight.onclick = function () {
-    var nextQuote = (currentQuote + 1) % quotes.length
-    updateQuote(currentQuote, nextQuote)
-    currentQuote = nextQuote
-}
-
-arrowLeft.onclick = function () {
-    var nextQuote = 0
-    if (currentQuote == 0){
-        nextQuote = rotation.length - 1
-    } else {
-        nextQuote = (currentQuote - 1) % quotes.length
-    }
-    updateQuote(currentQuote, nextQuote)
-    currentQuote = nextQuote
-}
-
-function updateQuote (quoteCurr, quoteNext) {
-    cardNums.innerHTML = "0" + (quoteNext+1) + "<span>/0" + quotes.length + "</span>"
-    
-    quotes[quoteCurr].classList.remove("active");
-    qouteAuthors[quoteCurr].classList.remove("active");
-
-    quotes[quoteNext].classList.add("active");
-    qouteAuthors[quoteNext].classList.add("active");
-}
-
-
-var windowWidth = window.innerWidth
-var card3Spacing = 32
-var HSScrollIn = 2500
-if (windowWidth <= 768){
-    card3Spacing = 16
-    HSScrollIn = 768
-}
-
-
-gsap.from(".card3Container", {
-    x: HSScrollIn,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".horizontalScroll .background",
-        // start: "center bottom",
-        start: "top bottom",
-        end: "top top",
-        // pin: true,
-        scrub: true,
-        // markers: true,
-    }
-});
-
-var card3Arr = document.querySelectorAll(".card3")
-// var card3 = document.querySelector(".card3")
-var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
-var horizontalScrollDistance = 
-    card3Arr.length*card3Arr[0].offsetWidth 
-    + (card3Arr.length-1)*card3Spacing 
-    - horizontalScrollContainer.offsetWidth
-
-gsap.fromTo(".card3Container",{x:0}, {
-    x: -horizontalScrollDistance,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".horizontalScroll .background",
-        start: "top top",
-        end: "bottom top", // need to scroll 100vh to complete
-        pin: true,
-        anticipatePin: 1,
-        scrub: true,
-        // markers: true,
-    }
-});
 
 const expandBtn = document.querySelector(".card4 .expand")
 const expandBtnCross = document.querySelector(".card4 .expand img")
@@ -6010,18 +6019,18 @@ ScrollTrigger.matchMedia({
 
 	"all": function() {
         // paralax
-        gsap.to(".PricingParalax", {
-            y: "-40vh",
-            scrollTrigger: {
-                trigger: ".PricingParalax",
-                // start: "center bottom",
-                start: "top bottom",
-                end: "top top",
-                // pin: true,
-                scrub: true,
-                // markers: true,
-            }
-        });
+        // gsap.to(".PricingParalax", {
+        //     y: "-40vh",
+        //     scrollTrigger: {
+        //         trigger: ".PricingParalax",
+        //         // start: "center bottom",
+        //         start: "top bottom",
+        //         end: "top top",
+        //         // pin: true,
+        //         scrub: true,
+        //         // markers: true,
+        //     }
+        // });
         gsap.to(".expand", {
             scaleX: 1.2,
             scaleY: 1.2,
@@ -6052,16 +6061,119 @@ ScrollTrigger.matchMedia({
 
 
 
+document.querySelector('.rozjetBtn').onmouseover = function() {
+    document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 1
+    document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 0
+}
+
+document.querySelector('.rozjetBtn').onmouseout = function() {
+    document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 0
+    document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 1
+}
+var windowWidth = window.innerWidth
+var card3Spacing = 32
+var HSScrollIn = 2500
+if (windowWidth <= 768){
+    card3Spacing = 16
+    HSScrollIn = 768
+}
+
+
+gsap.from(".card3Container", {
+    x: HSScrollIn,
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".horizontalScroll .background",
+        // start: "center bottom",
+        start: "top bottom",
+        end: "top top",
+        // pin: true,
+        scrub: true,
+        // markers: true,
+    }
+});
+
+var card3Arr = document.querySelectorAll(".card3")
+// var card3 = document.querySelector(".card3")
+var horizontalScrollContainer = document.querySelector(".horizontalScroll .background .container")
+var horizontalScrollDistance = 
+    card3Arr.length*card3Arr[0].offsetWidth 
+    + (card3Arr.length-1)*card3Spacing 
+    - horizontalScrollContainer.offsetWidth
+
+gsap.fromTo(".card3Container",{x:0}, {
+    x: -horizontalScrollDistance,
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".horizontalScroll .background",
+        start: "top top",
+        end: "bottom top", // need to scroll 100vh to complete
+        pin: true,
+        anticipatePin: 1,
+        scrub: true,
+        // markers: true,
+    }
+});
+
+gsap.from(".realizaceParalax", {
+    y: "40vh",
+    scrollTrigger: {
+        trigger: ".realizaceParalax",
+        // start: "center bottom",
+        start: "top bottom",
+        end: "top top",
+        // pin: true,
+        scrub: true,
+        // markers: true,
+    }
+});
+const cardNums = document.querySelector(".cardNums");
+const quote = document.querySelector(".quote");
+const quotes = document.querySelectorAll(".quote");
+const qouteAuthors = document.querySelectorAll(".qouteAuthor");
+const arrowLeft = document.querySelector(".arrowLeft");
+const arrowRight = document.querySelector(".arrowRight");
+
+currentQuote = 0;
+
+arrowRight.onclick = function () {
+    var nextQuote = (currentQuote + 1) % quotes.length
+    updateQuote(currentQuote, nextQuote)
+    currentQuote = nextQuote
+}
+
+arrowLeft.onclick = function () {
+    var nextQuote = 0
+    if (currentQuote == 0){
+        nextQuote = rotation.length - 1
+    } else {
+        nextQuote = (currentQuote - 1) % quotes.length
+    }
+    updateQuote(currentQuote, nextQuote)
+    currentQuote = nextQuote
+}
+
+function updateQuote (quoteCurr, quoteNext) {
+    cardNums.innerHTML = "0" + (quoteNext+1) + "<span>/0" + quotes.length + "</span>"
+    
+    quotes[quoteCurr].classList.remove("active");
+    qouteAuthors[quoteCurr].classList.remove("active");
+
+    quotes[quoteNext].classList.add("active");
+    qouteAuthors[quoteNext].classList.add("active");
+}
+
+
 const vw = (coef) => window.innerWidth * (coef/100)
 const vh = (coef) => window.innerHeight * (coef/100)
 
 ScrollTrigger.matchMedia({
 	// desktop
 	"(min-width: 769px)": function() {
-		gsap.from(".video2", {
+		gsap.from(".videoContainer", {
             width: vw(95),
             height: vw(95)/16*9,
-        
+            onStart: function(){document.querySelector("#player2").src += "&autoplay=1"},
             scrollTrigger: {
                 trigger: ".videoContainer",
                 start: "top bottom",
@@ -6099,8 +6211,8 @@ var videoReferenceHeight = 457
 var videoReferenceWidth = window.innerWidth-48
 
 var videoReference;
-document.querySelector(".player2Play").onclick = function() {
-    videoReference = new YT.Player('player2', {
+document.querySelector(".player3Play").onclick = function() {
+    videoReference = new YT.Player('player3', {
         height: '' + videoReferenceHeight,
         width: '' + videoReferenceWidth,
         videoId: 'PDFxZSny9tA',
@@ -6109,23 +6221,21 @@ document.querySelector(".player2Play").onclick = function() {
         // 'onStateChange': onPlayerStateChange
         }
     });
-    document.querySelector(".player2Play").style.display = "none"
+    document.querySelector(".player3Play").style.display = "none"
 }
 
 function onVideoReferenceReady(event) {
     event.target.playVideo();   
 }
 
-
-
-document.querySelector('.textContainer button').onmouseover = function() {
-    document.querySelector(".kontaktImgHover").style.opacity = 1
-    document.querySelector(".kontaktImg").style.opacity = 0
+document.querySelector('.kontaktBtn').onmouseover = function() {
+    document.querySelector(".kontakt .kontaktImgHover").style.opacity = 1
+    document.querySelector(".kontakt .kontaktImg").style.opacity = 0
 }
 
-document.querySelector('.textContainer button').onmouseout = function() {
-    document.querySelector(".kontaktImgHover").style.opacity = 0
-    document.querySelector(".kontaktImg").style.opacity = 1
+document.querySelector('.kontaktBtn').onmouseout = function() {
+    document.querySelector(".kontakt .kontaktImgHover").style.opacity = 0
+    document.querySelector(".kontakt .kontaktImg").style.opacity = 1
 }
 // var precistArr = document.querySelectorAll(".precist")
 
@@ -6159,11 +6269,9 @@ if (windowWidth <= 768){
     videoPopupWidth = windowWidth-48
 }
 
-// var videoReferenceHeight = 457
-// var videoReferenceWidth = 366
 
 var videoPopup;
-var videoReference;
+var videoReferenceDesktop;
 function onYouTubeIframeAPIReady() {
     videoPopup = new YT.Player('player1', {
         height: '' + videoPopupHeight,
@@ -6174,15 +6282,6 @@ function onYouTubeIframeAPIReady() {
         // 'onStateChange': onPlayerStateChange
         }
     });
-    // videoReference = new YT.Player('player2', {
-    //     height: '' + videoReferenceHeight,
-    //     width: '' + videoReferenceWidth,
-    //     videoId: 'PDFxZSny9tA',
-    //     events: {
-    //     'onReady': onPlayerReady,
-    //     // 'onStateChange': onPlayerStateChange
-    //     }
-    // });
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -6411,11 +6510,7 @@ function iframesWrap() {
 
 
 
-gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
-
-
-
-// gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MorphSVGPlugin);
 
 
 // LazyLoading IMG

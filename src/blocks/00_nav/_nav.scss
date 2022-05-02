@@ -19,7 +19,7 @@ nav {
     border-bottom: 0.75px solid rgba(58, 58, 58, 0.08);
 
     @include navTransitionDown();
-    transition: all 1s;
+
     .container {
         height: 89px; 
         @include windowMax1440p(){
@@ -44,11 +44,29 @@ nav {
         transform: translateY(3px);
         li {
             display: relative;
-            &:hover{
-                // color: #D99A27;
-                // transition: color 0.25s;
-                img {opacity: 1;}
+            position: relative;
+            .navSelectedLine {
+                position: absolute;
+                right: 0;
+                width: 0%;
+                height: 2px;
+                background-color: #D99A27;
+                transition: all 0.25s;
             }
+            &:hover{
+                .navSelectedLine {
+                    width: 100%;
+                    left:0;
+                }
+                // transition: color 0.25s;
+                // img {opacity: 1;}
+            }
+            // &:not( :hover ){
+            //     .navSelectedLine {
+            //        margin-left: 100%;
+            //        width: 0%;
+            //     }
+            // }
             
         }
         a {
@@ -75,7 +93,9 @@ nav {
             // transform: translateY(-3px);
         }
         .sellected {
-            img {opacity: 1;}
+            .navSelectedLine{
+                width: 100%;
+            }
         }
     }
 
@@ -112,40 +132,53 @@ nav {
 
     @include mobileMax768p(){
         // .logo{display: none;}
-        overflow: visible;
+        // overflow: visible;
         height: 79px; 
-        transition: all 0.75s;
+        // position: fixed;
+
         .container {
             display: flex; 
             height: 100%;
             flex-direction: column;
-            justify-content:center;
+            justify-content:flex-start;
             align-items: center;
             overflow: hidden;
             // background-color: aquamarine;
             // max-height: 100%;
         }
         .navLogo{
+            min-height: 79px;
+            height: 79px;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            justify-self: center;
+            align-self: center;
             .logo{
                 width: 120px;
             }
             .burgerMenuBtn{
                 display: block;
-                svg rect{
+                position: relative;
+                transition: all 0.5s;
+                svg rect, path{
                     fill: black;
                 }
                 background: none;
                 border: none;
+                .cross {
+                    opacity: 0;
+                    position: absolute;
+                    left: 1px;
+                    top:-9px;
+                }
             }
         }
         .navButtons{
             display: none;
             opacity: 0;
-            transition: opacity 1s;
+
         }
     }
 }
@@ -198,7 +231,7 @@ nav {
         background: rgba(240, 240, 240, 0.05);
     }
     .navLogo .burgerMenuBtn{
-        svg rect{
+        svg rect, path{
             fill: white;
         }
     }
@@ -207,7 +240,7 @@ nav {
 .expanded{
     height: 100vh;
     background-color: white;
-    transition: all 1s;
+    // position: fixed;
     .container {
         // display: flex; 
         // height: 100%;
@@ -217,8 +250,17 @@ nav {
     .navLogo{
         min-height: 79px;
         height: 79px;
+        margin-top: 0;
         .logo {
             content: url("images/bg/adwheelsLogoBlack.svg");
+        }
+        .burgerMenuBtn{
+            svg rect, path{
+                fill: black;
+            }
+            .cross {
+                // visibility: hidden;
+            }
         }
     }
     .navButtons{
@@ -235,6 +277,7 @@ nav {
             width: 100%;
             margin: 30px auto 0 auto;
             height: 350px;
+            min-height: 350px;
             display: flex; 
             flex-direction: column;
             justify-content: space-between;
@@ -251,6 +294,7 @@ nav {
             background-color: #D99A27;
             width: 180px;
             height: 58px;
+            min-height: 58px;
             margin: 0 auto 0 auto;
         }
         
@@ -259,7 +303,14 @@ nav {
             .linkedIn, .facebook {
                 width: 32px;
                 height: 32px;
+                min-height: 32px;
                 background: none;
+            }
+            .linkedIn img {
+                content: url("images/bg/linkedinDark.svg");
+            }
+            .facebook img {
+                content: url("images/bg/facebookDark.svg");
             }
         }
     }

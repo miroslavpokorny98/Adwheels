@@ -1,7 +1,11 @@
 .klienti {
-    margin-top: 210px;
+    margin-top: 150px;
+    padding-top: 100px;
+    @include windowMax2048p(){
+        margin-top: 180px;
+    }
     @include windowMax1440p(){
-        margin-top: 190px;
+        margin-top: 170px;
     }
     h2 {
         @include h3Medium();
@@ -31,7 +35,7 @@
     }
 
     @include mobileMax768p(){
-        margin-top: 220px;
+        margin-top: 120px;
         h2 {
             @include h4Medium();
             text-align: center;

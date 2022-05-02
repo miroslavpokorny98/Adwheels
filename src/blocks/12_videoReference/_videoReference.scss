@@ -1,8 +1,8 @@
 .videoReference {
-    margin-top: 180px;
+    margin-top: 200px;
     // overflow-x: hidden;
     @include windowMax1440p(){
-        margin-top: 104px;
+        margin-top: 180px;
     }
     // height: 100vh;
     // background-color: blue;
@@ -37,8 +37,10 @@
         position: relative;
         // transform: translate(-50%, -50%);
         // background-color: red;
-        height: 1100/16*9px;
-        width: 1100;
+        // height: 1100/16*9px;
+        // width: 1100;
+        height: 100%;
+        width: 100%;
 
         @include windowMax1440p(){
             height: 900/16*9px;
@@ -50,7 +52,7 @@
         @include bodyText14pxMedium();
         @include yellowHover();
         position: absolute;
-        bottom: -27px;
+        bottom: -98px;
         width: 305px;
         height: 54px;
         text-align: center;
@@ -62,8 +64,15 @@
         margin: 0 auto 0 auto;
     }
 
-    .player2Play{
+    .player3Play{
         display: none;
+    }
+
+    #player2{
+        height: 100%;
+        width: 100%;
+        border-radius: 12px;
+        // background-color: #D99A27;
     }
 
 
@@ -94,7 +103,7 @@
         .detailyKampane {
             bottom: -78px;
         }
-        .player2Play{
+        .player3Play{
             display: block;
             width: 72px;
             height: 72px;
@@ -112,6 +121,9 @@
             }
         }
         #player2{
+            display: none;
+        }
+        #player3{
             border-radius: 12px;
             overflow: hidden;
         }

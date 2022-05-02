@@ -18,11 +18,9 @@ if (windowWidth <= 768){
     videoPopupWidth = windowWidth-48
 }
 
-// var videoReferenceHeight = 457
-// var videoReferenceWidth = 366
 
 var videoPopup;
-var videoReference;
+var videoReferenceDesktop;
 function onYouTubeIframeAPIReady() {
     videoPopup = new YT.Player('player1', {
         height: '' + videoPopupHeight,
@@ -33,15 +31,6 @@ function onYouTubeIframeAPIReady() {
         // 'onStateChange': onPlayerStateChange
         }
     });
-    // videoReference = new YT.Player('player2', {
-    //     height: '' + videoReferenceHeight,
-    //     width: '' + videoReferenceWidth,
-    //     videoId: 'PDFxZSny9tA',
-    //     events: {
-    //     'onReady': onPlayerReady,
-    //     // 'onStateChange': onPlayerStateChange
-    //     }
-    // });
 }
 
 // 4. The API will call this function when the video player is ready.

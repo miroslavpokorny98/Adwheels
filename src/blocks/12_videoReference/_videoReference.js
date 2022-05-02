@@ -4,10 +4,10 @@ const vh = (coef) => window.innerHeight * (coef/100)
 ScrollTrigger.matchMedia({
 	// desktop
 	"(min-width: 769px)": function() {
-		gsap.from(".video2", {
+		gsap.from(".videoContainer", {
             width: vw(95),
             height: vw(95)/16*9,
-        
+            onStart: function(){document.querySelector("#player2").src += "&autoplay=1"},
             scrollTrigger: {
                 trigger: ".videoContainer",
                 start: "top bottom",
@@ -45,8 +45,8 @@ var videoReferenceHeight = 457
 var videoReferenceWidth = window.innerWidth-48
 
 var videoReference;
-document.querySelector(".player2Play").onclick = function() {
-    videoReference = new YT.Player('player2', {
+document.querySelector(".player3Play").onclick = function() {
+    videoReference = new YT.Player('player3', {
         height: '' + videoReferenceHeight,
         width: '' + videoReferenceWidth,
         videoId: 'PDFxZSny9tA',
@@ -55,11 +55,9 @@ document.querySelector(".player2Play").onclick = function() {
         // 'onStateChange': onPlayerStateChange
         }
     });
-    document.querySelector(".player2Play").style.display = "none"
+    document.querySelector(".player3Play").style.display = "none"
 }
 
 function onVideoReferenceReady(event) {
     event.target.playVideo();   
 }
-
-

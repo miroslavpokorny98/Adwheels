@@ -1,0 +1,101 @@
+.fotoSection{
+    margin-top: 220px;
+    @include windowMax1440p(){
+        margin-top: 160px;
+    };
+    overflow: hidden;
+    h2{
+        @include h2Light();
+        @include windowMax1440p(){
+            @include h3Light();
+        };
+        color: #3A3A3A;
+        // overflow: hidden;
+        white-space: nowrap;
+        span {
+            @include h2Medium();
+            @include windowMax1440p(){
+                @include h3Medium();
+                color: #33266B;
+            };
+            color: #33266B;
+        }
+    }
+
+    .fotoSectionImgDiv1 {
+        // position: relative;
+        overflow: hidden;
+        margin: 64px auto 108px 40px;
+        // width: 80%;
+        height: 65vh;
+        width: 0px;
+        // background-color: red;
+        img {
+            height: 100%;
+        }
+
+        @include windowMax1440p(){
+            margin: 40px auto 80px 40px;
+        };
+
+    }
+
+    .fotoSectionImgDiv2 {
+        position: relative;
+        overflow: hidden;
+        top: -50px;
+        // width: 1116px;
+        height: 65vh;
+        width: 0px;
+        margin: 0 40px 0 auto;
+        img {
+            height: 100%;
+        }
+
+        display: flex;
+        justify-content: end;
+        // background-color: red;
+
+    }
+
+    @include mobileMax768p{
+        margin-top: 132px;
+        h2{
+            @include h4Regular();
+            color: #3A3A3A;
+            max-width: 240px;
+            white-space: normal;
+            span {
+                @include h4Medium();
+                color: #33266B;
+            }
+        }
+        .fotoSectionImgDiv1 {
+            margin: 24px 24px 40px 24px;
+            max-width: calc(100VW-48px);
+            height: auto;
+            img {
+                content: url("images/bg/pohledMesto1Mobile.png");
+                // height: auto;
+                width: calc(100VW-48px);
+                // object-fit: contain;
+            }    
+        }
+    
+        .fotoSectionImgDiv2 {
+            // display: block;
+            max-width: calc(100VW-48px);
+            // width: 100%;
+            margin: 24px 24px 0 auto;
+            top: 0;
+            height: calc((100VW-48px)/327*270);
+            // text-align: right;
+            img {
+                content: url("images/bg/pohledDalnice1Mobile.png");
+                // width: 100%;
+                width: calc(100VW-48px);
+                // object-fit: contain;
+            }
+        }
+    }
+}

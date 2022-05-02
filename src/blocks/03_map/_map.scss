@@ -1,10 +1,10 @@
 .map {
-    margin-top: 210px;
+    margin-top: 40px;
     @include windowMax1440p(){
-        margin-top: 200px;
+        margin-top: 32px;
     }
     @include windowMax2048p(){
-        margin-top: 72px;
+        margin-top: 12px;
     }
     @include mobileMax768p(){
         margin-top: 0px;
@@ -88,7 +88,7 @@
         // transform: translate(-50%, -45%) scale(1.2);
         
         @include windowMax1440p(){
-            transform-origin: 50% 15%;                     //end position
+            transform-origin: 50% 13%;                     //end position
             transform: translate(-50%, -38%) scale(0.9);   //start
         }
         @include windowMax1920p(){
@@ -96,8 +96,8 @@
             transform: translate(-50%, -44%) scale(1.2);
         }
         @include windowMax2048p(){
-            transform-origin: 50% 27%; 
-            transform: translate(-50%, -48%) scale(1.4);
+            transform-origin: 50% 35%; 
+            transform: translate(-50%, -46%) scale(1.4);
         }
         @include mobileMax768p(){
             transform-origin: 50% 27%; 

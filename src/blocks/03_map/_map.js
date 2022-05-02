@@ -33,6 +33,7 @@ var endMapScale = 0.8
 var windowWidth = window.innerWidth
 if (windowWidth <= 2048){
     initMapScale = 1.4
+    endMapScale = 0.7
 }
 if (windowWidth <= 1920){
     initMapScale = 1.2
