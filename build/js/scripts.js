@@ -6061,12 +6061,12 @@ ScrollTrigger.matchMedia({
 
 
 
-document.querySelector('.rozjetBtn').onmouseover = function() {
+document.querySelector('.callToAction').onmouseover = function() {
     document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 1
     document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 0
 }
 
-document.querySelector('.rozjetBtn').onmouseout = function() {
+document.querySelector('.callToAction').onmouseout = function() {
     document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 0
     document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 1
 }
@@ -6237,18 +6237,6 @@ document.querySelector('.kontaktBtn').onmouseout = function() {
     document.querySelector(".kontakt .kontaktImgHover").style.opacity = 0
     document.querySelector(".kontakt .kontaktImg").style.opacity = 1
 }
-// var precistArr = document.querySelectorAll(".precist")
-
-// precistArr.forEach(element => {
-//     element.onmouseover = function() {
-//         gsap.to(element.lastElementChild, {x: 12, duration: 0.25})
-//     }
-//     element.onmouseout = function() {
-//         gsap.to(element.lastElementChild, {x: 0, duration: 0.25, ease: "out"})
-//     }
-// });
-
-
 // // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
@@ -6510,7 +6498,7 @@ function iframesWrap() {
 
 
 
-gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MorphSVGPlugin);
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 
 // LazyLoading IMG

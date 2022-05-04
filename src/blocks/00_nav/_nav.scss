@@ -105,11 +105,11 @@ nav {
         justify-content: space-between;
         gap: 6px;
         margin-left: 8px;
+        height: 54px
     }
 
     .navButton {
         @include navHover();
-        // margin: 0px 3px 0px 3px;    
         background-color: rgba(58, 58, 58, 0.05);
         border-radius: 8px;
         border: none;
@@ -121,9 +121,35 @@ nav {
         width: 170px;
         height: 54px;
     }
-    .linkedIn, .facebook {
-        width: 54px;
+    .socials{
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
         height: 54px;
+
+        .linkedIn {
+            @include bodyText14pxMedium();
+            // padding: 21px 19.5px 19px 19.5px;
+            // display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // margin: 0px 3px 0px 3px;  
+            width: 54px;
+            height: 54px;
+            line-height: 0px;
+        }
+        .facebook {
+            @include bodyText14pxMedium();
+            // display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // margin: 0px 3px 0px 3px;  
+            width: 54px;
+            height: 54px;
+            line-height: 0px;
+        }
     }
 
     .burgerMenuBtn{
@@ -161,17 +187,22 @@ nav {
             .burgerMenuBtn{
                 display: block;
                 position: relative;
-                transition: all 0.5s;
-                svg rect, path{
-                    fill: black;
-                }
+                width: 34px;
+                height: 34px;
+                overflow: visible;
                 background: none;
                 border: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                transition: all 0.5s;
+                
                 .cross {
                     opacity: 0;
                     position: absolute;
-                    left: 1px;
-                    top:-9px;
+                    left: 0px;
+                    top:0px;
                 }
             }
         }
@@ -210,7 +241,11 @@ nav {
     .facebook img {
         content: url("images/bg/facebookDark.svg");
     }
-
+    .burgerMenuBtn svg {
+        rect,circle,path{
+            fill: black;
+        }
+    }
 }
 
 .transparentNav {
@@ -230,8 +265,8 @@ nav {
     .navButton {
         background: rgba(240, 240, 240, 0.05);
     }
-    .navLogo .burgerMenuBtn{
-        svg rect, path{
+    .burgerMenuBtn svg {
+        rect,circle,path{
             fill: white;
         }
     }
@@ -255,7 +290,7 @@ nav {
             content: url("images/bg/adwheelsLogoBlack.svg");
         }
         .burgerMenuBtn{
-            svg rect, path{
+            svg circle, rect, path{
                 fill: black;
             }
             .cross {

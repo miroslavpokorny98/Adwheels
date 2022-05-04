@@ -47,6 +47,9 @@
             &.facebook {
                 margin-left: 32px;
             }
+            &.linkedIn {
+                margin-left: 2px;
+            }
         }
         .adress {
             @include bodyText14pxRegular();

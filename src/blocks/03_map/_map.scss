@@ -11,6 +11,9 @@
     }
     // background-color: red;
     height: 200vh;
+    // @include mobileMax768p(){
+    //     height: 100%;        
+    // }
     
     position: relative;
 
@@ -60,7 +63,7 @@
     .mapContainer{
         height: 100vh;
         @include mobileMax768p(){
-            height: 100vh;        
+            height: 50%;        
         }
 
         width: 100%;

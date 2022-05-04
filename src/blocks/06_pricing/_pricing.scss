@@ -207,15 +207,10 @@
                 }
                 display: none;
                 border-left: 0.75px solid rgba(255, 255, 255, 0.15);
-                // background-color: #D99A27;
-                // opacity: 0.5;
                 h4 {
                     @include h3Medium();
                     color: #FFFFFF;
                     margin-top: 20px;
-                    // @include windowMax1440p(){
-                    //     margin-top: 18px;
-                    // }
                 }
     
                 ul {
@@ -354,19 +349,9 @@
                 transition: all 0.5s;
 
                 .expand {
-                    // position: absolute;
-                    // right: 0px;
                     margin: 20px;
                     width: 32px;
                     height: 32px;
-                    // border-radius: 50%;
-                    // background-color: rgba(255, 255, 255, 0.2);
-                    // border: none;
-    
-                    // display: flex;
-                    // align-items: center;
-                    // align-content: center;
-                    // justify-content: center;
                     
                     &:hover {
                         transition: unset;
@@ -380,11 +365,6 @@
                     min-width: auto;
                     height: 100%;
                     position:static;
-                    // @include windowMax1440p(){
-                    //     height: 550px;
-                    //     min-width: 550/638*440px;
-                    // }
-                    // display: relative;
                     transition: all 0.5s; 
                     h4 {
                         @include h6Medium();
@@ -403,16 +383,6 @@
                     .showMore,.showLess{
                         color: white;
                     }
-                    // .unchecked {
-                    //     color: #FFFFFF;
-                    //     opacity: 0.5;
-                    // }
-                    // .checked {
-                    //     color: #FFFFFF;
-                    // }
-                    // ul li {
-                    //     margin-bottom: 24px;
-                    // }
                 }
                 
                 .pricingNumbers {
@@ -425,13 +395,6 @@
                     z-index: -99;
                     transition: all 0.5s;
                     
-                    // min-width: 50%;
-                    // height: 520px;
-                    // @include windowMax1440p(){
-                    //     height: 550/638*520px;
-                    // }
-                    // display: none;
-                    // border-left: 0.75px solid rgba(255, 255, 255, 0.15);
                     h4 {
                         @include h5Medium();
                         color: #FFFFFF;
@@ -442,20 +405,11 @@
                         opacity: 1;
                         margin-top: 30px;
                         max-width: 240px;
-        
-                    //     display: flex;
-                    //     flex-direction: row;
-                    //     align-content: space-between;
-                    //     justify-content: space-between;
-                    //     flex-wrap: wrap;
+        ;
                         li{
-                    //         display: inline;
                             width: 104px;
                             white-space:unset;
-                    //         @include bodyText12pxRegular();
-                    //         color: #FFFFFF;
                             margin-bottom: 32px;
-                    //         text-align: left;
             
                             h5 {
                                 @include h5Medium();

@@ -13,12 +13,7 @@
         margin-top: 56px;
         display: flex; 
         justify-content: space-between;
-        // justify-content: center;
         align-items: center;
-        // gap: 24px;
-        // @include windowMax1440p(){
-        //     max-width: 1046px;
-        // }
     }
 
     .card6 {
@@ -73,7 +68,7 @@
         }
     }
 
-    .zobrazitInfo {
+    .showInfoBtn {
         @include bodyText14pxMedium();
         @include yellowHover();
         text-align: center;

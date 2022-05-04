@@ -45,7 +45,7 @@
         }
     }
 
-    .rozjetBtn {
+    .callToAction {
         @include bodyText14pxMedium();
         @include yellowHover();
         margin: 33px 0 0 0px;
@@ -124,7 +124,7 @@
                 color: #FFFFFF;
             }
         }
-        .rozjetBtn {
+        .callToAction {
             margin: 32px auto 30px auto;
         }
         .imgDiv {

@@ -1,13 +1,10 @@
 .quotes {
     margin-top: 88px;
     .container {
-        // display: flex; 
-        // justify-content: space-between;
-        // align-items: flex-end;
         position: relative;
         height: 490px;
         @include windowMax1440p(){
-            // max-width: 1046px;
+            // max-width: 1046;
             height: 720/808*490px;
         }
     }
@@ -37,11 +34,8 @@
         background: #33266B;
         border-radius: 12px;
         text-align: center;
-        // margin-left: 416px;
-        // position: relative;
         right: 0;
         position: absolute;
-        // left:100px;
 
         @include windowMax1440p(){
             width: 720px;
@@ -124,15 +118,12 @@
             }
             button {
                 box-sizing: border-box;
-                // padding: 15px 14px 16px 14px;
                 width: 48px;
                 height: 48px;                
                 border-radius: 50%;
                 text-align: center;
                 border: 1px solid #FFFFFF;
-                /* background-color: rgb(255, 255, 255, 1); */
                 background-color: #33266B;
-                // transform: rotate(45deg);
                 
                 .darkArrow {
                     display: none;
@@ -160,8 +151,6 @@
             align-items: center;
             position: relative;
             height: fit-content;
-            
-            // margin: 0 24px 0 24px;
         }
     
         .quotesFotoDiv {
@@ -180,14 +169,12 @@
         }
     
         .quoteCards {
-            // padding: 62px 32px 64px 32px;
             width: 100%;
             max-width: 400px;
             height: fit-content;
             display: flex;
             flex-direction: column;
             
-            // justify-content: center;
             align-items: center;
             position: relative;
             border-radius: 12px;
@@ -198,7 +185,6 @@
             .quoteContainer{
                 max-width: 400px;
                 max-height: 310px;
-                // min-height: 200px;
                 height: fit-content;
                 text-align: center;
                 overflow: hidden;
@@ -215,8 +201,6 @@
                 .qouteAuthor {
                     @include bodyText12pxRegular();
                     color: #FFFFFF;
-                    // opacity: 0.5;
-                    // transition: opacity 0.5s;
                 }
             }
             .arrows {

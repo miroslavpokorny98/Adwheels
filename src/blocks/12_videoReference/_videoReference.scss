@@ -4,8 +4,6 @@
     @include windowMax1440p(){
         margin-top: 180px;
     }
-    // height: 100vh;
-    // background-color: blue;
 
     h2 {
         @include h3Medium();
@@ -15,7 +13,6 @@
         max-width: 460px;
     }
     .videoContainer{
-        // border-radius: 12px;
         margin: 0 auto 0 auto;
         border: none;
         display: flex; 
@@ -29,16 +26,11 @@
             height: 900/16*9px;
             width: 900px;
         }
-        // background-color: blue;
     }
 
     .video2 {
         border-radius: 12px;
         position: relative;
-        // transform: translate(-50%, -50%);
-        // background-color: red;
-        // height: 1100/16*9px;
-        // width: 1100;
         height: 100%;
         width: 100%;
 
@@ -48,7 +40,7 @@
         }
     }
 
-    .detailyKampane {
+    .exploreDetails {
         @include bodyText14pxMedium();
         @include yellowHover();
         position: absolute;
@@ -100,7 +92,7 @@
             background-position: center;
             background-size: cover;
         }
-        .detailyKampane {
+        .exploreDetails {
             bottom: -78px;
         }
         .player3Play{

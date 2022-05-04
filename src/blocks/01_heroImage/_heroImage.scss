@@ -78,7 +78,7 @@
         }
     }
 
-    .VPohybu {
+    .textAboveHeadline {
         @include bodyText12pxCAPS();
         color: #D99A27;
         margin: 20px 0px 0px 0; 
@@ -106,8 +106,8 @@
         margin: 20px 0px 0px 0; 
     }
 
-    .rozjet {
-        @include bodyText14pxRegular();
+    .call2Action {
+        @include bodyText14pxMedium();
         @include yellowHover();
         background: #D99A27;
         color: #FFFFFF;
