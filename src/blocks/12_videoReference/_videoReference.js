@@ -15,14 +15,14 @@ ScrollTrigger.matchMedia({
                 ease: "power3.out",
                 scrub: true,
                 // once: true,
-                toggleActions: "restart none none none",
+                // toggleActions: "restart none none none",
                 // onEnter onLeave onEnterBack onLeaveBack
                 // markers: true,
             }
         })
     }, 
 	"all": function() {
-		gsap.from(".detailyKampane", {
+		gsap.from(".exploreDetails", {
             y: 50,
             opacity: 0,
             duration: 1,

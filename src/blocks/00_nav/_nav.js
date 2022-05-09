@@ -1,3 +1,5 @@
+// ScrollTrigger.normalizeScroll(true);
+
 var myNav = document.querySelector('nav')
 
 myNav.classList.add("transparentNav");

@@ -4,6 +4,7 @@ var mapScrollIn = gsap.timeline({
         start: "center 80%",
         end: "top top",
         scrub: 0.5,
+        // preventOverlaps: true,
         // markers: true,
     }
 })
@@ -23,7 +24,8 @@ var mapScrollOut = gsap.timeline({
         end: "bottom top", // need to scroll 100vh to complete
         pin: true,
         scrub: 0.5,
-        // anticipatePin: 3,
+        // preventOverlaps: true,
+        anticipatePin: 1,
         // markers: true,
     }
 })

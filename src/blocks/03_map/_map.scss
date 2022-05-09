@@ -14,7 +14,7 @@
     // @include mobileMax768p(){
     //     height: 100%;        
     // }
-    
+    overflow: hidden;
     position: relative;
 
     h2{
@@ -63,7 +63,8 @@
     .mapContainer{
         height: 100vh;
         @include mobileMax768p(){
-            height: 50%;        
+            height: 50%;    
+            // height: 900px;    
         }
 
         width: 100%;
@@ -71,7 +72,7 @@
         background-color: white;
         overflow: hidden;
         box-sizing: border-box;
-        position: sticky;
+        // position: sticky;
         // @include mobileMax768p(){
         //     display: flex;
         //     align-items: center;

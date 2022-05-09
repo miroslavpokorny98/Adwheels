@@ -5569,6 +5569,8 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// ScrollTrigger.normalizeScroll(true);
+
 var myNav = document.querySelector('nav')
 
 myNav.classList.add("transparentNav");
@@ -5703,6 +5705,7 @@ var mapScrollIn = gsap.timeline({
         start: "center 80%",
         end: "top top",
         scrub: 0.5,
+        // preventOverlaps: true,
         // markers: true,
     }
 })
@@ -5722,7 +5725,8 @@ var mapScrollOut = gsap.timeline({
         end: "bottom top", // need to scroll 100vh to complete
         pin: true,
         scrub: 0.5,
-        // anticipatePin: 3,
+        // preventOverlaps: true,
+        anticipatePin: 1,
         // markers: true,
     }
 })
@@ -5810,8 +5814,6 @@ function rotateInfo(informations, clickedIndex){
         revealTimeline.play()
     }
     
-    // console.log("hidden " + lastInfo)
-    // console.log("revealed " + clickedIndex)
     lastInfo = clickedIndex
 }
 
@@ -5993,8 +5995,8 @@ ScrollTrigger.matchMedia({
         expandCard4(showMoreBtns[1])
 
         function expandCard4(btn){
-            console.log("expand")
-            console.dir(btn)
+            // console.log("expand")
+            // console.dir(btn)
             btn.onclick = function(){retractCard4(this)}
             
             btn.previousElementSibling.style.opacity = 1
@@ -6181,14 +6183,14 @@ ScrollTrigger.matchMedia({
                 ease: "power3.out",
                 scrub: true,
                 // once: true,
-                toggleActions: "restart none none none",
+                // toggleActions: "restart none none none",
                 // onEnter onLeave onEnterBack onLeaveBack
                 // markers: true,
             }
         })
     }, 
 	"all": function() {
-		gsap.from(".detailyKampane", {
+		gsap.from(".exploreDetails", {
             y: 50,
             opacity: 0,
             duration: 1,
@@ -6247,11 +6249,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 
-var ytVideoContainer = document.querySelector(".heroImage .container")
+var ytVideoContainer = document.querySelector(".heroImage .videoPopupContainer")
 
 var windowWidth = window.innerWidth
-var videoPopupHeight = ytVideoContainer.offsetWidth/16*9
-var videoPopupWidth = ytVideoContainer.offsetWidth
+var videoPopupHeight = window.innerHeight - 89 - 100
+var videoPopupWidth = videoPopupHeight/9*16
 if (windowWidth <= 768){
     videoPopupHeight = 457 //(windowWidth-48)/16*9 + 150
     videoPopupWidth = windowWidth-48

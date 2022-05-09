@@ -91,8 +91,8 @@ ScrollTrigger.matchMedia({
         expandCard4(showMoreBtns[1])
 
         function expandCard4(btn){
-            console.log("expand")
-            console.dir(btn)
+            // console.log("expand")
+            // console.dir(btn)
             btn.onclick = function(){retractCard4(this)}
             
             btn.previousElementSibling.style.opacity = 1

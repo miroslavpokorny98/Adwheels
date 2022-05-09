@@ -22,8 +22,6 @@ function rotateInfo(informations, clickedIndex){
         revealTimeline.play()
     }
     
-    // console.log("hidden " + lastInfo)
-    // console.log("revealed " + clickedIndex)
     lastInfo = clickedIndex
 }
 

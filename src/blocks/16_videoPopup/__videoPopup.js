@@ -8,11 +8,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 
-var ytVideoContainer = document.querySelector(".heroImage .container")
+var ytVideoContainer = document.querySelector(".heroImage .videoPopupContainer")
 
 var windowWidth = window.innerWidth
-var videoPopupHeight = ytVideoContainer.offsetWidth/16*9
-var videoPopupWidth = ytVideoContainer.offsetWidth
+var videoPopupHeight = window.innerHeight - 89 - 100
+var videoPopupWidth = videoPopupHeight/9*16
 if (windowWidth <= 768){
     videoPopupHeight = 457 //(windowWidth-48)/16*9 + 150
     videoPopupWidth = windowWidth-48
