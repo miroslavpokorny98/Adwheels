@@ -23,7 +23,7 @@ ScrollTrigger.matchMedia({
                 once: true,
                 // toggleActions: "restart none none none",
                 // onEnter onLeave onEnterBack onLeaveBack
-                markers: true,
+                // markers: true,
             }
         })
 
