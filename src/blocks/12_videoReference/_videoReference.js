@@ -3,11 +3,35 @@ const vh = (coef) => window.innerHeight * (coef/100)
 
 ScrollTrigger.matchMedia({
 	// desktop
-	"(min-width: 769px)": function() {
+    "(max-width: 768px)": function() {
+        document.querySelector(".player3Play").onclick = function() {
+            loadVideoReference()
+            document.querySelector(".player3Play").style.display = "none"
+        }
+
+        function onVideoReferenceReady(event) {
+            event.target.playVideo();   
+        }
+    }, 
+	"(min-width: 769px)": function() {        
+
+        gsap.set(".videoContainer", {
+            onStart: function(){alert();},
+            scrollTrigger: {
+                trigger: ".videoContainer",
+                start: "top bottom",
+                once: true,
+                // toggleActions: "restart none none none",
+                // onEnter onLeave onEnterBack onLeaveBack
+                markers: true,
+            }
+        })
+
 		gsap.from(".videoContainer", {
             width: vw(95),
             height: vw(95)/16*9,
-            onStart: function(){document.querySelector("#player2").src += "&autoplay=1"},
+            // onStart: function(){document.querySelector("#player2").src += "&autoplay=1"},
+            onStart: function(){loadVideoReference()},
             scrollTrigger: {
                 trigger: ".videoContainer",
                 start: "top bottom",
@@ -40,24 +64,22 @@ ScrollTrigger.matchMedia({
 	}
 });
 
-
-var videoReferenceHeight = 457
-var videoReferenceWidth = window.innerWidth-48
-
 var videoReference;
-document.querySelector(".player3Play").onclick = function() {
+
+function loadVideoReference() {
     videoReference = new YT.Player('player3', {
-        height: '' + videoReferenceHeight,
-        width: '' + videoReferenceWidth,
-        videoId: 'PDFxZSny9tA',
+        height: '',// + videoReferenceHeight,
+        width: '',// + videoReferenceWidth,
+        videoId: document.getElementById("player3").dataset.code,
+        muted: true,
         events: {
         'onReady': onVideoReferenceReady,
         // 'onStateChange': onPlayerStateChange
         }
     });
-    document.querySelector(".player3Play").style.display = "none"
 }
 
 function onVideoReferenceReady(event) {
+    event.target.mute();
     event.target.playVideo();   
 }

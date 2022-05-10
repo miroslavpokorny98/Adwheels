@@ -60,11 +60,15 @@
         display: none;
     }
 
-    #player2{
+    #player3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         height: 100%;
         width: 100%;
         border-radius: 12px;
-        // background-color: #D99A27;
     }
 
 
@@ -103,6 +107,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 100;
 
             background: #FFFFFF;
             box-shadow: 4px 4px 20px rgba(26, 27, 69, 0.45);
@@ -117,7 +122,7 @@
         }
         #player3{
             border-radius: 12px;
-            overflow: hidden;
+            overflow: hidden;   
         }
     }
 }

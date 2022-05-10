@@ -18,14 +18,13 @@ if (windowWidth <= 768){
     videoPopupWidth = windowWidth-48
 }
 
-
 var videoPopup;
 var videoReferenceDesktop;
 function onYouTubeIframeAPIReady() {
     videoPopup = new YT.Player('player1', {
         height: '' + videoPopupHeight,
         width: '' + videoPopupWidth,
-        videoId: 'PDFxZSny9tA',
+        videoId: document.getElementById("player1").dataset.code,
         events: {
         'onReady': onPlayerReady,
         // 'onStateChange': onPlayerStateChange
