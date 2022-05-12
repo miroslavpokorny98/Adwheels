@@ -6063,14 +6063,16 @@ ScrollTrigger.matchMedia({
 
 
 
-document.querySelector('.callToAction').onmouseover = function() {
-    document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 1
-    document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 0
-}
+if (window.innerWidth > 768){
+    document.querySelector('.callToAction').onmouseover = function() {
+        document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 1
+        document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 0
+    }
 
-document.querySelector('.callToAction').onmouseout = function() {
-    document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 0
-    document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 1
+    document.querySelector('.callToAction').onmouseout = function() {
+        document.querySelector(".reklamaVPohybu .kontaktImgHover").style.opacity = 0
+        document.querySelector(".reklamaVPohybu .kontaktImg").style.opacity = 1
+    }
 }
 var windowWidth = window.innerWidth
 var card3Spacing = 32
@@ -6251,14 +6253,16 @@ function onVideoReferenceReady(event) {
     event.target.mute();
     event.target.playVideo();   
 }
-document.querySelector('.kontaktBtn').onmouseover = function() {
-    document.querySelector(".kontakt .kontaktImgHover").style.opacity = 1
-    document.querySelector(".kontakt .kontaktImg").style.opacity = 0
-}
+if (window.innerWidth > 768){
+    document.querySelector('.kontaktBtn').onmouseover = function() {
+        document.querySelector(".kontakt .kontaktImgHover").style.opacity = 1
+        document.querySelector(".kontakt .kontaktImg").style.opacity = 0
+    }
 
-document.querySelector('.kontaktBtn').onmouseout = function() {
-    document.querySelector(".kontakt .kontaktImgHover").style.opacity = 0
-    document.querySelector(".kontakt .kontaktImg").style.opacity = 1
+    document.querySelector('.kontaktBtn').onmouseout = function() {
+        document.querySelector(".kontakt .kontaktImgHover").style.opacity = 0
+        document.querySelector(".kontakt .kontaktImg").style.opacity = 1
+    }
 }
 // // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
