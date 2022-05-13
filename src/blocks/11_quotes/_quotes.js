@@ -16,7 +16,7 @@ arrowRight.onclick = function () {
 arrowLeft.onclick = function () {
     var nextQuote = 0
     if (currentQuote == 0){
-        nextQuote = rotation.length - 1
+        nextQuote = quotes.length - 1
     } else {
         nextQuote = (currentQuote - 1) % quotes.length
     }
