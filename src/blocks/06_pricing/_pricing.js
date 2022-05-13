@@ -9,6 +9,8 @@ const showLessBtns = document.querySelectorAll(".showLess")
 ScrollTrigger.matchMedia({
 	// desktop
 	"(min-width: 769px)": function() {
+        pricingNumbers.classList.add("hidden")
+
         gsap.from(".card4Left", { 
             x: "500",
             // opacity: 0,
@@ -59,6 +61,7 @@ ScrollTrigger.matchMedia({
     }, 
 
     "(max-width: 768px)": function() {
+        pricingNumbers.classList.add("hidden")
         expandBtn.onclick = showPricingNumbers
 
         function showPricingNumbers () {
