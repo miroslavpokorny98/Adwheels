@@ -9,7 +9,7 @@ const showLessBtns = document.querySelectorAll(".showLess")
 ScrollTrigger.matchMedia({
 	// desktop
 	"(min-width: 769px)": function() {
-        pricingNumbers.classList.add("hidden")
+        // pricingNumbers.classList.add("hidden")
 
         gsap.from(".card4Left", { 
             x: "500",
@@ -45,7 +45,7 @@ ScrollTrigger.matchMedia({
         var expandPricingTl = gsap.timeline();
         expandPricingTl.to(".card4Middle", {width: "100%", duration: 0.75, ease: "inOut",})
         expandPricingTl.to(".card4 .expand img", {rotation: 45, duration: 0.5, onStart: () => { pricingNumbers.style.display = "block"}}, "<")
-        expandPricingTl.fromTo(".pricingNumbers", {opacity: "0"}, {opacity:"1", duration: 0.5}, "-=0.35");
+        expandPricingTl.fromTo(".pricingNumbers", {opacity: 0}, {opacity: 1, duration: 0.5}, "-=0.35");
         expandPricingTl.pause();
         expandBtn.onclick = expandPricing
 
@@ -119,19 +119,6 @@ ScrollTrigger.matchMedia({
     },
 
 	"all": function() {
-        // paralax
-        // gsap.to(".PricingParalax", {
-        //     y: "-40vh",
-        //     scrollTrigger: {
-        //         trigger: ".PricingParalax",
-        //         // start: "center bottom",
-        //         start: "top bottom",
-        //         end: "top top",
-        //         // pin: true,
-        //         scrub: true,
-        //         // markers: true,
-        //     }
-        // });
         gsap.to(".expand", {
             scaleX: 1.2,
             scaleY: 1.2,
