@@ -116,11 +116,13 @@
             vertical-align: middle;
             overflow: visible;
             // padding: 2px;
+            // margin: 2px;
             
             .videoLoadCircle {
+                // margin-bottom: 2px;
+                // margin-left: 2px;
                 transform-origin: 50% 50%;
                 transform: rotate(-90deg);
-    
                 stroke-dasharray: 125;
                 stroke-dashoffset: 125;
                 animation: dash 4s linear forwards;
