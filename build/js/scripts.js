@@ -6514,7 +6514,7 @@ function iframesWrap() {
 
 
 
-gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, ScrollToPlugin);
 
 
 // LazyLoading IMG
