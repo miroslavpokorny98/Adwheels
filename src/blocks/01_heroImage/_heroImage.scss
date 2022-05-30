@@ -114,6 +114,8 @@
         margin-left: 40px; 
         .videoLoad{
             vertical-align: middle;
+            overflow: visible;
+            // padding: 2px;
             
             .videoLoadCircle {
                 transform-origin: 50% 50%;
