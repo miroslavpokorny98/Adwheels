@@ -1,24 +1,30 @@
 @mixin navHover{
-    &:hover{
-        transition: background-color 0.25s, color 0.25s;
-        background: #D99A27;
-        color: white; 
-        cursor: pointer;
+    @include windowDesktop{
+        &:hover{
+            transition: background-color 0.25s, color 0.25s;
+            background: #D99A27;
+            color: white; 
+            cursor: pointer;
+        }
     }
 }
 
 @mixin purpleHover{
-    &:hover{
-        transition: 0.25s;
-        background-color: #190F43;
-        cursor: pointer;
+    @include windowDesktop{
+        &:hover{
+            transition: 0.25s;
+            background-color: #190F43;
+            cursor: pointer;
+        }
     }
 }
 
 @mixin yellowHover{
-    &:hover{
-        transition: background-color 0.25s;
-        background-color: #BA7C0A;    
-        cursor: pointer;
+    @include windowDesktop{
+        &:hover{
+            transition: background-color 0.25s;
+            background-color: #BA7C0A;    
+            cursor: pointer;
+        }
     }
 }
