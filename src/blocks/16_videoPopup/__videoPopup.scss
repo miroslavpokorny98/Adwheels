@@ -51,14 +51,14 @@
         align-content: center;
         justify-content: center;
         // display: none;
+        img{
+            transform: rotate(45deg);
+        }
         @media (min-width: 786px){
             &:hover {
                 transition: background-color 0.25s;
                 background-color: #D99A27;
                 cursor: pointer;
-            }
-            img{
-                transform: rotate(45deg);
             }
         }
     }
